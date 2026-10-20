@@ -21,3 +21,12 @@ ml/datasets/*
 *.onnx
 *.safetensors
 .DS_Store
+data/
+*.db
+*.db-*
+frontend/test-results/
+frontend/playwright-report/
+frontend/.tsbuildinfo
+*.tsbuildinfo
+ml/runs/
+ml/models/

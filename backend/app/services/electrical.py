@@ -45,7 +45,9 @@ def basic_electrical_errors(circuit: Circuit) -> list[ValidationIssue]:
         errors.append(
             ValidationIssue(
                 code="ideal_supply_short",
-                message="An ideal-conductor path can short the supply (including a pressed button).",
+                message=(
+                    "An ideal-conductor path can short the supply (including a pressed button)."
+                ),
             )
         )
     for component in circuit.components:
@@ -68,14 +70,21 @@ def basic_electrical_errors(circuit: Circuit) -> list[ValidationIssue]:
             errors.append(
                 ValidationIssue(
                     code="reversed_led",
-                    message=f"{component.id} is reversed relative to the supply in the supported series topology.",
+                    message=(
+                        f"{component.id} is reversed relative to the supply "
+                        "in the supported series topology."
+                    ),
                 )
             )
         elif not math.isfinite(forward):
             errors.append(
                 ValidationIssue(
                     code="unsupported_led_topology",
-                    message=f"{component.id}: no supported supply-to-LED series path was found. Multi-LED series chains and complex active networks require a richer electrical model.",
+                    message=(
+                        f"{component.id}: no supported supply-to-LED series path was found. "
+                        "Multi-LED series chains and complex active networks "
+                        "require a richer electrical model."
+                    ),
                 )
             )
     return errors

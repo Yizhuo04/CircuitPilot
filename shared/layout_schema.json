@@ -1,0 +1,203 @@
+{
+  "$defs": {
+    "ComponentPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Anchor",
+          "type": "string"
+        },
+        "component_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "footprint_id": {
+          "enum": [
+            "resistor-axial-7_62",
+            "led-2_54",
+            "button-trench-7_62x5_08",
+            "jumper-flex",
+            "supply-terminal-flex"
+          ],
+          "title": "Footprint Id",
+          "type": "string"
+        },
+        "orientation": {
+          "default": 0,
+          "enum": [
+            0,
+            180
+          ],
+          "title": "Orientation",
+          "type": "integer"
+        },
+        "pins": {
+          "additionalProperties": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "title": "Pins",
+          "type": "object"
+        }
+      },
+      "required": [
+        "component_id",
+        "footprint_id",
+        "anchor",
+        "pins"
+      ],
+      "title": "ComponentPlacement",
+      "type": "object"
+    },
+    "JumperPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "default": "blue",
+          "enum": [
+            "red",
+            "black",
+            "blue",
+            "green",
+            "yellow"
+          ],
+          "title": "Color",
+          "type": "string"
+        },
+        "end": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "End",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "length_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Length Mm"
+        },
+        "net_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Net Id",
+          "type": "string"
+        },
+        "start": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Start",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "net_id",
+        "start",
+        "end"
+      ],
+      "title": "JumperPlacement",
+      "type": "object"
+    },
+    "SupplyPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "negative_hole": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Negative Hole",
+          "type": "string"
+        },
+        "positive_hole": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Positive Hole",
+          "type": "string"
+        }
+      },
+      "required": [
+        "positive_hole",
+        "negative_hole"
+      ],
+      "title": "SupplyPlacement",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "board_model_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+      "title": "Board Model Id",
+      "type": "string"
+    },
+    "board_revision": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+      "title": "Board Revision",
+      "type": "string"
+    },
+    "circuit_sha256": {
+      "pattern": "^[a-f0-9]{64}$",
+      "title": "Circuit Sha256",
+      "type": "string"
+    },
+    "components": {
+      "items": {
+        "$ref": "#/$defs/ComponentPlacement"
+      },
+      "maxItems": 64,
+      "title": "Components",
+      "type": "array"
+    },
+    "jumpers": {
+      "items": {
+        "$ref": "#/$defs/JumperPlacement"
+      },
+      "maxItems": 128,
+      "title": "Jumpers",
+      "type": "array"
+    },
+    "planner_version": {
+      "default": "manual-1",
+      "title": "Planner Version",
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "seed": {
+      "default": 0,
+      "title": "Seed",
+      "type": "integer"
+    },
+    "supply": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/SupplyPlacement"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "circuit_sha256",
+    "board_model_id",
+    "board_revision",
+    "components"
+  ],
+  "title": "Layout",
+  "type": "object"
+}

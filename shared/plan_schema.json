@@ -1,0 +1,389 @@
+{
+  "$defs": {
+    "AssemblyStep": {
+      "additionalProperties": false,
+      "properties": {
+        "component_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Component Id"
+        },
+        "holes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Holes",
+          "type": "array"
+        },
+        "instruction": {
+          "title": "Instruction",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "safety",
+            "component",
+            "jumper",
+            "supply",
+            "review"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "sequence": {
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sequence",
+        "kind",
+        "title",
+        "instruction"
+      ],
+      "title": "AssemblyStep",
+      "type": "object"
+    },
+    "ComponentPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "anchor": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Anchor",
+          "type": "string"
+        },
+        "component_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Component Id",
+          "type": "string"
+        },
+        "footprint_id": {
+          "enum": [
+            "resistor-axial-7_62",
+            "led-2_54",
+            "button-trench-7_62x5_08",
+            "jumper-flex",
+            "supply-terminal-flex"
+          ],
+          "title": "Footprint Id",
+          "type": "string"
+        },
+        "orientation": {
+          "default": 0,
+          "enum": [
+            0,
+            180
+          ],
+          "title": "Orientation",
+          "type": "integer"
+        },
+        "pins": {
+          "additionalProperties": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "title": "Pins",
+          "type": "object"
+        }
+      },
+      "required": [
+        "component_id",
+        "footprint_id",
+        "anchor",
+        "pins"
+      ],
+      "title": "ComponentPlacement",
+      "type": "object"
+    },
+    "JumperPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "default": "blue",
+          "enum": [
+            "red",
+            "black",
+            "blue",
+            "green",
+            "yellow"
+          ],
+          "title": "Color",
+          "type": "string"
+        },
+        "end": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "End",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "length_mm": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Length Mm"
+        },
+        "net_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Net Id",
+          "type": "string"
+        },
+        "start": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Start",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "net_id",
+        "start",
+        "end"
+      ],
+      "title": "JumperPlacement",
+      "type": "object"
+    },
+    "Layout": {
+      "additionalProperties": false,
+      "properties": {
+        "board_model_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Board Model Id",
+          "type": "string"
+        },
+        "board_revision": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Board Revision",
+          "type": "string"
+        },
+        "circuit_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Circuit Sha256",
+          "type": "string"
+        },
+        "components": {
+          "items": {
+            "$ref": "#/$defs/ComponentPlacement"
+          },
+          "maxItems": 64,
+          "title": "Components",
+          "type": "array"
+        },
+        "jumpers": {
+          "items": {
+            "$ref": "#/$defs/JumperPlacement"
+          },
+          "maxItems": 128,
+          "title": "Jumpers",
+          "type": "array"
+        },
+        "planner_version": {
+          "default": "manual-1",
+          "title": "Planner Version",
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "1.0",
+          "default": "1.0",
+          "title": "Schema Version",
+          "type": "string"
+        },
+        "seed": {
+          "default": 0,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "supply": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SupplyPlacement"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "circuit_sha256",
+        "board_model_id",
+        "board_revision",
+        "components"
+      ],
+      "title": "Layout",
+      "type": "object"
+    },
+    "LayoutValidationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "board_physically_verified": {
+          "default": false,
+          "title": "Board Physically Verified",
+          "type": "boolean"
+        },
+        "electrically_verified": {
+          "const": false,
+          "default": false,
+          "title": "Electrically Verified",
+          "type": "boolean"
+        },
+        "errors": {
+          "items": {
+            "$ref": "#/$defs/ValidationIssue"
+          },
+          "title": "Errors",
+          "type": "array"
+        },
+        "footprints_physically_verified": {
+          "default": false,
+          "title": "Footprints Physically Verified",
+          "type": "boolean"
+        },
+        "ready_to_build": {
+          "default": false,
+          "title": "Ready To Build",
+          "type": "boolean"
+        },
+        "terminal_groups": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "title": "Terminal Groups",
+          "type": "object"
+        },
+        "valid": {
+          "title": "Valid",
+          "type": "boolean"
+        },
+        "validation_scope": {
+          "const": "physical_connectivity",
+          "default": "physical_connectivity",
+          "title": "Validation Scope",
+          "type": "string"
+        },
+        "warnings": {
+          "items": {
+            "$ref": "#/$defs/ValidationIssue"
+          },
+          "title": "Warnings",
+          "type": "array"
+        }
+      },
+      "required": [
+        "valid"
+      ],
+      "title": "LayoutValidationResult",
+      "type": "object"
+    },
+    "SupplyPlacement": {
+      "additionalProperties": false,
+      "properties": {
+        "negative_hole": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Negative Hole",
+          "type": "string"
+        },
+        "positive_hole": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Positive Hole",
+          "type": "string"
+        }
+      },
+      "required": [
+        "positive_hole",
+        "negative_hole"
+      ],
+      "title": "SupplyPlacement",
+      "type": "object"
+    },
+    "ValidationIssue": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "title": "Message",
+          "type": "string"
+        },
+        "path": {
+          "items": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "title": "Path",
+          "type": "array"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ValidationIssue",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "layout": {
+      "$ref": "#/$defs/Layout"
+    },
+    "reference_only": {
+      "default": true,
+      "title": "Reference Only",
+      "type": "boolean"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "default": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "steps": {
+      "items": {
+        "$ref": "#/$defs/AssemblyStep"
+      },
+      "title": "Steps",
+      "type": "array"
+    },
+    "validation": {
+      "$ref": "#/$defs/LayoutValidationResult"
+    }
+  },
+  "required": [
+    "layout",
+    "validation",
+    "steps"
+  ],
+  "title": "AssemblyPlan",
+  "type": "object"
+}

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from app.schemas.board import BoardModel
 from app.schemas.circuit import Circuit
+from app.schemas.layout import AssemblyPlan, Layout
 from app.schemas.validation import ValidationResult
 from app.services.breadboard import reference_board
 
@@ -15,6 +16,8 @@ def artifacts() -> dict[str, str]:
         "circuit_schema.json": Circuit.model_json_schema(),
         "board_schema.json": BoardModel.model_json_schema(),
         "validation_schema.json": ValidationResult.model_json_schema(),
+        "layout_schema.json": Layout.model_json_schema(),
+        "plan_schema.json": AssemblyPlan.model_json_schema(),
         "boards/bb830-reference-r1.json": reference_board().model_dump(mode="json"),
     }
     return {
