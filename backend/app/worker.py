@@ -8,6 +8,7 @@ import argparse
 import logging
 import time
 from datetime import timedelta
+from pathlib import Path
 from typing import Any, cast
 
 from sqlalchemy import CursorResult, delete, select, update
@@ -24,6 +25,14 @@ from app.services.detection import Detector, LocalYOLODetector, compare_observat
 from app.services.storage import LocalObjectStore
 
 logger = logging.getLogger(__name__)
+
+
+def worker_healthy(directory: Path) -> bool:
+    try:
+        age = time.time() - (directory / ".worker-heartbeat").stat().st_mtime
+        return 0 <= age < 120
+    except FileNotFoundError:
+        return False
 
 
 def process_job(
@@ -125,8 +134,13 @@ def maintenance(sessions: sessionmaker[Session], store: LocalObjectStore) -> lis
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--once", action="store_true", help="Process one batch and exit")
+    parser.add_argument(
+        "--healthcheck", action="store_true", help="Check the worker loop heartbeat"
+    )
     args = parser.parse_args()
     settings = Settings()
+    if args.healthcheck:
+        parser.exit(0 if worker_healthy(settings.storage_dir) else 1)
     engine = make_engine(settings.database_url)
     sessions = sessionmaker(engine, expire_on_commit=False)
     store = LocalObjectStore(settings.storage_dir)
@@ -135,11 +149,16 @@ def main() -> None:
     )
     try:
         while True:
-            for run_id in maintenance(sessions, store):
+            pending = maintenance(sessions, store)
+            (store.root / ".worker-heartbeat").touch()
+            for run_id in pending:
+                (store.root / ".worker-heartbeat").touch()
                 process_job(run_id, sessions, store, detector)
             if args.once:
                 break
             time.sleep(5)
+    except KeyboardInterrupt:
+        pass
     finally:
         engine.dispose()
 

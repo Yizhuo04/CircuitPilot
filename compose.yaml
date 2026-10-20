@@ -39,7 +39,11 @@ services:
     environment: *backend_env
     command: [python, -m, app.worker]
     healthcheck:
-      disable: true
+      test: [CMD, python, -m, app.worker, --healthcheck]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     volumes:
       - upload_data:/app/data/uploads
     depends_on:
