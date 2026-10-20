@@ -1,0 +1,443 @@
+CIRCUITPILOT — STARTUP BUILD HANDOFF
+Version: 1.0 | Prepared: 2026-10-20
+Purpose: Paste this entire file into another AI coding assistant/account to begin implementation. This document is self-contained; do not assume access to earlier conversations or GitHub.
+
+======================================================================
+0. INSTRUCTIONS TO THE RECEIVING AI CODING ASSISTANT
+======================================================================
+You are the lead software engineer and technical cofounder for CircuitPilot. Build a functioning, tested MVP incrementally, not a slide deck or vague prototype. Start by inspecting the repository and environment. If empty, initialize a monorepo. Work in small, runnable milestones, write tests, and explain how to run each component. Ask only blocking questions; use the defaults in this handoff otherwise. Do not claim a model or feature works unless tests or demonstrations support it. Prioritize circuit correctness over AI appearance. Never generate authoritative wiring directions solely from an LLM. Do not commit secrets, uploaded user photos, or large datasets to Git.
+
+FIRST TASK: Implement Milestone 1 (schemas, breadboard topology, connectivity validator, FastAPI health and circuit-validation endpoints, pytest tests, README). Return files/changes, commands to run, test results, limitations, and the next task. Do not attempt the full 12-week roadmap in one response.
+
+======================================================================
+1. PRODUCT VISION AND USERS
+======================================================================
+Name: CircuitPilot (working name; check name/trademark availability before commercial launch).
+One-liner: An AI-powered assembly copilot that turns a digital circuit design into step-by-step breadboard instructions and helps users verify physical wiring with photos.
+
+Problem: Beginners spend excessive time translating circuit diagrams to physical breadboards and debugging wiring mistakes. Circuit simulators and diagram tools do not necessarily guide or verify physical assembly.
+
+Initial users: engineering/polytechnic students, electronics educators, Arduino beginners and hobbyists. First validation audience: students in introductory electronics labs.
+
+Differentiation hypothesis (must validate): CircuitPilot is the bridge between a logical circuit and its real physical implementation, rather than another simulator. It offers precise hole coordinates, guided assembly, and camera-based discrepancy checks.
+
+Two long-term product directions:
+A. Digital schematic/netlist -> physical assembly guidance and verification (MVP priority).
+B. Photograph messy wired breadboard -> digital circuit reconstruction (later; much harder because occluded wires and uncertain connections).
+
+Do NOT make arbitrary Tinkercad screenshot recognition or direct editable Tinkercad project creation an MVP dependency. Start with CircuitPilot JSON and later a documented structured format such as Wokwi diagram.json, subject to compatibility and terms review.
+
+======================================================================
+2. MVP SCOPE AND NON-GOALS
+======================================================================
+MVP end-to-end workflow:
+1. User creates a project and imports a supported structured circuit/netlist.
+2. Backend validates components, pin references, nets, supply requirements, and basic electrical rules.
+3. User selects one supported breadboard model (initially a verified 830-tie-point model).
+4. Planner assigns components and jumpers to physical holes, avoiding shorts and respecting footprints.
+5. Frontend shows a clickable SVG breadboard, numbered placement instructions, and highlighted endpoints.
+6. User takes a top-down photo of the empty/partially wired board.
+7. Vision pipeline aligns the board and, in later MVP iterations, detects visible components and wire endpoints.
+8. Verification compares observations with expected layout and flags probable mismatches, uncertainties, and occlusions; it never asserts full electrical continuity from a photograph.
+
+Initial components: resistor, LED, push button, jumper wire, battery/supply terminal; optionally add potentiometer, simple transistor, and a common sensor after testing. Start with circuits of 2-8 components and 1-10 jumpers. Use a small curated circuit library.
+
+Non-goals for v0.1: arbitrary IC layouts, high-voltage/mains circuits, all breadboard types, full analog simulation, live AR, guaranteed fault diagnosis, photo-only reconstruction of heavily tangled circuits, native Tinkercad write integration, custom hardware.
+
+Safety: support only low-voltage, current-limited, unpowered-while-wiring educational assemblies. Show a disconnect-power reminder. Check LED polarity, resistor current limiting, supply polarity, and likely power shorts. Do not imply camera inspection proves circuit safety.
+
+======================================================================
+3. ENGINEERING PRINCIPLES
+======================================================================
+- The logical netlist is the source of truth for intended connectivity.
+- The physical placement graph is the source of truth for planned conductive connections.
+- Vision produces uncertain observations, not electrical truth.
+- The LLM explains validated results but cannot bypass the circuit validator.
+- Every supported released layout must pass deterministic graph checks.
+- Version circuit inputs and generated plans; never silently mutate historical results.
+- Make assumptions explicit, especially breadboard power-rail splits and component footprints.
+- Build a modular monolith first; defer microservices and complex cloud infrastructure.
+- Prefer small, testable modules and deterministic behavior with seeded planning.
+
+======================================================================
+4. RECOMMENDED TECH STACK
+======================================================================
+Frontend: Next.js + React + TypeScript, SVG breadboard visualization; Playwright for end-to-end tests.
+Backend: Python 3.12+, FastAPI, Pydantic v2, SQLAlchemy 2, Alembic, pytest.
+Database: PostgreSQL for deployment; SQLite permitted for first local prototype if repository clearly supports migration to PostgreSQL.
+Storage: S3-compatible object storage via signed uploads; local filesystem adapter in development.
+Algorithms: NetworkX for circuit analysis, union-find for conductive-group connectivity; greedy planner first, Google OR-Tools CP-SAT later.
+Vision: OpenCV for calibration/perspective correction; YOLO-family object detection when labeled data exists; optional segmentation for complex wire endpoints.
+AI assistant: optional vision-capable LLM API for natural-language explanations, gated behind validated tool outputs. Do not require an API key to run the deterministic MVP.
+Operations: Docker Compose for PostgreSQL; GitHub Actions CI; .env.example, lint, formatting, tests.
+
+======================================================================
+5. DATA MODEL: LOGICAL CIRCUIT
+======================================================================
+Use a versioned JSON schema. Core objects:
+- Component: id, type, value/parameters, pin names, footprint reference, orientation constraints.
+- Net: id, list of component-pin references, optional role (power, ground, signal).
+- Supply: voltage/current limit and terminal net references, if applicable.
+- Circuit metadata: schema_version, name, units, assumptions.
+
+Illustrative logical circuit (5V -> resistor -> LED -> ground):
+{
+  "schema_version": "1.0",
+  "name": "Series LED",
+  "components": [
+    {"id":"R1","type":"resistor","value_ohms":220,"pins":["1","2"]},
+    {"id":"D1","type":"led","pins":["anode","cathode"]}
+  ],
+  "nets": [
+    {"id":"VCC","members":["R1.1"],"role":"power"},
+    {"id":"N1","members":["R1.2","D1.anode"],"role":"signal"},
+    {"id":"GND","members":["D1.cathode"],"role":"ground"}
+  ],
+  "supply":{"voltage_v":5.0,"current_limit_ma":100,"positive_net":"VCC","negative_net":"GND"}
+}
+
+Interpretation: R1.2 and D1.anode must be electrically connected. A logical net may have one listed component pin if it also represents an external supply terminal. Reject undeclared pins, duplicate conflicting pin assignments, unsupported values/footprints, and missing required supply terminal mapping.
+
+Maintain two graphs:
+A. Logical net graph: components/pins grouped by intended net.
+B. Physical conductive graph: breadboard holes, internal strips, jumpers, component leads and terminal assignments.
+Important nuance: A resistor/LED/transistor is NOT a zero-ohm jumper. When checking whether nets have shorted, do not union across functional component terminals. Union only ideal conductive links such as metal breadboard strips and jumper wires; map each device terminal into its appropriate physical conductive group. Device components connect nets through their electrical behavior, not by collapsing them into one net.
+
+======================================================================
+6. BREADBOARD MODEL AND COORDINATES
+======================================================================
+Represent each physical hole with a unique ID, e.g. A1-E63, F1-J63, and explicit rail IDs. On typical terminal strips, A3-E3 form one conductive group and F3-J3 another; the center trench separates them. A3 and A4 are not connected by default. Power rails may be split and MUST be explicitly modeled per verified board model.
+
+Board model JSON should include:
+- model_id and revision
+- image/template geometry, physical pitch, rows and columns
+- hole IDs and pixel/reference coordinates
+- conductive_group_id for each hole
+- center trench and keep-out regions
+- rail segment definitions and polarity labels (labels are not electrical guarantees)
+- supported component footprints and orientations
+
+Start with one physically verified board. The name '830-point' alone does not guarantee identical rail continuity. Include a board topology test fixture.
+
+Board API utilities:
+get_hole(id), group_for_hole(id), are_directly_connected(a,b), holes_in_group(group), valid_footprint_placements(component), pixel_to_hole(image_point, calibration), hole_to_pixel(hole, calibration).
+
+======================================================================
+7. PLACEMENT AND WIRE ROUTING ALGORITHM
+======================================================================
+Goal: Map each logical pin to a physical hole and add jumpers so the resulting physical conductive groups correspond exactly to logical nets.
+
+Hard constraints:
+1. All selected holes exist on the chosen board model.
+2. Pin footprints, spacing, polarity, and orientation are physically valid.
+3. No incompatible leads occupy the same hole.
+4. All pins assigned to a logical net become electrically connected by strips/jumpers.
+5. Pins assigned to different logical nets are never inadvertently merged.
+6. Rails, power terminals, and supply polarity are consistent.
+7. Required clearance and supported wiring assumptions are satisfied.
+
+Planner v1 (deterministic heuristic):
+1. Parse and validate logical netlist.
+2. Enumerate valid footprints for each component.
+3. Place constrained components first (buttons spanning trench, polarity-sensitive devices, large footprints).
+4. Place simpler two-pin components near related nets.
+5. For each logical net, identify physical conductive groups containing its terminals.
+6. Route jumpers between disconnected groups, selecting free holes and minimizing wire count/length; use Manhattan/Euclidean approximations initially.
+7. Use union-find over ideal conductors to build actual conductive groups.
+8. Verify every logical net is connected and distinct logical nets remain distinct.
+9. Reject invalid layouts; backtrack or try alternative seeded placements.
+10. Score valid layouts and produce numbered instructions.
+
+Suggested objective after correctness:
+J = alpha*(total_wire_length) + beta*(number_of_jumpers) + gamma*(wire_crossings) + delta*(assembly_difficulty).
+
+Planner v2: OR-Tools CP-SAT for candidate footprint selection and occupancy, with a separate routing phase. Keep a deterministic baseline for comparison.
+
+Required output for every plan:
+- versioned circuit ID and board model ID
+- component positions and pin->hole mappings
+- jumper endpoints, optional color and length suggestion
+- terminal-to-rail wiring assignments
+- ordered assembly steps and rendered overlay coordinates
+- validation report, warnings, and explicit unsupported cases
+
+Never return an unvalidated layout as ready-to-build. If no valid layout is found, return a clear failure and reason.
+
+======================================================================
+8. DATABASE SCHEMA
+======================================================================
+Core tables:
+users(id UUID PK, email UNIQUE, created_at)
+projects(id UUID PK, owner_id FK users, name, created_at, updated_at)
+circuit_versions(id UUID PK, project_id FK, schema_version, netlist_json JSONB, created_at)
+board_models(id TEXT PK, revision, geometry_json JSONB, connectivity_json JSONB)
+assembly_plans(id UUID PK, circuit_version_id FK, board_model_id FK, layout_json JSONB, status, planner_version, created_at)
+assembly_steps(id UUID PK, plan_id FK, sequence INT, instruction_json JSONB, UNIQUE(plan_id,sequence))
+images(id UUID PK, project_id FK, storage_key, image_type, captured_at, consent_for_training BOOLEAN DEFAULT FALSE)
+verification_runs(id UUID PK, plan_id FK, image_id FK, status, results_json JSONB, model_version, created_at)
+ml_annotations(id UUID PK, image_id FK, labels_json JSONB, review_status, created_at)
+
+Index foreign keys and frequent lookups. Enforce project ownership for all read/write operations. Keep image bytes in object storage, not PostgreSQL. Treat circuit versions and completed plans as immutable. Add deletion/export flows and clear photo-retention rules before external pilots.
+
+======================================================================
+9. API CONTRACT (FASTAPI)
+======================================================================
+GET    /api/v1/health                      -> status and version
+POST   /api/v1/projects                    -> create project
+GET    /api/v1/projects/{id}               -> retrieve owned project
+POST   /api/v1/projects/{id}/circuits      -> validate/import versioned netlist
+POST   /api/v1/circuits/validate           -> validate JSON without saving
+GET    /api/v1/board-models                -> list supported board models
+POST   /api/v1/plans                       -> generate validated assembly plan
+GET    /api/v1/plans/{id}                  -> plan and validation report
+GET    /api/v1/plans/{id}/steps            -> ordered wiring instructions
+POST   /api/v1/images/uploads             -> signed upload URL
+POST   /api/v1/verification-runs           -> submit plan ID + image ID
+GET    /api/v1/verification-runs/{id}      -> observations and uncertainties
+POST   /api/v1/assistant/messages         -> contextual explanations (optional)
+
+Return Pydantic-validated JSON and consistent error responses. Use 422 for invalid schemas, 404 for missing/inaccessible resources, 409 for conflicting states. Require authentication/authorization on user resources once accounts are implemented. Use background jobs for slow image analysis rather than blocking requests.
+
+Example plan request:
+{"circuit_version_id":"<uuid>","board_model_id":"bb830-v1","preferences":{"minimize_wire_length":true,"minimize_crossings":true}}
+
+Example verification output:
+{"status":"needs_confirmation","electrically_verified":false,"observations":[{"type":"possible_missing_wire","expected_from":"A2","expected_to":"POWER_POS_1","confidence":0.73}]}
+
+Do not mistake confidence scores for calibrated probabilities without calibration/testing. Never report visual inspection as electrical continuity proof.
+
+======================================================================
+10. FRONTEND USER EXPERIENCE
+======================================================================
+Screens:
+A. Dashboard: projects, circuit library, create project.
+B. Import: paste/upload CircuitPilot JSON, preview components/nets, show validation errors.
+C. Board selection: supported board model, board orientation, supply settings.
+D. Assembly: interactive SVG board, clickable holes, highlighted components/jumpers, numbered steps, previous/next, mark completed, safety warnings.
+E. Camera: capture/upload top-down photo, calibration assistance, image-quality prompts.
+F. Verification: expected vs observed overlay, detected mismatch list, confidence/uncertainty, manual confirmation.
+G. Assistant: explain validated steps, pin polarity, or suspected mistakes in beginner-friendly language.
+
+Prioritize responsive web over native mobile. The first full workflow should work without ML, using a synthetic board photo or a manually aligned board. SVG must derive coordinates from the board model; never hardcode pixel positions independently of the backend geometry.
+
+======================================================================
+11. COMPUTER VISION AND ML ROADMAP
+======================================================================
+Stage A — No trained model required:
+- Require near-top-down images of a supported board.
+- Use OpenCV to find board corners or printed fiducial markers.
+- Estimate homography; map board holes to image pixels.
+- Overlay the planned positions and allow manual calibration.
+
+Stage B — Component detection:
+- Fine-tune an existing YOLO-family detector for resistor, LED, button, wire endpoint, and board outline.
+- Annotate bounding boxes plus pin/keypoint positions where feasible.
+- Collect 300-500 initial labeled photos across different boards, lighting, camera angles, and circuits as a starting target, NOT an assurance of accuracy.
+- Train/validation/test split 70/15/15 by physical circuit setup and capture session, avoiding near-duplicate leakage.
+
+Stage C — Placement verification:
+- Match detected components and endpoints to expected board coordinates.
+- Produce classes: expected placement observed, possible wrong hole, possible missing component/wire, occluded/uncertain.
+- Validate observations against the expected netlist and planned layout.
+- Require user confirmation for low-confidence or occluded connections.
+- Track false positives, false negatives, endpoint localization error, per-class precision/recall, and confidence calibration.
+
+Stage D — Advanced (not initial MVP): multi-view reconstruction, wire segmentation, temporal video guidance, arbitrary physical-circuit-to-netlist reconstruction.
+
+AI/LLM use:
+- Explain each validated assembly step in natural language.
+- Answer conceptual electronics questions.
+- Describe uncertainty and ask clarifying questions.
+- Never directly invent or overwrite pin/hole coordinates without calling the planner and validator.
+
+======================================================================
+12. TESTING AND RELEASE GATES
+======================================================================
+Unit tests:
+- Breadboard A3-E3 connected; E3-F3 disconnected; A3-A4 disconnected.
+- Split rails correctly modeled.
+- Unknown holes rejected.
+- Duplicate pin/net references rejected.
+- Incorrect LED orientation rejected where orientation is specified.
+- Functional device terminals are not incorrectly unioned as ideal conductors.
+- Missing required jumper detected.
+- Short between distinct logical nets detected.
+- Generated plan always passes the validator or is rejected.
+
+Property-based tests (recommended): randomly generate small supported circuits and check invariants, including no merged distinct nets, no overlapping occupied holes, and deterministic seeded results.
+
+Integration tests:
+- POST netlist -> validate -> plan -> retrieve steps.
+- Frontend renders all returned coordinates on correct holes.
+- Invalid netlist returns understandable errors.
+- Project access is isolated by user.
+
+Vision evaluation:
+- Hold out entire circuit setups and photo sessions.
+- Measure hole localization, detection mAP, endpoint accuracy, mismatch precision/recall, and rate of uncertain observations.
+
+Release targets (aspirational, not achieved):
+- 100% of released supported layouts pass deterministic connectivity validation.
+- >=95% hole localization within one hole spacing in supported conditions.
+- >=90% component detection mAP@50 on held-out supported images.
+- >=30% assembly time reduction in controlled pilot, compared with ordinary instructions.
+
+======================================================================
+13. IMPLEMENTATION MILESTONES (8-12 WEEKS, ESTIMATES)
+======================================================================
+M1 — Week 1: FOUNDATION
+[ ] Initialize monorepo, backend, frontend shell, .gitignore, .env.example, README.
+[ ] Define Pydantic circuit schemas and JSON fixtures for 3 circuits.
+[ ] Implement one verified breadboard topology model and connectivity tests.
+[ ] Implement netlist validation with descriptive errors.
+[ ] Add GET /health and POST /circuits/validate.
+[ ] Configure pytest and CI.
+Acceptance: fresh clone runs locally, all tests pass, malformed nets are rejected.
+
+M2 — Week 2: PHYSICAL GRAPH
+[ ] Implement hole occupancy, footprints, terminal placement, rail groups.
+[ ] Implement union-find ideal-conductor connectivity.
+[ ] Implement equivalence check between logical and physical nets.
+[ ] Test intended connections, shorts, missing jumpers, center trench.
+Acceptance: known correct layouts pass; deliberate errors fail.
+
+M3 — Weeks 3-4: PLANNER + SVG
+[ ] Implement greedy footprint assignment and jumper routing.
+[ ] Generate validated assembly plan JSON and ordered steps.
+[ ] Build interactive SVG breadboard with highlight and step controls.
+[ ] Import a sample netlist and show real planner-generated instructions.
+Acceptance: at least 3 reference circuits produce valid layouts and understandable instructions.
+
+M4 — Weeks 5-6: PRODUCT BACKEND + CAMERA CALIBRATION
+[ ] Add PostgreSQL models, migrations, project and plan APIs.
+[ ] Add photo upload, consent flag, and local storage adapter.
+[ ] Implement OpenCV perspective correction/manual corner calibration.
+[ ] Overlay planned coordinates on uploaded board photo.
+Acceptance: user can save project, generate plan, upload photo, and view aligned overlay.
+
+M5 — Weeks 7-8: ML EXPERIMENT
+[ ] Collect and label a small real-photo dataset with clear consent.
+[ ] Train/fine-tune component detector; log metrics and versions.
+[ ] Map detections to holes and compare with expected placement.
+[ ] Return uncertainty-aware verification observations.
+Acceptance: demonstrable detection on held-out images; no unsupported claim of electrical verification.
+
+M6 — Weeks 9-12: USER PILOT + RELIABILITY
+[ ] Recruit 15+ test users and 20-30 interviewees if practical.
+[ ] Test with/without guidance, record time, errors, and help requests.
+[ ] Fix highest-frequency planner and UX failures.
+[ ] Prepare privacy policy, image retention, and classroom demo.
+[ ] Explore willingness to pay and 2 potential institutional pilot partners.
+Acceptance: measured user value, documented limitations, and a clear go/no-go decision.
+
+======================================================================
+14. PROPOSED REPOSITORY
+======================================================================
+circuitpilot/
+  frontend/
+    app/
+    components/BreadboardViewer.tsx
+    components/CircuitImporter.tsx
+    components/WiringInstructions.tsx
+    components/CameraCapture.tsx
+  backend/
+    app/main.py
+    app/api/
+    app/schemas/
+    app/models/
+    app/services/circuit_engine.py
+    app/services/breadboard.py
+    app/services/placement_engine.py
+    app/services/verification_engine.py
+    app/services/assistant_service.py
+    tests/
+  ml/
+    datasets/README.md
+    annotations/
+    training/
+    inference/
+    evaluation/
+  shared/circuit_schema.json
+  docs/architecture.md
+  docs/api.md
+  docs/board_specifications.md
+  .github/workflows/ci.yml
+  .env.example
+  .gitignore
+  README.md
+
+Keep real uploaded photos and model weights out of Git by default. Use Git LFS or external artifact storage only when needed.
+
+======================================================================
+15. PRODUCT VALIDATION AND BUSINESS
+======================================================================
+Hypotheses to test:
+H1: Students struggle enough with physical wiring to seek help repeatedly.
+H2: Hole-by-hole instructions reduce assembly time and mistakes.
+H3: Photo verification adds value beyond static instructions.
+H4: Students or institutions are willing to pay.
+
+Experiments:
+Week 1: interview 20-30 students/teaching assistants about their LAST circuit-building experience. Avoid leading questions.
+Week 2: manually provide precise breadboard steps to a test group, compare against standard diagrams; record time, errors, and assistance requests.
+Week 3: show clickable prototype; observe completion without prompting.
+Week 4: test real commitment (pilot signup, paid trial interest, or institution meeting), not only verbal enthusiasm.
+
+Possible pricing hypotheses (not validated): free limited usage; Student Pro ~S$5/month; classroom license negotiated. Beware seasonal student usage and AI inference costs. Consider institutional sales if individual retention is weak.
+
+Metrics: activation (first valid plan), first successful assembly, time saved, errors caught, false alarms, weekly active users, return usage, paid conversion, classroom adoption.
+
+Competitive positioning: do not try to replace Fritzing, Tinkercad Circuits, or Wokwi. Start by complementing existing design/simulation workflows with physical build guidance and verification. Research competitors, API availability, licensing, and trademarks before launch.
+
+======================================================================
+16. ENGINEERING RISKS AND MITIGATIONS
+======================================================================
+Risk: hallucinated or invalid wiring instructions.
+Mitigation: graph validator as hard release gate; AI assistant can only explain verified steps.
+
+Risk: hidden/occluded wires cause false confidence.
+Mitigation: ask for multiple views/manual confirmation; use 'uncertain' status.
+
+Risk: breadboard rail geometry differs across manufacturers.
+Mitigation: explicit verified board-model catalog and user board selection.
+
+Risk: large scope stalls delivery.
+Mitigation: one board, small circuit library, structured import, no live AR initially.
+
+Risk: training data too small or unrealistic.
+Mitigation: real held-out evaluation, active error collection, transparent metrics.
+
+Risk: student willingness to pay is weak.
+Mitigation: early behavioral validation and classroom pilots before expensive scaling.
+
+Risk: privacy and security of uploaded images.
+Mitigation: signed uploads, access controls, deletion, limited retention, opt-in training consent.
+
+======================================================================
+17. EXACT FIRST CODING TASK FOR THE NEXT ACCOUNT
+======================================================================
+Please begin now with M1. In the repository:
+1. Set up backend/app using FastAPI and Pydantic v2, with a reproducible Python environment.
+2. Define typed schemas for Component, Net, Supply, Circuit, BoardModel, and ValidationResult.
+3. Implement a 63-row terminal-strip topology: A-E and F-J each connected by row, center gap disconnected; add a separate explicit rail model rather than guessing rail splits.
+4. Implement basic netlist validation: unique component IDs, valid pin references, no pin in two different nets, supported component types, required power/ground net references.
+5. Implement GET /api/v1/health and POST /api/v1/circuits/validate.
+6. Add sample fixtures: series LED, LED+button, and intentionally invalid netlist.
+7. Add pytest unit tests for topology and validation.
+8. Create a minimal frontend scaffold or defer frontend to M3 if setup would slow backend correctness.
+9. Add README with exact installation/run/test commands and .env.example.
+10. Run tests, report actual results, and identify limitations.
+
+After M1, stop and ask whether to proceed to M2. Do not claim that camera verification or ML training exists yet.
+
+SUCCESSFUL HANDOFF OUTPUT FROM THE CODING ASSISTANT:
+- Repository tree and generated source files.
+- Exact commands to run locally.
+- Sample request/response for the validation endpoint.
+- Test results (pass/fail) with evidence.
+- Any decisions or assumptions that need confirmation.
+- A concise plan for the next milestone.
+
+======================================================================
+END OF HANDOFF
+======================================================================

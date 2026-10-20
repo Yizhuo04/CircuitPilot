@@ -1,0 +1,207 @@
+{
+  "$defs": {
+    "Hole": {
+      "additionalProperties": false,
+      "properties": {
+        "conductive_group_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Conductive Group Id",
+          "type": "string"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "position": {
+          "$ref": "#/$defs/Point"
+        }
+      },
+      "required": [
+        "id",
+        "position",
+        "conductive_group_id"
+      ],
+      "title": "Hole",
+      "type": "object"
+    },
+    "Point": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "Point",
+      "type": "object"
+    },
+    "RailSegment": {
+      "additionalProperties": false,
+      "properties": {
+        "conductive_group_id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Conductive Group Id",
+          "type": "string"
+        },
+        "hole_ids": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Hole Ids",
+          "type": "array"
+        },
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "enum": [
+            "+",
+            "-"
+          ],
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "conductive_group_id",
+        "hole_ids"
+      ],
+      "title": "RailSegment",
+      "type": "object"
+    },
+    "Region": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "maximum": {
+          "$ref": "#/$defs/Point"
+        },
+        "minimum": {
+          "$ref": "#/$defs/Point"
+        }
+      },
+      "required": [
+        "id",
+        "minimum",
+        "maximum"
+      ],
+      "title": "Region",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "coordinate_units": {
+      "const": "mm",
+      "default": "mm",
+      "title": "Coordinate Units",
+      "type": "string"
+    },
+    "holes": {
+      "items": {
+        "$ref": "#/$defs/Hole"
+      },
+      "minItems": 1,
+      "title": "Holes",
+      "type": "array"
+    },
+    "keep_out_regions": {
+      "items": {
+        "$ref": "#/$defs/Region"
+      },
+      "title": "Keep Out Regions",
+      "type": "array"
+    },
+    "model_id": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+      "title": "Model Id",
+      "type": "string"
+    },
+    "pitch_mm": {
+      "exclusiveMinimum": 0,
+      "title": "Pitch Mm",
+      "type": "number"
+    },
+    "rail_segments": {
+      "items": {
+        "$ref": "#/$defs/RailSegment"
+      },
+      "title": "Rail Segments",
+      "type": "array"
+    },
+    "revision": {
+      "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+      "title": "Revision",
+      "type": "string"
+    },
+    "supported_footprints": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Supported Footprints",
+      "type": "array"
+    },
+    "terminal_columns": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Terminal Columns",
+      "type": "array"
+    },
+    "terminal_rows": {
+      "exclusiveMinimum": 0,
+      "title": "Terminal Rows",
+      "type": "integer"
+    },
+    "verification_evidence": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Verification Evidence"
+    },
+    "verification_status": {
+      "enum": [
+        "reference_unverified",
+        "physically_verified"
+      ],
+      "title": "Verification Status",
+      "type": "string"
+    }
+  },
+  "required": [
+    "model_id",
+    "revision",
+    "verification_status",
+    "pitch_mm",
+    "terminal_rows",
+    "terminal_columns",
+    "holes"
+  ],
+  "title": "BoardModel",
+  "type": "object"
+}
