@@ -11,6 +11,14 @@ HTTP 200:
 {"status": "ok", "version": "0.1.0"}
 ```
 
+## GET /api/v1/health/ready
+
+Readiness returns the same shape as liveness: HTTP 200 with `status: "ok"`, or
+HTTP 503 with `status: "unavailable"`. It checks a database query and, when
+`CIRCUITPILOT_REQUIRE_WORKER_HEALTH=true`, the recent worker heartbeat. The hosted
+configuration enables that requirement. Responses are not cached; failure details
+and connection strings are not returned. Use this path for host health checks.
+
 ## POST /api/v1/circuits/validate
 
 Accepts a Circuit object as the entire JSON body, not a `circuit` wrapper. The

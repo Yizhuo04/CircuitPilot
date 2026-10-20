@@ -10,6 +10,12 @@ Preserve original public history. The private `CircuitPilot-dev` repo is histori
 GitHub workflow authorization was explicitly approved and is active. Keep routine
 progress quiet; ask when external input, evidence or decisions are required.
 
+The founder has no hosting account/domain and authorized our recommendation.
+Render was selected and a tested Blueprint is committed. Signup and review of the
+approximately US$32/month pilot configuration still require founder action; no
+paid resource has been provisioned. The supplied HTTPS subdomain avoids a domain
+purchase. A deployment link and request for the resulting service URL were sent.
+
 ## Implemented and remaining
 
 | Milestone | Software state | Acceptance still requiring external evidence |
@@ -17,7 +23,7 @@ progress quiet; ask when external input, evidence or decisions are required.
 | M1 foundation | Schemas, topology, validator, FastAPI, fixtures, tests | Physically measured board revision |
 | M2 physical graph | Union-find, footprint/occupancy/clearance checks, net partition equivalence, short/missing-wire regressions | Measured parts and manufacturer-specific board |
 | M3 planner + SVG | Seeded bounded planner, three circuits, model-derived SVG, ordered steps, responsive workspace | Physical assembly usability testing |
-| M4 backend + calibration | Accounts/ownership, immutable versions/plans, PostgreSQL migration, private local storage, manual OpenCV alignment, durable jobs, consent/deletion/export | Selected production host/domain; storage/operations review |
+| M4 backend + calibration | Accounts/ownership, immutable versions/plans, PostgreSQL migration, private local storage, manual OpenCV alignment, durable jobs, consent/deletion/export, tested Render bundle/Blueprint | Hosting account/billing authorization, live deployment and operations review |
 | M5 ML experiment | Annotation UI, consented export/download, grouped split exporter, training/inference/evaluation adapters, provenance tests | Consented labeled real-photo dataset, trusted weights, actual training and held-out results |
 | M6 pilot + reliability | Control/guided timing, observed error/help counts, export, protocol/security/deployment documentation | Recruitment, interviews, user measurements, institutions, willingness-to-pay and go/no-go evidence |
 
@@ -37,10 +43,20 @@ regression found/fixed initial example loading overwriting typed JSON. Final hos
 two production browser flows, image builds, four healthy services and a complete
 container HTTP smoke flow. Evidence is recorded in `verification.md`.
 
+The latest hosting code, `c2ed6e1`, passed all five CI jobs in run 39376980415:
+173 backend tests on each asserted interpreter (3.12.15/3.13.16), 94.66% coverage,
+two browser tests, the original four-service stack, and the new production-configured
+hosted bundle. The latter passed its full HTTP flow before and after restart,
+retained a disk marker, and asserted UID 10001 for PID 1 and the worker heartbeat.
+Render's published JSON Schema accepted `render.yaml`. Provider-specific workspace
+validation and an actual live HTTPS smoke flow remain pending account creation.
+
 Docker is unavailable on the local host; container and real PostgreSQL checks are
-executed successfully in GitHub Actions, not falsely claimed as local results. Real photos have
-not yet been attached in this chat. The founder offered to send examples; use them
-for calibration testing only unless explicit training consent is subsequently given.
+executed successfully in GitHub Actions, not falsely claimed as local results.
+The founder attempted to attach IMG_6606.HEIC and IMG_6607.JPG from Downloads, but
+both paths were absent when checked. Reattachment as JPG/PNG was requested. Do not
+claim those images were inspected. Use examples for calibration testing only unless
+explicit training consent is subsequently given.
 
 ## Decisions to preserve
 
@@ -57,16 +73,20 @@ for calibration testing only unless explicit training consent is subsequently gi
 
 The current local branch is `main`, tracking the public `origin/main`. The old
 private M1 branch is preserved locally as `archive/m1-private`. All current source
-is committed. The single-command launcher is running backend, worker and frontend
+is committed. Untracked duplicate files with ` 2` in their names appeared during
+the hosting turn; preserve them and do not accidentally stage them or treat them
+as part of the delivered source. They inflate coverage discovery in this checkout;
+the clean CI checkout and an isolated tracked-source installation avoid that issue.
+The single-command launcher is running backend, worker and frontend
 at 127.0.0.1:8000 / 127.0.0.1:3000; the worker heartbeat check passes. No hosted
-public application is provisioned; the hosting account/domain question is pending.
+public application is provisioned; Render account/billing action is pending.
 
 ## Next required inputs
 
 1. Attach example top-down board/circuit photos and identify manufacturer/model if known.
 2. Measure actual rail continuity, geometry and part footprints before physical release.
 3. Establish explicitly consented training/evaluation data grouped by setup/session.
-4. Choose a Python/container host and domain before public deployment.
+4. Complete the prepared Render signup/billing/deployment flow and supply the HTTPS URL.
 5. Supply/authorize actual pilot participants and institution contacts before outreach.
 
 Continue useful software work independently of pending inputs. Do not fabricate the

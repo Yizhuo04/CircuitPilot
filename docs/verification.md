@@ -52,7 +52,7 @@ sessions, upload decoding/single use, consent withdrawal, data exports/deletion,
 manual calibration uncertainty, interrupted-job recovery, annotation provenance,
 leakage-safe splits, detection metrics, and optional adapter contracts.
 
-## Final interpreter-verified run
+## Previous interpreter-verified run
 
 [Run 39371387080](https://github.com/Yizhuo04/CircuitPilot/actions/runs/39371387080)
 passed all four jobs for commit `dd0a8a39d3cdc63300e2abbde452a95187125411`:
@@ -71,3 +71,31 @@ CI deliberately skips Markdown-only updates.
 Do not treat earlier job labels as proof of the interpreter used. The corrected
 workflow asserts `sys.version_info` against its requested matrix value before checks.
 The original M1-only report is preserved separately in `m1-verification.md`.
+
+## Hosted pilot release checks
+
+The latest executable revision is `c2ed6e11226f3bfed193ae214c5ecee38ba385de`.
+[Run 39376980415](https://github.com/Yizhuo04/CircuitPilot/actions/runs/39376980415)
+passed all five jobs:
+
+- Verified Python 3.12.15: **173 passed** in 48.34 seconds, **94.66% coverage**.
+- Verified Python 3.13.16: **173 passed** in 31.24 seconds, **94.66% coverage**.
+- Both include the real PostgreSQL migration, JSONB and product test. Strict mypy
+  passed for 34 application modules; lint, formatting and exported schema checks passed.
+- Production frontend build, type/format checks and **two browser tests** passed (6.6s).
+- Original Compose stack: four healthy services and full HTTP smoke passed.
+- Hosted image: Python/OpenCV plus the Debian-compatible Node runtime built and
+  started under production settings with PostgreSQL 17 and a private disk. Full
+  account/project/circuit/plan/steps/upload/calibration/export/delete smoke passed.
+- Container PID 1 and the worker heartbeat were asserted to use UID 10001. The
+  service restarted cleanly, retained a disk marker, became healthy again, and
+  passed the complete HTTP smoke a second time. Temporary resources were removed.
+
+`render.yaml` passed validation against Render's published JSON Schema on 2026-10-20.
+The account-specific Render API validation requires a workspace; it has not run.
+These are GitHub-hosted container rehearsals, not evidence of a live Render deployment.
+No hosting account, paid resource or public application URL has been created yet.
+
+The additional 22 regressions cover managed database URL normalization, hosted
+defaults, origin/port rejection, database/worker readiness failure, storage bootstrap
+boundaries, process failures, SIGTERM handling and graceful-shutdown escalation.
