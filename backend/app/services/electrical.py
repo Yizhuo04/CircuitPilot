@@ -25,7 +25,11 @@ def basic_electrical_errors(circuit: Circuit) -> list[ValidationIssue]:
         edges[a].append((b, edge_resistance))
         edges[b].append((a, edge_resistance))
 
-    def resistance(start: str, target: str) -> float:
+    def resistance(start: str, target: str, blocked: str | None = None) -> float:
+        # A branch path must not pass through the opposite supply terminal and
+        # re-enter through an unrelated branch; that would hide reversed LEDs.
+        if start == blocked or target == blocked:
+            return math.inf
         pending = [(0.0, start)]
         visited: set[str] = set()
         while pending:
@@ -36,7 +40,7 @@ def basic_electrical_errors(circuit: Circuit) -> list[ValidationIssue]:
                 continue
             visited.add(net)
             for other, value in edges[net]:
-                if other not in visited:
+                if other not in visited and other != blocked:
                     heapq.heappush(pending, (distance + value, other))
         return math.inf
 
@@ -57,8 +61,8 @@ def basic_electrical_errors(circuit: Circuit) -> list[ValidationIssue]:
         cathode = assignment.get(f"{component.id}.cathode")
         if anode is None or cathode is None:
             continue
-        forward = resistance(positive, anode) + resistance(cathode, negative)
-        backward = resistance(positive, cathode) + resistance(anode, negative)
+        forward = resistance(positive, anode, negative) + resistance(cathode, negative, positive)
+        backward = resistance(positive, cathode, negative) + resistance(anode, negative, positive)
         if forward == 0:
             errors.append(
                 ValidationIssue(

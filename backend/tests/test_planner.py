@@ -49,6 +49,19 @@ def test_resistor_elsewhere_does_not_prove_current_limiting(series_led):
     assert failure.value.code == "missing_current_limiting"
 
 
+def test_unrelated_supply_branch_cannot_hide_reversed_led(series_led):
+    # A resistor across the supply is not a valid path around a reversed diode.
+    series_led["nets"] = [
+        {"id": "VCC", "role": "power", "members": ["R1.1", "D1.cathode"]},
+        {"id": "GND", "role": "ground", "members": ["R1.2", "D1.anode"]},
+    ]
+    circuit = Circuit.model_validate(series_led)
+    assert "reversed_led" in {error.code for error in basic_electrical_errors(circuit)}
+    with pytest.raises(PlanningError) as failure:
+        generate_plan(circuit, Breadboard(reference_board()))
+    assert failure.value.code == "reversed_led"
+
+
 def test_pressed_button_cannot_short_supply(series_led):
     series_led["components"].append(
         {"id": "SW1", "type": "push_button", "pins": ["1", "2", "3", "4"]}
