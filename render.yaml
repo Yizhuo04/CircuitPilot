@@ -1,0 +1,40 @@
+# Paid pilot hosting. Review current charges in Render before confirming creation.
+services:
+  - type: web
+    name: circuitpilot
+    runtime: docker
+    region: singapore
+    plan: 1c-2g
+    dockerfilePath: ./Dockerfile.hosted
+    dockerContext: .
+    autoDeployTrigger: checksPass
+    healthCheckPath: /api/v1/health/ready
+    disk:
+      name: circuitpilot-photos
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: CIRCUITPILOT_DATABASE_URL
+        fromDatabase:
+          name: circuitpilot-db
+          property: connectionString
+      - key: CIRCUITPILOT_ENVIRONMENT
+        value: production
+      - key: CIRCUITPILOT_COOKIE_SECURE
+        value: "true"
+      - key: CIRCUITPILOT_AUTO_CREATE_SCHEMA
+        value: "false"
+      - key: CIRCUITPILOT_REQUIRE_WORKER_HEALTH
+        value: "true"
+      - key: CIRCUITPILOT_STORAGE_DIR
+        value: /var/data/uploads
+databases:
+  - name: circuitpilot-db
+    region: singapore
+    plan: 0.1c-256mb
+    postgresMajorVersion: "17"
+    databaseName: circuitpilot
+    user: circuitpilot
+    diskSizeGB: 1
+    storageAutoscalingEnabled: false
+    ipAllowList: []

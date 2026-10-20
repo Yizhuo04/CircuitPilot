@@ -7,6 +7,10 @@ pin mappings, and aligning privately uploaded photos.
 Current public source: [Yizhuo04/CircuitPilot](https://github.com/Yizhuo04/CircuitPilot).
 Original repository history is preserved. CircuitPilot-dev is the historical M1 copy.
 
+For a hosted pilot, use the prepared [Render deployment](docs/deployment.md#recommended-first-hosted-pilot-render)
+(approximately US$32/month before usage extras; founder account/billing approval required).
+[Deploy to Render](https://render.com/deploy?repo=https://github.com/Yizhuo04/CircuitPilot).
+
 ## Run locally
 
 Prerequisites: Python 3.12/3.13, [uv](https://docs.astral.sh/uv/getting-started/installation/),

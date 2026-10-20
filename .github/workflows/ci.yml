@@ -93,3 +93,23 @@ jobs:
         run: POSTGRES_PASSWORD=ci-only-test-password docker compose logs --no-color --tail 120
       - if: always()
         run: POSTGRES_PASSWORD=ci-only-test-password docker compose down --volumes
+  hosted:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose -f compose.hosted-test.yaml config --quiet
+      - run: docker compose -f compose.hosted-test.yaml build
+      - run: docker compose -f compose.hosted-test.yaml up -d --wait --wait-timeout 180
+      - name: Production-configured HTTP workflow
+        run: python3 scripts/smoke.py --base-url http://127.0.0.1:10000
+      - name: Volume ownership, worker readiness and restart
+        run: |
+          docker compose -f compose.hosted-test.yaml exec -T app python -c "from pathlib import Path; p=Path('/var/data/uploads'); assert p.stat().st_uid==10001; assert (p/'.worker-heartbeat').stat().st_uid==10001; assert 'Uid:\t10001\t10001\t10001\t10001' in Path('/proc/1/status').read_text(); (p/'restart-check').write_text('retained')"
+          docker compose -f compose.hosted-test.yaml restart app
+          docker compose -f compose.hosted-test.yaml up -d --wait --wait-timeout 180
+          docker compose -f compose.hosted-test.yaml exec -T app python -c "from pathlib import Path; p=Path('/var/data/uploads/restart-check'); assert p.read_text()=='retained'; p.unlink()"
+          python3 scripts/smoke.py --base-url http://127.0.0.1:10000
+      - if: failure()
+        run: docker compose -f compose.hosted-test.yaml logs --no-color --tail 120
+      - if: always()
+        run: docker compose -f compose.hosted-test.yaml down --volumes

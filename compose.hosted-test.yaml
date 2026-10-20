@@ -1,0 +1,29 @@
+# Rehearse the hosted image locally without buying cloud resources.
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: circuitpilot
+      POSTGRES_USER: circuitpilot
+      POSTGRES_PASSWORD: hosted-test-only-password
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U circuitpilot -d circuitpilot]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.hosted
+    environment:
+      CIRCUITPILOT_DATABASE_URL: postgresql://circuitpilot:hosted-test-only-password@postgres:5432/circuitpilot
+      RENDER_EXTERNAL_URL: https://circuitpilot-test.onrender.com
+    ports:
+      - 127.0.0.1:10000:10000
+    volumes:
+      - hosted_photos:/var/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  hosted_photos:

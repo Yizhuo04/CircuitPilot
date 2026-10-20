@@ -16,6 +16,8 @@ class Base(DeclarativeBase):
 
 def make_engine(url: str) -> Engine:
     options: dict[str, Any] = {"pool_pre_ping": True}
+    if url.startswith("postgresql"):
+        options["connect_args"] = {"connect_timeout": 5, "options": "-c statement_timeout=10000"}
     if url.startswith("sqlite"):
         if url.startswith("sqlite:///./"):
             Path(url.removeprefix("sqlite:///")).parent.mkdir(parents=True, exist_ok=True)
