@@ -1,5 +1,9 @@
 name: CircuitPilot checks
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore: ['**/*.md', 'docs/**']
+  pull_request:
+    paths-ignore: ['**/*.md', 'docs/**']
 permissions:
   contents: read
 concurrency:
@@ -80,3 +84,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: POSTGRES_PASSWORD=ci-only-test-password docker compose config --quiet
       - run: POSTGRES_PASSWORD=ci-only-test-password docker compose build backend frontend
+      - run: POSTGRES_PASSWORD=ci-only-test-password docker compose up -d --wait --wait-timeout 150
+      - run: python3 scripts/smoke.py
+      - if: always()
+        run: POSTGRES_PASSWORD=ci-only-test-password docker compose down --volumes
