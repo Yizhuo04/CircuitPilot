@@ -23,6 +23,16 @@ def main() -> None:
     args = parser.parse_args()
     root = Path(__file__).resolve().parents[1]
     environment = os.environ.copy()
+    # Optional desktop-runtime fallback; normal installations use tools on PATH.
+    bundled = Path.home() / ".cache/codex-runtimes/codex-primary-runtime/dependencies"
+    if args.node_bin is None and shutil.which("node") is None:
+        candidate = bundled / "node/bin/node"
+        if candidate.is_file():
+            args.node_bin = candidate
+    if args.pnpm_bin is None and shutil.which("pnpm") is None:
+        candidate = bundled / "bin/fallback/pnpm"
+        if candidate.is_file():
+            args.pnpm_bin = candidate
     if args.node_bin:
         environment["PATH"] = str(args.node_bin.parent) + os.pathsep + environment["PATH"]
     uv = shutil.which("uv", path=environment["PATH"])
@@ -89,9 +99,11 @@ def main() -> None:
                 subprocess.Popen(command, cwd=directory, env=environment, start_new_session=True)
             )
         print(
-            (f"\nCircuitPilot: http://127.0.0.1:{args.frontend_port}\n"
-             f"API docs: http://127.0.0.1:{args.backend_port}/docs\n"
-             "Ctrl+C stops this development session.\n"),
+            (
+                f"\nCircuitPilot: http://127.0.0.1:{args.frontend_port}\n"
+                f"API docs: http://127.0.0.1:{args.backend_port}/docs\n"
+                "Ctrl+C stops this development session.\n"
+            ),
             flush=True,
         )
         while all(child.poll() is None for child in children):

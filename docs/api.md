@@ -96,6 +96,7 @@ same-origin requests. API clients can instead send `Authorization: Bearer TOKEN`
 | PUT | /images/uploads/{token} | Upload actual JPEG/PNG bytes, authenticated |
 | GET | /images/{id}/content | Private normalized PNG; expired images inaccessible |
 | DELETE | /images/{id} | Delete photo and related annotations/runs |
+| PATCH | /images/{id}/consent | Enable/withdraw future training consent for owned photo |
 | POST | /verification-runs | Queue manual homography with four named reference points |
 | GET | /verification-runs/{id} | Pending/running/needs_confirmation/failed result |
 | POST | /images/{id}/annotations | Append draft/reviewed annotation version |

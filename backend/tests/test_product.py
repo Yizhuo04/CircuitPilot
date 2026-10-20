@@ -2,7 +2,7 @@ import io
 from datetime import timedelta
 
 import pytest
-from app.models import ImageRecord, LoginSession, UploadTicket, now
+from app.models import ImageRecord, LoginSession, UploadTicket, VerificationRun, now
 from app.security import hash_password, token_hash, verify_password
 from app.worker import maintenance, process_job
 from PIL import Image
@@ -205,6 +205,20 @@ def test_upload_single_use_privacy_annotation_consent_and_delete(project_case):
         account.post(API + f"/images/{image['id']}/annotations", json=annotation).status_code == 201
     )
     assert account.get(API + "/datasets/export").json()["images"] == []
+    assert (
+        account.patch(
+            API + f"/images/{image['id']}/consent", json={"consent_for_training": True}
+        ).status_code
+        == 200
+    )
+    assert len(account.get(API + "/datasets/export").json()["images"]) == 1
+    assert (
+        account.patch(
+            API + f"/images/{image['id']}/consent", json={"consent_for_training": False}
+        ).status_code
+        == 200
+    )
+    assert account.get(API + "/datasets/export").json()["images"] == []
     consented, _ = upload(account, project["id"], consent=True)
     assert (
         account.post(API + f"/images/{consented['id']}/annotations", json=annotation).status_code
@@ -212,6 +226,9 @@ def test_upload_single_use_privacy_annotation_consent_and_delete(project_case):
     )
     exported = account.get(API + "/datasets/export").json()
     assert [i["image_id"] for i in exported["images"]] == [consented["id"]]
+    project_export = account.get(API + f"/projects/{project['id']}/export").json()
+    assert len(project_export["annotations"]) == 2
+    assert len(project_export["photo_downloads"]) == 2
     annotation["boxes"][0]["width"] = 10000
     assert (
         account.post(API + f"/images/{image['id']}/annotations", json=annotation).status_code == 422
@@ -246,6 +263,8 @@ def test_manual_calibration_is_uncertain_not_detection(project_case):
     assert len(run["results"]["holes"]) == 830
     assert run["results"]["holes"]["A1"] == {"x": 80.0, "y": 40.0}
     assert run["results"]["observations"] == []
+    exported = account.get(API + f"/projects/{project['id']}/export").json()
+    assert exported["verification_runs"][0]["id"] == run["id"]
     # Re-executing a claimed/completed job is a no-op.
     process_job(run["id"], account.app.state.sessions)
     assert account.get(API + "/verification-runs/" + run["id"]).json() == run
@@ -282,6 +301,24 @@ def test_retention_and_interrupted_job_recovery(project_case):
     maintenance(account.app.state.sessions, account.app.state.store)
     assert not account.app.state.store.path(key).exists()
     assert account.get(API + f"/projects/{project['id']}").json()["images"] == []
+    fresh, _ = upload(account, project["id"])
+    with account.app.state.sessions() as db:
+        run = VerificationRun(
+            plan_id=plan["id"],
+            image_id=fresh["id"],
+            status="running",
+            started_at=now() - timedelta(hours=1),
+            request_json=calibration(plan["id"], fresh["id"]),
+        )
+        db.add(run)
+        db.commit()
+        run_id = run.id
+    pending = maintenance(account.app.state.sessions, account.app.state.store)
+    assert run_id in pending
+    process_job(run_id, account.app.state.sessions)
+    assert (
+        account.get(API + f"/verification-runs/{run_id}").json()["status"] == "needs_confirmation"
+    )
 
 
 def test_pilot_measurements_are_recorded_not_fabricated(project_case):
@@ -309,6 +346,8 @@ def test_pilot_measurements_are_recorded_not_fabricated(project_case):
         == 404
     )
     assert len(account.get(API + "/pilot-sessions").json()) == 1
+    exported = account.get(API + f"/projects/{project['id']}/export").json()
+    assert exported["pilot_measurements"][0]["error_count"] == 2
 
 
 def test_project_and_account_deletion_cascade(project_case):

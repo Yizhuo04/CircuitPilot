@@ -42,6 +42,7 @@ from app.schemas.product import (
     PlanRequest,
     ProjectCreate,
     ProjectPublic,
+    TrainingConsent,
     UploadRequest,
     UserPublic,
     VerificationRequest,
@@ -466,6 +467,16 @@ def delete_image(image_id: str, request: Request, db: DB, user: CurrentUser) -> 
     request.app.state.store.delete(key)
 
 
+@router.patch("/images/{image_id}/consent", response_model=ImagePublic, tags=["privacy"])
+def change_consent(
+    image_id: str, payload: TrainingConsent, db: DB, user: CurrentUser
+) -> ImagePublic:
+    image = owned_image(db, image_id, user.id)
+    image.consent_for_training = payload.consent_for_training
+    db.commit()
+    return public_image(image)
+
+
 @router.post("/verification-runs", status_code=202, tags=["verification"])
 def verification(
     payload: VerificationRequest,
@@ -661,6 +672,46 @@ def export_project(project_id: str, db: DB, user: CurrentUser) -> dict[str, Any]
     ]
     detail["photo_downloads"] = [
         f"/api/v1/images/{image['id']}/content" for image in detail["images"]
+    ]
+    detail["annotations"] = [
+        {
+            "id": row.id,
+            "image_id": row.image_id,
+            "labels": row.labels_json,
+            "review_status": row.review_status,
+        }
+        for row in db.scalars(
+            select(Annotation).join(ImageRecord).where(ImageRecord.project_id == project_id)
+        )
+    ]
+    detail["verification_runs"] = [
+        {
+            "id": row.id,
+            "plan_id": row.plan_id,
+            "image_id": row.image_id,
+            "status": row.status,
+            "request": row.request_json,
+            "results": row.results_json,
+            "model_version": row.model_version,
+        }
+        for row in db.scalars(
+            select(VerificationRun)
+            .join(PlanRecord)
+            .join(CircuitVersion)
+            .where(CircuitVersion.project_id == project_id)
+        )
+    ]
+    detail["pilot_measurements"] = [
+        {
+            "id": row.id,
+            "condition": row.condition,
+            "started_at": row.started_at.isoformat() + "Z",
+            "completed_at": row.completed_at.isoformat() + "Z" if row.completed_at else None,
+            "error_count": row.error_count,
+            "help_count": row.help_count,
+            "notes": row.notes,
+        }
+        for row in db.scalars(select(PilotSession).where(PilotSession.project_id == project_id))
     ]
     return detail
 

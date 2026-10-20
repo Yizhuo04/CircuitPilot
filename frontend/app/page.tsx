@@ -1,87 +1,879 @@
 "use client";
 
-import {useEffect, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import BreadboardViewer from "@/components/BreadboardViewer";
 import CameraCapture from "@/components/CameraCapture";
 import ResearchPanel from "@/components/ResearchPanel";
-import {api, post, type Board, type Circuit, type Plan, type Project, type ProjectDetail, type User} from "@/lib/api";
+import {
+  api,
+  post,
+  type Board,
+  type Circuit,
+  type Plan,
+  type Project,
+  type ProjectDetail,
+  type User,
+} from "@/lib/api";
 
 function Logo() {
-  return <span className="brand"><svg width="33" height="33" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#81d6ae"/><path d="M9 11h7v12h9M9 23h4M21 11h4" stroke="#173b2c" strokeWidth="2" fill="none"/><circle cx="9" cy="11" r="2" fill="#173b2c"/><circle cx="9" cy="23" r="2" fill="#173b2c"/><circle cx="25" cy="11" r="2" fill="#173b2c"/><circle cx="25" cy="23" r="2" fill="#173b2c"/></svg><span>CircuitPilot<span className="brand-dot">.</span></span></span>;
+  return (
+    <span className="brand">
+      <svg width="33" height="33" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="#81d6ae" />
+        <path
+          d="M9 11h7v12h9M9 23h4M21 11h4"
+          stroke="#173b2c"
+          strokeWidth="2"
+          fill="none"
+        />
+        <circle cx="9" cy="11" r="2" fill="#173b2c" />
+        <circle cx="9" cy="23" r="2" fill="#173b2c" />
+        <circle cx="25" cy="11" r="2" fill="#173b2c" />
+        <circle cx="25" cy="23" r="2" fill="#173b2c" />
+      </svg>
+      <span>
+        CircuitPilot<span className="brand-dot">.</span>
+      </span>
+    </span>
+  );
 }
 
 export default function Home() {
-  const [user, setUser] = useState<User | null>(null), [loading, setLoading] = useState(true);
-  const [authMode, setAuthMode] = useState<"login" | "register">("register"), [email, setEmail] = useState(""), [password, setPassword] = useState("");
-  const [projects, setProjects] = useState<Project[]>([]), [project, setProject] = useState<ProjectDetail | null>(null);
-  const [library, setLibrary] = useState<Circuit[]>([]), [board, setBoard] = useState<Board | null>(null), [plan, setPlan] = useState<Plan | null>(null);
-  const [tab, setTab] = useState<"design" | "layout" | "photo" | "research">("design"), [source, setSource] = useState(""), [projectName, setProjectName] = useState("");
-  const [busy, setBusy] = useState(""), [error, setError] = useState(""), [message, setMessage] = useState("");
-  const [stepIndex, setStepIndex] = useState(0), [completed, setCompleted] = useState<number[]>([]);
-  const [validation, setValidation] = useState<{valid: boolean; errors: {code: string; message: string; path: (string|number)[]}[]} | null>(null);
+  const [user, setUser] = useState<User | null>(null),
+    [loading, setLoading] = useState(true);
+  const [authMode, setAuthMode] = useState<"login" | "register">("register"),
+    [email, setEmail] = useState(""),
+    [password, setPassword] = useState("");
+  const [projects, setProjects] = useState<Project[]>([]),
+    [project, setProject] = useState<ProjectDetail | null>(null);
+  const [library, setLibrary] = useState<Circuit[]>([]),
+    [board, setBoard] = useState<Board | null>(null),
+    [plan, setPlan] = useState<Plan | null>(null);
+  const [tab, setTab] = useState<"design" | "layout" | "photo" | "research">(
+      "design",
+    ),
+    [source, setSource] = useState(""),
+    [projectName, setProjectName] = useState("");
+  const [busy, setBusy] = useState(""),
+    [error, setError] = useState(""),
+    [message, setMessage] = useState("");
+  const [stepIndex, setStepIndex] = useState(0),
+    [completed, setCompleted] = useState<number[]>([]);
+  const [validation, setValidation] = useState<{
+    valid: boolean;
+    errors: { code: string; message: string; path: (string | number)[] }[];
+  } | null>(null);
+  const currentProjectId = useRef<string | null>(null);
 
-  useEffect(() => {api<User>("/auth/me").then(setUser).catch(() => {}).finally(() => setLoading(false));}, []);
+  useEffect(() => {
+    api<User>("/auth/me")
+      .then(setUser)
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
   useEffect(() => {
     if (!user) return;
     let cancelled = false;
-    Promise.all([api<Project[]>("/projects"), api<Circuit[]>("/circuit-library"), api<Board>("/board-models/bb830-reference")]).then(([p, l, b]) => {
-      if (cancelled) return;
-      setProjects(p); setLibrary(l); setBoard(b); setSource(current => current || JSON.stringify(l[0], null, 2));
-      if (p.length) api<ProjectDetail>(`/projects/${p[0].id}`).then(detail => {if (!cancelled) setProject(detail);}).catch(e => {if (!cancelled) setError(e.message);});
-    }).catch(e => {if (!cancelled) setError(e.message);});
-    return () => {cancelled = true;};
+    Promise.all([
+      api<Project[]>("/projects"),
+      api<Circuit[]>("/circuit-library"),
+      api<Board>("/board-models/bb830-reference"),
+    ])
+      .then(([p, l, b]) => {
+        if (cancelled) return;
+        setProjects(p);
+        setLibrary(l);
+        setBoard(b);
+        setSource((current) => current || JSON.stringify(l[0], null, 2));
+      })
+      .catch((e) => {
+        if (!cancelled) setError(e.message);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [user]);
   useEffect(() => {
     if (!plan) return;
-    try {setCompleted(JSON.parse(localStorage.getItem(`circuitpilot-steps-${plan.id}`) ?? "[]"));} catch {setCompleted([]);}
+    try {
+      const saved: unknown = JSON.parse(
+        localStorage.getItem(`circuitpilot-steps-${plan.id}`) ?? "[]",
+      );
+      setCompleted(
+        Array.isArray(saved)
+          ? [
+              ...new Set(
+                saved.filter(
+                  (value): value is number =>
+                    typeof value === "number" &&
+                    Number.isInteger(value) &&
+                    value >= 1 &&
+                    value <= plan.plan.steps.length,
+                ),
+              ),
+            ]
+          : [],
+      );
+    } catch {
+      setCompleted([]);
+    }
   }, [plan]);
 
   async function action(label: string, work: () => Promise<void>) {
-    setBusy(label); setError(""); setMessage("");
-    try {await work();} catch (e) {setError((e as Error).message);} finally {setBusy("");}
+    setBusy(label);
+    setError("");
+    setMessage("");
+    try {
+      await work();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setBusy("");
+    }
   }
 
   async function refreshProject(id = project?.id) {
     setProjects(await api<Project[]>("/projects"));
-    if (id) setProject(await api<ProjectDetail>(`/projects/${id}`));
+    if (id) {
+      const detail = await api<ProjectDetail>(`/projects/${id}`);
+      if (currentProjectId.current === id) setProject(detail);
+    }
   }
 
   async function generate() {
     let circuit: Circuit;
-    try {circuit = JSON.parse(source);} catch {throw new Error("The circuit is not valid JSON. Check commas, quotes, and brackets.");}
-    const report = await post<{valid: boolean; errors: []}>("/circuits/validate", circuit);
+    try {
+      circuit = JSON.parse(source);
+    } catch {
+      throw new Error(
+        "The circuit is not valid JSON. Check commas, quotes, and brackets.",
+      );
+    }
+    const report = await post<{ valid: boolean; errors: [] }>(
+      "/circuits/validate",
+      circuit,
+    );
     setValidation(report);
     let id = project?.id;
-    if (!id) {const created = await post<Project>("/projects", {name: projectName.trim() || circuit.name}); id = created.id;}
-    const version = await post<{id: string}>(`/projects/${id}/circuits`, circuit);
-    const generated = await post<Plan>("/plans", {circuit_version_id: version.id, board_model_id: "bb830-reference", board_revision: "r1", seed: 0});
-    setPlan(generated); setStepIndex(0); setTab("layout"); await refreshProject(id);
+    if (!id) {
+      const created = await post<Project>("/projects", {
+        name: projectName.trim() || circuit.name,
+      });
+      id = created.id;
+    }
+    const version = await post<{ id: string }>(
+      `/projects/${id}/circuits`,
+      circuit,
+    );
+    const generated = await post<Plan>("/plans", {
+      circuit_version_id: version.id,
+      board_model_id: "bb830-reference",
+      board_revision: "r1",
+      seed: 0,
+    });
+    setPlan(generated);
+    setStepIndex(0);
+    setTab("layout");
+    currentProjectId.current = id;
+    await refreshProject(id);
   }
 
   async function selectProject(id: string) {
-    const detail = await api<ProjectDetail>(`/projects/${id}`); setProject(detail); setPlan(null); setStepIndex(0); setValidation(null);
-    if (detail.circuits[0]) setSource(JSON.stringify(detail.circuits[0].circuit, null, 2));
-    if (detail.plans[0]) {setPlan(await api<Plan>(`/plans/${detail.plans[0].id}`)); setTab("layout");} else setTab("design");
+    currentProjectId.current = id;
+    const detail = await api<ProjectDetail>(`/projects/${id}`);
+    if (currentProjectId.current !== id) return;
+    setProject(detail);
+    setPlan(null);
+    setStepIndex(0);
+    setValidation(null);
+    if (detail.circuits[0])
+      setSource(JSON.stringify(detail.circuits[0].circuit, null, 2));
+    if (detail.plans[0]) {
+      setPlan(await api<Plan>(`/plans/${detail.plans[0].id}`));
+      setTab("layout");
+    } else setTab("design");
   }
 
-  if (loading) return <main className="loading"><Logo/><p>Opening your workspace…</p></main>;
-  if (!user) return <main className="auth-shell"><div className="auth-story"><Logo/><span className="eyebrow light">YOUR CIRCUIT. A CLEARER PATH.</span><h1>From circuit<br/>to connection<span>.</span></h1><p>A precise workspace for planning breadboard layouts, following named pin mappings, and aligning your real-world build.</p><div className="auth-circuit" aria-hidden="true"><span>5V</span><i/><b>R1</b><i/><b className="led-symbol">LED</b><i/><span>GND</span></div><div className="auth-features"><span>01 · Deterministic connectivity</span><span>02 · Hole-by-hole reference steps</span><span>03 · Clear visual uncertainty</span></div><p className="fine-print">Engineering development release. Physical board and part verification required before assembly.</p></div>
-    <div className="auth-form-wrap"><div className="auth-card"><span className="eyebrow">WELCOME TO YOUR WORKBENCH</span><h2>{authMode === "register" ? "Start building with clarity" : "Welcome back"}</h2><p className="muted">Save your circuits, plans, and photo alignments in one place.</p><form onSubmit={event => {event.preventDefault(); action("Signing in", async () => {const result = await post<{user: User}>(`/auth/${authMode}`, {email, password}); setUser(result.user); setPassword("");});}}><label>Email address<input type="email" name="email" autoComplete="email" required value={email} onChange={e => setEmail(e.target.value)} placeholder="you@example.com"/></label><label>Password<input type="password" name="password" required minLength={12} maxLength={128} autoComplete={authMode === "register" ? "new-password" : "current-password"} value={password} onChange={e => setPassword(e.target.value)} placeholder="At least 12 characters"/></label>{error && <div className="error" role="alert">{error}</div>}<button className="primary full" disabled={!!busy}>{busy || (authMode === "register" ? "Create your workspace →" : "Sign in →")}</button></form><p className="auth-switch">{authMode === "register" ? "Already have an account?" : "New to CircuitPilot?"} <button className="text-button" onClick={() => {setAuthMode(authMode === "register" ? "login" : "register"); setError("");}}>{authMode === "register" ? "Sign in" : "Create account"}</button></p><p className="fine-print">Photos stay private to your account. Training consent is optional and off by default. You can export or delete project data.</p></div></div></main>;
+  if (loading)
+    return (
+      <main className="loading">
+        <Logo />
+        <p>Opening your workspace…</p>
+      </main>
+    );
+  if (!user)
+    return (
+      <main className="auth-shell">
+        <div className="auth-story">
+          <Logo />
+          <span className="eyebrow light">YOUR CIRCUIT. A CLEARER PATH.</span>
+          <h1>
+            From circuit
+            <br />
+            to connection<span>.</span>
+          </h1>
+          <p>
+            A precise workspace for planning breadboard layouts, following named
+            pin mappings, and aligning your real-world build.
+          </p>
+          <div className="auth-circuit" aria-hidden="true">
+            <span>5V</span>
+            <i />
+            <b>R1</b>
+            <i />
+            <b className="led-symbol">LED</b>
+            <i />
+            <span>GND</span>
+          </div>
+          <div className="auth-features">
+            <span>01 · Deterministic connectivity</span>
+            <span>02 · Hole-by-hole reference steps</span>
+            <span>03 · Clear visual uncertainty</span>
+          </div>
+          <p className="fine-print">
+            Engineering development release. Physical board and part
+            verification required before assembly.
+          </p>
+        </div>
+        <div className="auth-form-wrap">
+          <div className="auth-card">
+            <span className="eyebrow">WELCOME TO YOUR WORKBENCH</span>
+            <h2>
+              {authMode === "register"
+                ? "Start building with clarity"
+                : "Welcome back"}
+            </h2>
+            <p className="muted">
+              Save your circuits, plans, and photo alignments in one place.
+            </p>
+            <form
+              onSubmit={(event) => {
+                event.preventDefault();
+                action("Signing in", async () => {
+                  const result = await post<{ user: User }>(
+                    `/auth/${authMode}`,
+                    { email, password },
+                  );
+                  setUser(result.user);
+                  setPassword("");
+                });
+              }}
+            >
+              <label>
+                Email address
+                <input
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                />
+              </label>
+              <label>
+                Password
+                <input
+                  type="password"
+                  name="password"
+                  required
+                  minLength={12}
+                  maxLength={128}
+                  autoComplete={
+                    authMode === "register"
+                      ? "new-password"
+                      : "current-password"
+                  }
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="At least 12 characters"
+                />
+              </label>
+              {error && (
+                <div className="error" role="alert">
+                  {error}
+                </div>
+              )}
+              <button className="primary full" disabled={!!busy}>
+                {busy ||
+                  (authMode === "register"
+                    ? "Create your workspace →"
+                    : "Sign in →")}
+              </button>
+            </form>
+            <p className="auth-switch">
+              {authMode === "register"
+                ? "Already have an account?"
+                : "New to CircuitPilot?"}{" "}
+              <button
+                className="text-button"
+                onClick={() => {
+                  setAuthMode(authMode === "register" ? "login" : "register");
+                  setError("");
+                }}
+              >
+                {authMode === "register" ? "Sign in" : "Create account"}
+              </button>
+            </p>
+            <p className="fine-print">
+              Photos stay private to your account. Training consent is optional
+              and off by default. You can export or delete project data.
+            </p>
+          </div>
+        </div>
+      </main>
+    );
 
   const activeStep = plan?.plan.steps[stepIndex];
-  return <div className="app-shell"><aside className="sidebar"><Logo/><div className="workspace-badge"><span className="workspace-avatar">{user.email[0].toUpperCase()}</span><div><strong>Personal workspace</strong><span>Engineering preview</span></div></div><div className="nav-label">WORKSPACE</div><button className={`nav-item ${tab === "design" ? "active" : ""}`} onClick={() => setTab("design")}><span>▦</span> Circuit design</button><button className={`nav-item ${tab === "layout" ? "active" : ""}`} disabled={!plan} onClick={() => setTab("layout")}><span>⌘</span> Assembly guide</button><button className={`nav-item ${tab === "photo" ? "active" : ""}`} disabled={!plan} onClick={() => setTab("photo")}><span>◎</span> Photo alignment</button><button className={`nav-item ${tab === "research" ? "active" : ""}`} disabled={!project} onClick={() => setTab("research")}><span>◈</span> Data & pilot</button><div className="nav-label projects-label">YOUR PROJECTS <button aria-label="New project" className="text-button" disabled={!!busy} onClick={() => {setProject(null); setPlan(null); setTab("design"); setProjectName(""); setMessage(""); setError("");}}>＋</button></div><div className="project-nav">{projects.map(p => <button key={p.id} className={project?.id === p.id ? "selected" : ""} disabled={!!busy} onClick={() => action("Opening project", () => selectProject(p.id))}><span className="project-dot"/>{p.name}</button>)}{!projects.length && <p className="fine-print">Your saved projects will appear here.</p>}</div><div className="sidebar-footer"><div className="reference-note"><span>◉</span><div><strong>Correctness comes first</strong><p>Reference geometry. Clear limits. No invented wiring.</p></div></div><span className="account-email">{user.email}</span><button className="text-button" disabled={!!busy} onClick={() => action("Signing out", async () => {await post("/auth/logout", {}); setUser(null); setProject(null); setProjects([]); setPlan(null); setSource(""); setLibrary([]); setBoard(null); setValidation(null); setCompleted([]);})}>Sign out ↗</button></div></aside>
-    <main className="workspace"><header className="topbar"><div><span className="breadcrumb">Workspace / </span><strong>{project?.name ?? "New circuit"}</strong></div><div className="topbar-right"><span className="status-dot"/>Deterministic engine <span className="pill">v0.2 preview</span></div></header>
-      <div className="workspace-content"><div className="page-heading"><div><span className="eyebrow">THE CIRCUIT WORKBENCH</span><h1>{tab === "design" ? "Good builds start with a clear plan." : tab === "layout" ? project?.name ?? "Your assembly guide" : tab === "photo" ? "Connect the plan to the physical." : "Build evidence, not assumptions."}</h1><p>{tab === "design" ? "Import a logical circuit, check its structure, and generate a reference layout." : tab === "layout" ? "Explore your graph-checked layout and follow each named pin mapping." : tab === "photo" ? "Align expected positions over a real photo, then inspect the uncertainty." : "Label consented photos and record real pilot measurements."}</p></div>{project && <details className="project-menu"><summary className="button">Project options ···</summary><div><button onClick={() => action("Exporting", async () => {const data = await api(`/projects/${project.id}/export`), url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {type: "application/json"})); const a = document.createElement("a"); a.href = url; a.download = "circuitpilot-project.json"; a.click(); URL.revokeObjectURL(url);})}>Export project</button><button className="danger-text" onClick={() => {if (confirm("Delete this project, all plans, photos, annotations, and pilot measurements?")) action("Deleting project", async () => {await api(`/projects/${project.id}`, {method: "DELETE"}); setProject(null); setPlan(null); setTab("design"); setProjects(await api<Project[]>("/projects"));});}}>Delete project</button></div></details>}</div>
-      <nav className="stage-tabs" aria-label="Circuit workflow">{([['design', '01', 'Circuit design'], ['layout', '02', 'Assembly guide'], ['photo', '03', 'Photo alignment'], ['research', '04', 'Data & pilot']] as const).map(([key, number, label]) => <button key={key} className={tab === key ? "active" : ""} disabled={(key === "layout" || key === "photo") ? !plan : key === "research" ? !project : false} onClick={() => setTab(key)}><span>{number}</span>{label}</button>)}</nav>
-      {error && <div className="error global-message" role="alert">{error}</div>}{message && <div className="notice success global-message" role="status">{message}</div>}{busy && <div className="busy-status" role="status">{busy}…</div>}
-      {tab === "design" && <div className="design-grid"><section className="panel importer"><div className="section-heading"><div><span className="eyebrow">CIRCUIT INPUT</span><h2>Describe the connections</h2></div><span className="pill">JSON 1.0</span></div>{!project && <label>Project name<input value={projectName} onChange={e => setProjectName(e.target.value)} placeholder="My first breadboard circuit" maxLength={200}/></label>}<div className="editor-bar"><span>circuit.json</span><button className="text-button" onClick={() => {try {setSource(JSON.stringify(JSON.parse(source), null, 2));} catch {setError("Cannot format invalid JSON.");}}}>Format JSON</button></div><textarea aria-label="Circuit JSON" className="code-editor" spellCheck={false} value={source} onChange={e => {setSource(e.target.value); setValidation(null);}}/><div className="actions"><button className="primary" disabled={!!busy || !source} onClick={() => action("Validating and planning", generate)}>Validate & generate reference layout →</button><button disabled={!!busy || !source} onClick={() => action("Checking netlist", async () => {let value; try {value = JSON.parse(source);} catch {throw new Error("Invalid JSON syntax.");} setValidation(await post("/circuits/validate", value)); setMessage("Netlist structure passed. Electrical and physical checks remain separate.");})}>Check structure</button></div>{validation?.valid && <div className="validation-pass"><span>✓</span> Structural netlist checks passed</div>}<p className="fine-print">Supported: resistor, LED, normally-open button, jumper, supply terminal. Planning is limited to eight components and ten added jumpers.</p></section>
-      <aside className="design-aside"><section className="panel library"><span className="eyebrow">REFERENCE CIRCUITS</span><h2>Start with a small circuit</h2><p className="muted">Load an editable example. Layouts are generated by the engine.</p>{library.map((c, index) => <button className="library-card" key={c.name} disabled={!!busy} onClick={() => {setSource(JSON.stringify(c, null, 2)); setValidation(null); setMessage("");}}><span className={`library-icon icon-${index}`}>{index === 0 ? "◉" : index === 1 ? "⌁" : "⋈"}</span><span><strong>{c.name}</strong><small>{c.components.length} parts · {c.nets.length} nets</small></span><span className="arrow">↗</span></button>)}</section><section className="panel board-selection"><span className="eyebrow">BOARD MODEL</span><div className="board-mini" aria-hidden="true">····················<br/>····················<hr/>····················<br/>····················</div><h3>830-point reference board</h3><p>63 terminal rows · isolated center trench · explicitly split rails</p><span className="pill warning">Not physically verified</span></section><div className="notice">A valid netlist is the starting point. It does not prove safe current, correct polarity, or a verified physical build.</div></aside></div>}
-      {tab === "layout" && plan && board && <><div className="layout-summary"><span className="pill success">✓ Connectivity graph passed</span><span>{plan.plan.layout.components.length} components</span><span>{plan.plan.layout.jumpers.length} jumpers</span><span>{plan.plan.steps.length} steps</span><span className="pill warning">Reference layout · physical verification pending</span></div><div className="assembly-grid"><section className="panel board-panel"><div className="section-heading"><div><span className="eyebrow">YOUR REFERENCE LAYOUT</span><h2>Every connection has a place.</h2></div><button disabled={!!busy} onClick={() => setTab("photo")}>Align a photo ↗</button></div><BreadboardViewer board={board} plan={plan} highlighted={activeStep?.holes}/><div className="component-key">{plan.plan.layout.components.map(component => <span key={component.component_id}><i className="dot green"/><strong>{component.component_id}</strong>{Object.entries(component.pins).map(([pin, hole]) => <small key={pin}>{pin}: {hole}</small>)}</span>)}</div><details className="validation-details"><summary>Validation details and limits</summary>{plan.plan.validation.warnings.map(warning => <p key={warning.code}>{warning.message}</p>)}<p>Electrical verification: false. Build readiness: false.</p></details></section>
-        <aside className="panel instructions"><div className="section-heading"><div><span className="eyebrow">ASSEMBLY GUIDE</span><h2>One step at a time</h2></div><span className="step-count">{completed.length}/{plan.plan.steps.length}</span></div><div className="progress-track"><span style={{width: `${completed.length/plan.plan.steps.length*100}%`}}/></div><div className="step-list">{plan.plan.steps.map((step, index) => <button key={step.sequence} className={`step-item ${index === stepIndex ? "active" : ""}`} onClick={() => setStepIndex(index)}><span className={completed.includes(step.sequence) ? "checked" : ""}>{completed.includes(step.sequence) ? "✓" : step.sequence.toString().padStart(2, "0")}</span><strong>{step.title}</strong></button>)}</div>{activeStep && <div className="active-instruction"><span className="eyebrow">STEP {activeStep.sequence.toString().padStart(2, "0")}</span><h3>{activeStep.title}</h3><p>{activeStep.instruction}</p>{activeStep.holes.length > 0 && <div className="hole-tags">{activeStep.holes.map(hole => <code key={hole}>{hole}</code>)}</div>}<label className="checkbox"><input type="checkbox" checked={completed.includes(activeStep.sequence)} onChange={e => {const updated = e.target.checked ? [...completed, activeStep.sequence] : completed.filter(n => n !== activeStep.sequence); setCompleted(updated); localStorage.setItem(`circuitpilot-steps-${plan.id}`, JSON.stringify(updated));}}/>Mark this reference step complete</label><div className="actions"><button disabled={stepIndex === 0} onClick={() => setStepIndex(stepIndex-1)}>← Previous</button><button className="primary" disabled={stepIndex === plan.plan.steps.length-1} onClick={() => setStepIndex(stepIndex+1)}>Next step →</button></div></div>}</aside></div><div className="notice">Keep power disconnected. This reference layout has not been physically verified for your board or parts. A graph check or photograph cannot establish electrical safety.</div></>}
-      {tab === "photo" && plan && project && <CameraCapture key={`${project.id}-${plan.id}`} projectId={project.id} plan={plan} images={project.images} onUploaded={() => refreshProject()}/>}
-      {tab === "research" && project && <ResearchPanel key={project.id} projectId={project.id} images={project.images}/>}
-      <footer className="workspace-footer"><span>CircuitPilot · From circuit to connection.</span><span>Deterministic planning. Honest uncertainty.</span></footer>
-      </div>
-    </main>
-  </div>;
+  return (
+    <div className="app-shell">
+      <aside className="sidebar">
+        <Logo />
+        <div className="workspace-badge">
+          <span className="workspace-avatar">
+            {user.email[0].toUpperCase()}
+          </span>
+          <div>
+            <strong>Personal workspace</strong>
+            <span>Engineering preview</span>
+          </div>
+        </div>
+        <div className="nav-label">WORKSPACE</div>
+        <button
+          className={`nav-item ${tab === "design" ? "active" : ""}`}
+          onClick={() => setTab("design")}
+        >
+          <span>▦</span> Circuit design
+        </button>
+        <button
+          className={`nav-item ${tab === "layout" ? "active" : ""}`}
+          disabled={!plan}
+          onClick={() => setTab("layout")}
+        >
+          <span>⌘</span> Assembly guide
+        </button>
+        <button
+          className={`nav-item ${tab === "photo" ? "active" : ""}`}
+          disabled={!plan}
+          onClick={() => setTab("photo")}
+        >
+          <span>◎</span> Photo alignment
+        </button>
+        <button
+          className={`nav-item ${tab === "research" ? "active" : ""}`}
+          disabled={!project}
+          onClick={() => setTab("research")}
+        >
+          <span>◈</span> Data & pilot
+        </button>
+        <div className="nav-label projects-label">
+          YOUR PROJECTS{" "}
+          <button
+            aria-label="New project"
+            className="text-button"
+            disabled={!!busy}
+            onClick={() => {
+              currentProjectId.current = null;
+              setProject(null);
+              setPlan(null);
+              setTab("design");
+              setProjectName("");
+              setMessage("");
+              setError("");
+            }}
+          >
+            ＋
+          </button>
+        </div>
+        <div className="project-nav">
+          {projects.map((p) => (
+            <button
+              key={p.id}
+              className={project?.id === p.id ? "selected" : ""}
+              disabled={!!busy}
+              onClick={() =>
+                action("Opening project", () => selectProject(p.id))
+              }
+            >
+              <span className="project-dot" />
+              {p.name}
+            </button>
+          ))}
+          {!projects.length && (
+            <p className="fine-print">Your saved projects will appear here.</p>
+          )}
+        </div>
+        <div className="sidebar-footer">
+          <div className="reference-note">
+            <span>◉</span>
+            <div>
+              <strong>Correctness comes first</strong>
+              <p>Reference geometry. Clear limits. No invented wiring.</p>
+            </div>
+          </div>
+          <span className="account-email">{user.email}</span>
+          <button
+            className="text-button"
+            disabled={!!busy}
+            onClick={() =>
+              action("Signing out", async () => {
+                await post("/auth/logout", {});
+                setUser(null);
+                currentProjectId.current = null;
+                setProject(null);
+                setProjects([]);
+                setPlan(null);
+                setSource("");
+                setLibrary([]);
+                setBoard(null);
+                setValidation(null);
+                setCompleted([]);
+              })
+            }
+          >
+            Sign out ↗
+          </button>
+        </div>
+      </aside>
+      <main className="workspace">
+        <header className="topbar">
+          <div>
+            <span className="breadcrumb">Workspace / </span>
+            <strong>{project?.name ?? "New circuit"}</strong>
+          </div>
+          <div className="topbar-right">
+            <span className="status-dot" />
+            Deterministic engine <span className="pill">v0.2 preview</span>
+          </div>
+        </header>
+        <div className="workspace-content">
+          <div className="page-heading">
+            <div>
+              <span className="eyebrow">THE CIRCUIT WORKBENCH</span>
+              <h1>
+                {tab === "design"
+                  ? "Good builds start with a clear plan."
+                  : tab === "layout"
+                    ? (project?.name ?? "Your assembly guide")
+                    : tab === "photo"
+                      ? "Connect the plan to the physical."
+                      : "Build evidence, not assumptions."}
+              </h1>
+              <p>
+                {tab === "design"
+                  ? "Import a logical circuit, check its structure, and generate a reference layout."
+                  : tab === "layout"
+                    ? "Explore your graph-checked layout and follow each named pin mapping."
+                    : tab === "photo"
+                      ? "Align expected positions over a real photo, then inspect the uncertainty."
+                      : "Label consented photos and record real pilot measurements."}
+              </p>
+            </div>
+            {project && (
+              <details className="project-menu">
+                <summary className="button">Project options ···</summary>
+                <div>
+                  <button
+                    onClick={() =>
+                      action("Exporting", async () => {
+                        const data = await api(
+                            `/projects/${project.id}/export`,
+                          ),
+                          url = URL.createObjectURL(
+                            new Blob([JSON.stringify(data, null, 2)], {
+                              type: "application/json",
+                            }),
+                          );
+                        const a = document.createElement("a");
+                        a.href = url;
+                        a.download = "circuitpilot-project.json";
+                        a.click();
+                        URL.revokeObjectURL(url);
+                      })
+                    }
+                  >
+                    Export project
+                  </button>
+                  <button
+                    className="danger-text"
+                    onClick={() => {
+                      if (
+                        confirm(
+                          "Delete this project, all plans, photos, annotations, and pilot measurements?",
+                        )
+                      )
+                        action("Deleting project", async () => {
+                          await api(`/projects/${project.id}`, {
+                            method: "DELETE",
+                          });
+                          currentProjectId.current = null;
+                          setProject(null);
+                          setPlan(null);
+                          setTab("design");
+                          setProjects(await api<Project[]>("/projects"));
+                        });
+                    }}
+                  >
+                    Delete project
+                  </button>
+                </div>
+              </details>
+            )}
+          </div>
+          <nav className="stage-tabs" aria-label="Circuit workflow">
+            {(
+              [
+                ["design", "01", "Circuit design"],
+                ["layout", "02", "Assembly guide"],
+                ["photo", "03", "Photo alignment"],
+                ["research", "04", "Data & pilot"],
+              ] as const
+            ).map(([key, number, label]) => (
+              <button
+                key={key}
+                className={tab === key ? "active" : ""}
+                disabled={
+                  key === "layout" || key === "photo"
+                    ? !plan
+                    : key === "research"
+                      ? !project
+                      : false
+                }
+                onClick={() => setTab(key)}
+              >
+                <span>{number}</span>
+                {label}
+              </button>
+            ))}
+          </nav>
+          {error && (
+            <div className="error global-message" role="alert">
+              {error}
+            </div>
+          )}
+          {message && (
+            <div className="notice success global-message" role="status">
+              {message}
+            </div>
+          )}
+          {busy && (
+            <div className="busy-status" role="status">
+              {busy}…
+            </div>
+          )}
+          {tab === "design" && (
+            <div className="design-grid">
+              <section className="panel importer">
+                <div className="section-heading">
+                  <div>
+                    <span className="eyebrow">CIRCUIT INPUT</span>
+                    <h2>Describe the connections</h2>
+                  </div>
+                  <span className="pill">JSON 1.0</span>
+                </div>
+                {!project && (
+                  <label>
+                    Project name
+                    <input
+                      value={projectName}
+                      onChange={(e) => setProjectName(e.target.value)}
+                      placeholder="My first breadboard circuit"
+                      maxLength={200}
+                    />
+                  </label>
+                )}
+                <div className="editor-bar">
+                  <span>circuit.json</span>
+                  <button
+                    className="text-button"
+                    onClick={() => {
+                      try {
+                        setSource(JSON.stringify(JSON.parse(source), null, 2));
+                      } catch {
+                        setError("Cannot format invalid JSON.");
+                      }
+                    }}
+                  >
+                    Format JSON
+                  </button>
+                </div>
+                <textarea
+                  aria-label="Circuit JSON"
+                  className="code-editor"
+                  spellCheck={false}
+                  value={source}
+                  onChange={(e) => {
+                    setSource(e.target.value);
+                    setValidation(null);
+                  }}
+                />
+                <div className="actions">
+                  <button
+                    className="primary"
+                    disabled={!!busy || !source}
+                    onClick={() => action("Validating and planning", generate)}
+                  >
+                    Validate & generate reference layout →
+                  </button>
+                  <button
+                    disabled={!!busy || !source}
+                    onClick={() =>
+                      action("Checking netlist", async () => {
+                        let value;
+                        try {
+                          value = JSON.parse(source);
+                        } catch {
+                          throw new Error("Invalid JSON syntax.");
+                        }
+                        setValidation(await post("/circuits/validate", value));
+                        setMessage(
+                          "Netlist structure passed. Electrical and physical checks remain separate.",
+                        );
+                      })
+                    }
+                  >
+                    Check structure
+                  </button>
+                </div>
+                {validation?.valid && (
+                  <div className="validation-pass">
+                    <span>✓</span> Structural netlist checks passed
+                  </div>
+                )}
+                <p className="fine-print">
+                  Supported: resistor, LED, normally-open button, jumper, supply
+                  terminal. Planning is limited to eight components and ten
+                  added jumpers.
+                </p>
+              </section>
+              <aside className="design-aside">
+                <section className="panel library">
+                  <span className="eyebrow">REFERENCE CIRCUITS</span>
+                  <h2>Start with a small circuit</h2>
+                  <p className="muted">
+                    Load an editable example. Layouts are generated by the
+                    engine.
+                  </p>
+                  {library.map((c, index) => (
+                    <button
+                      className="library-card"
+                      key={c.name}
+                      disabled={!!busy}
+                      onClick={() => {
+                        setSource(JSON.stringify(c, null, 2));
+                        setValidation(null);
+                        setMessage("");
+                      }}
+                    >
+                      <span className={`library-icon icon-${index}`}>
+                        {index === 0 ? "◉" : index === 1 ? "⌁" : "⋈"}
+                      </span>
+                      <span>
+                        <strong>{c.name}</strong>
+                        <small>
+                          {c.components.length} parts · {c.nets.length} nets
+                        </small>
+                      </span>
+                      <span className="arrow">↗</span>
+                    </button>
+                  ))}
+                </section>
+                <section className="panel board-selection">
+                  <span className="eyebrow">BOARD MODEL</span>
+                  <div className="board-mini" aria-hidden="true">
+                    ····················
+                    <br />
+                    ····················
+                    <hr />
+                    ····················
+                    <br />
+                    ····················
+                  </div>
+                  <h3>830-point reference board</h3>
+                  <p>
+                    63 terminal rows · isolated center trench · explicitly split
+                    rails
+                  </p>
+                  <span className="pill warning">Not physically verified</span>
+                </section>
+                <div className="notice">
+                  A valid netlist is the starting point. It does not prove safe
+                  current, correct polarity, or a verified physical build.
+                </div>
+              </aside>
+            </div>
+          )}
+          {tab === "layout" && plan && board && (
+            <>
+              <div className="layout-summary">
+                <span className="pill success">
+                  ✓ Connectivity graph passed
+                </span>
+                <span>{plan.plan.layout.components.length} components</span>
+                <span>{plan.plan.layout.jumpers.length} jumpers</span>
+                <span>{plan.plan.steps.length} steps</span>
+                <span className="pill warning">
+                  Reference layout · physical verification pending
+                </span>
+              </div>
+              <div className="assembly-grid">
+                <section className="panel board-panel">
+                  <div className="section-heading">
+                    <div>
+                      <span className="eyebrow">YOUR REFERENCE LAYOUT</span>
+                      <h2>Every connection has a place.</h2>
+                    </div>
+                    <button disabled={!!busy} onClick={() => setTab("photo")}>
+                      Align a photo ↗
+                    </button>
+                  </div>
+                  <BreadboardViewer
+                    board={board}
+                    plan={plan}
+                    highlighted={activeStep?.holes}
+                  />
+                  <div className="component-key">
+                    {plan.plan.layout.components.map((component) => (
+                      <span key={component.component_id}>
+                        <i className="dot green" />
+                        <strong>{component.component_id}</strong>
+                        {Object.entries(component.pins).map(([pin, hole]) => (
+                          <small key={pin}>
+                            {pin}: {hole}
+                          </small>
+                        ))}
+                      </span>
+                    ))}
+                  </div>
+                  <details className="validation-details">
+                    <summary>Validation details and limits</summary>
+                    {plan.plan.validation.warnings.map((warning) => (
+                      <p key={warning.code}>{warning.message}</p>
+                    ))}
+                    <p>
+                      Electrical verification: false. Build readiness: false.
+                    </p>
+                  </details>
+                </section>
+                <aside className="panel instructions">
+                  <div className="section-heading">
+                    <div>
+                      <span className="eyebrow">ASSEMBLY GUIDE</span>
+                      <h2>One step at a time</h2>
+                    </div>
+                    <span className="step-count">
+                      {completed.length}/{plan.plan.steps.length}
+                    </span>
+                  </div>
+                  <div className="progress-track">
+                    <span
+                      style={{
+                        width: `${(completed.length / plan.plan.steps.length) * 100}%`,
+                      }}
+                    />
+                  </div>
+                  <div className="step-list">
+                    {plan.plan.steps.map((step, index) => (
+                      <button
+                        key={step.sequence}
+                        className={`step-item ${index === stepIndex ? "active" : ""}`}
+                        onClick={() => setStepIndex(index)}
+                      >
+                        <span
+                          className={
+                            completed.includes(step.sequence) ? "checked" : ""
+                          }
+                        >
+                          {completed.includes(step.sequence)
+                            ? "✓"
+                            : step.sequence.toString().padStart(2, "0")}
+                        </span>
+                        <strong>{step.title}</strong>
+                      </button>
+                    ))}
+                  </div>
+                  {activeStep && (
+                    <div className="active-instruction">
+                      <span className="eyebrow">
+                        STEP {activeStep.sequence.toString().padStart(2, "0")}
+                      </span>
+                      <h3>{activeStep.title}</h3>
+                      <p>{activeStep.instruction}</p>
+                      {activeStep.holes.length > 0 && (
+                        <div className="hole-tags">
+                          {activeStep.holes.map((hole) => (
+                            <code key={hole}>{hole}</code>
+                          ))}
+                        </div>
+                      )}
+                      <label className="checkbox">
+                        <input
+                          type="checkbox"
+                          checked={completed.includes(activeStep.sequence)}
+                          onChange={(e) => {
+                            const updated = e.target.checked
+                              ? [...completed, activeStep.sequence]
+                              : completed.filter(
+                                  (n) => n !== activeStep.sequence,
+                                );
+                            setCompleted(updated);
+                            localStorage.setItem(
+                              `circuitpilot-steps-${plan.id}`,
+                              JSON.stringify(updated),
+                            );
+                          }}
+                        />
+                        Mark this reference step complete
+                      </label>
+                      <div className="actions">
+                        <button
+                          disabled={stepIndex === 0}
+                          onClick={() => setStepIndex(stepIndex - 1)}
+                        >
+                          ← Previous
+                        </button>
+                        <button
+                          className="primary"
+                          disabled={stepIndex === plan.plan.steps.length - 1}
+                          onClick={() => setStepIndex(stepIndex + 1)}
+                        >
+                          Next step →
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </aside>
+              </div>
+              <div className="notice">
+                Keep power disconnected. This reference layout has not been
+                physically verified for your board or parts. A graph check or
+                photograph cannot establish electrical safety.
+              </div>
+            </>
+          )}
+          {tab === "photo" && plan && project && (
+            <CameraCapture
+              key={`${project.id}-${plan.id}`}
+              projectId={project.id}
+              plan={plan}
+              images={project.images}
+              onUploaded={() => refreshProject()}
+            />
+          )}
+          {tab === "research" && project && (
+            <ResearchPanel
+              key={project.id}
+              projectId={project.id}
+              images={project.images}
+              onUpdated={() => refreshProject()}
+            />
+          )}
+          <footer className="workspace-footer">
+            <span>CircuitPilot · From circuit to connection.</span>
+            <span>Deterministic planning. Honest uncertainty.</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+  );
 }

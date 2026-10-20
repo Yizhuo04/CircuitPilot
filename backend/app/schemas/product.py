@@ -55,6 +55,10 @@ class UploadRequest(Contract):
     consent_for_training: bool = False
 
 
+class TrainingConsent(Contract):
+    consent_for_training: bool
+
+
 class ImagePublic(Contract):
     id: str
     project_id: str
