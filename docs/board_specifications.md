@@ -15,8 +15,9 @@ not a measured product specification. There is no manufacturer association.
 - All 830 holes have explicit IDs, coordinates, and group IDs in
   `shared/boards/bb830-reference-r1.json`. No footprint is released as supported.
 - Utilities: `get_hole`, `group_for_hole`, `are_directly_connected`, and
-  `holes_in_group`. Unknown holes/groups raise domain errors. No calibration,
-  footprint enumeration, or pixel mapping exists in M1.
+  `holes_in_group`. Unknown holes/groups raise domain errors. Reference footprint enumeration now lives in `services/footprints.py`;
+  manual homography and hole-to-image projection live in `services/calibration.py`.
+  None of these software utilities establishes physical board continuity.
 
 ## Evidence needed before physical support
 

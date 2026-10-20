@@ -1,33 +1,73 @@
-# M1 verification — 2026-10-20
+# Verification record — 2026-10-20
 
-Environment: macOS, CPython 3.12.1, uv 0.12.5. All packages resolved in `uv.lock`.
-Tests and quality checks use the isolated project virtual environment.
+The current software supports a real account → circuit → plan → guided steps →
+private photo → manual calibration → export/delete workflow. Hardware, trained-model
+accuracy and business acceptance remain separate gates.
+
+## Automated evidence
+
+The complete public CI run for source commit `ceaeafa` passed all four jobs:
+[GitHub Actions run 39371081806](https://github.com/Yizhuo04/CircuitPilot/actions/runs/39371081806).
+It recorded 151 backend tests, 95.05% statement coverage, two browser workflow tests,
+container builds, four healthy running services and a complete HTTP smoke flow.
+A subsequent interpreter-selection correction in `dd0a8a3` ensures the Python 3.13
+matrix cannot silently fall back to the repository's 3.12 version pin. The final
+interpreter-verified run is recorded below.
 
 | Check | Observed result |
 | --- | --- |
-| pytest | 75 passed in 2.60 seconds; no warnings |
-| Statement coverage | 285 / 286 statements, 99.65%; gate is 90% |
-| Ruff lint | All checks passed |
-| Ruff format | 25 files already formatted |
-| Strict mypy | No issues in 13 application modules |
-| Generated contract/board consistency | Passed |
-| Clean local clone + locked offline sync | Passed using populated dependency cache |
-| Tests in clean clone | 75 passed in 2.71 seconds; 99.65% coverage |
-| Quality/schema checks in clean clone | Passed |
-| Source distribution and wheel build | Both succeeded |
-| Live HTTP health | 200; status ok; version 0.1.0 |
-| Live HTTP series LED fixture | 200; valid true; errors empty; ready_to_build false |
-| Live HTTP invalid fixture | 422; unknown_pin and pin_in_multiple_nets |
-| Hosted GitHub Actions | Not run: workflow upload requires additional OAuth scope |
-| Physical board measurements | Not available; reference model remains unverified |
+| Local backend full run before final heartbeat regression | 148 passed, one PostgreSQL test skipped; 95.43% coverage |
+| Additional electrical regression suite | 16 passed, including unrelated-branch reversed-LED regression |
+| Worker heartbeat regression | Passed for absent, recent, stale and future timestamps |
+| Lint/format, strict mypy | Passed; 33 application modules type checked |
+| Shared schemas and board fixture consistency | Passed |
+| Next.js production build and TypeScript | Passed locally and in CI |
+| Frontend formatting | Passed in CI |
+| Local real Chromium workflow | Two tests passed in 21.7 seconds |
+| Mobile validation/overflow | Passed at 390-pixel width; invalid inputs cannot produce plans |
+| Visual QA | Inspected desktop assembly and mobile validation screenshots |
+| Clean local clone | Locked offline install and three-circuit package imports passed |
+| Current source distribution/wheel | Built; wheel contains all three circuit fixtures and worker |
+| Single-command launcher | Starts backend, worker and frontend; owned processes stop on Ctrl+C |
+| Local complete HTTP smoke | Account/project/circuit/plan/steps/private photo/calibration/export passed; temporary account deleted |
+| Worker maintenance CLI and healthcheck | Passed against the local running application |
+| Docker stack in CI | PostgreSQL, backend, frontend and worker all healthy; full HTTP smoke passed |
+| Physical continuity / footprints | Not measured; all current plans remain reference-only |
+| Real-photo model training/evaluation | Not performed; no consented labeled dataset or trusted weights supplied |
+| User recruitment / pilot benefit | Not performed; instrumentation/protocol only |
+| Public hosted deployment | Not provisioned; hosting account/domain not selected |
 
-The uncovered statement is the exporter module's `if __name__ == '__main__'`
-entry invocation; the CLI command was exercised separately. Tests cover API error
-envelopes, unsupported versions/fields/types, finite positive values, uniqueness,
-pin references, supply roles/polarity, jumper net conflicts, every terminal row,
-center trench, row isolation, rail splits/isolation, unknown coordinates, topology
-mutation isolation, malformed board definitions, and generated artifact drift.
+The Docker startup test exposed a missing worker healthcheck, which was fixed with
+an actual loop heartbeat rather than bypassing service health. Browser testing
+exposed/fixed initial example loading overwriting edited JSON. Test fixtures and
+model doubles are explicitly synthetic; these results are not real detector accuracy.
 
-These results do not establish electrical safety, correct physical wiring, LED
-current limiting, physical footprints, camera performance, or ML accuracy.
-Python 3.13 execution remains pending hosted CI authorization.
+## Test coverage
+
+Tests cover every terminal row, center trench, isolated/split rails, unknown holes,
+strict schemas and references, supply roles/polarity, ideal-conductor partition
+comparison, missing jumpers/shorts, occupancy/reference geometry, independent planner
+gates, seeded reproducibility, owner isolation, immutable versions, revocable
+sessions, upload decoding/single use, consent withdrawal, data exports/deletion,
+manual calibration uncertainty, interrupted-job recovery, annotation provenance,
+leakage-safe splits, detection metrics, and optional adapter contracts.
+
+## Final interpreter-verified run
+
+[Run 39371387080](https://github.com/Yizhuo04/CircuitPilot/actions/runs/39371387080)
+passed all four jobs for commit `dd0a8a39d3cdc63300e2abbde452a95187125411`:
+
+- Python **3.12.15**: 151 tests passed in 47.80 seconds; **95.05%** coverage.
+- Python **3.13.16**: 151 tests passed in 51.50 seconds; **95.05%** coverage.
+- Both interpreter identities were asserted before running checks. The real
+  PostgreSQL migration/product test ran rather than skipping.
+- Web: production build, type/format checks and **two browser tests passed**.
+- Containers: images built, all four services became healthy, and the complete
+  HTTP smoke flow passed before temporary resources and volumes were cleaned up.
+
+The documentation commit following this code revision changes no executable source;
+CI deliberately skips Markdown-only updates.
+
+Do not treat earlier job labels as proof of the interpreter used. The corrected
+workflow asserts `sys.version_info` against its requested matrix value before checks.
+The original M1-only report is preserved separately in `m1-verification.md`.

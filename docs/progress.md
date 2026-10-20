@@ -28,15 +28,17 @@ model performance, recruited users, interview outcomes or time savings are claim
 ## Execution evidence
 
 Local Python 3.12.1: 148 tests passed, one PostgreSQL test skipped because no local
-PostgreSQL service is installed; 95.41% statement coverage. Lint, formatting, strict
+PostgreSQL service is installed; 95.43% statement coverage. Lint, formatting, strict
 mypy and shared artifact checks passed. Next.js production build and TypeScript checks
 passed. Real Chromium exercised registration, actual plan generation, hole inspection,
 step completion, private upload, synthetic-image homography and persistence. A mobile
-regression found/fixed initial example loading overwriting typed JSON. Latest hosted
-CI and final browser/clean-clone evidence are recorded in `verification.md`.
+regression found/fixed initial example loading overwriting typed JSON. Final hosted CI run 39371387080 passed: 151 backend tests on verified Python
+3.12.15 and 3.13.16, 95.05% coverage, real PostgreSQL migration/product checks,
+two production browser flows, image builds, four healthy services and a complete
+container HTTP smoke flow. Evidence is recorded in `verification.md`.
 
 Docker is unavailable on the local host; container and real PostgreSQL checks are
-configured in GitHub Actions, not falsely claimed as local results. Real photos have
+executed successfully in GitHub Actions, not falsely claimed as local results. Real photos have
 not yet been attached in this chat. The founder offered to send examples; use them
 for calibration testing only unless explicit training consent is subsequently given.
 
@@ -52,6 +54,12 @@ for calibration testing only unless explicit training consent is subsequently gi
 - The local filesystem adapter requires shared persistent storage. S3 is not implemented.
 - The optional detector runtime is deliberately absent without reviewed data/weights.
 - Browser-local step completion is per plan; no credentials/photos go into localStorage.
+
+The current local branch is `main`, tracking the public `origin/main`. The old
+private M1 branch is preserved locally as `archive/m1-private`. All current source
+is committed. The single-command launcher is running backend, worker and frontend
+at 127.0.0.1:8000 / 127.0.0.1:3000; the worker heartbeat check passes. No hosted
+public application is provisioned; the hosting account/domain question is pending.
 
 ## Next required inputs
 
