@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.0",
+  "name": "Invalid: unknown and conflicting pins",
+  "components": [
+    {
+      "id": "R1",
+      "type": "resistor",
+      "value_ohms": 220,
+      "pins": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "led",
+      "pins": [
+        "anode",
+        "cathode"
+      ]
+    },
+    {
+      "id": "SW1",
+      "type": "push_button",
+      "pins": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "id": "VCC",
+      "members": [
+        "SW1.1",
+        "SW1.2",
+        "R1.1",
+        "R1.99"
+      ],
+      "role": "power"
+    },
+    {
+      "id": "N1",
+      "members": [
+        "R1.2",
+        "D1.anode"
+      ],
+      "role": "signal"
+    },
+    {
+      "id": "GND",
+      "members": [
+        "D1.cathode"
+      ],
+      "role": "ground"
+    },
+    {
+      "id": "SWITCHED",
+      "members": [
+        "SW1.3",
+        "SW1.4",
+        "R1.1"
+      ],
+      "role": "signal"
+    }
+  ],
+  "supply": {
+    "voltage_v": 5.0,
+    "current_limit_ma": 100,
+    "positive_net": "VCC",
+    "negative_net": "GND"
+  }
+}

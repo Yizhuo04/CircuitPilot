@@ -1,0 +1,335 @@
+{
+  "$defs": {
+    "Jumper": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pins": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Pins",
+          "type": "array"
+        },
+        "type": {
+          "const": "jumper",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "pins"
+      ],
+      "title": "Jumper",
+      "type": "object"
+    },
+    "LED": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pins": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Pins",
+          "type": "array"
+        },
+        "type": {
+          "const": "led",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "pins"
+      ],
+      "title": "LED",
+      "type": "object"
+    },
+    "Net": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "members": {
+          "items": {
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}\\.[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Members",
+          "type": "array"
+        },
+        "role": {
+          "default": "signal",
+          "enum": [
+            "power",
+            "ground",
+            "signal"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "members"
+      ],
+      "title": "Net",
+      "type": "object"
+    },
+    "PushButton": {
+      "additionalProperties": false,
+      "description": "Normally-open momentary button; internal contact model is deferred to M2.",
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pins": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Pins",
+          "type": "array"
+        },
+        "type": {
+          "const": "push_button",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "pins"
+      ],
+      "title": "PushButton",
+      "type": "object"
+    },
+    "Resistor": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pins": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Pins",
+          "type": "array"
+        },
+        "type": {
+          "const": "resistor",
+          "title": "Type",
+          "type": "string"
+        },
+        "value_ohms": {
+          "exclusiveMinimum": 0,
+          "title": "Value Ohms",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "pins",
+        "value_ohms"
+      ],
+      "title": "Resistor",
+      "type": "object"
+    },
+    "Supply": {
+      "additionalProperties": false,
+      "properties": {
+        "current_limit_ma": {
+          "exclusiveMinimum": 0,
+          "maximum": 500,
+          "title": "Current Limit Ma",
+          "type": "number"
+        },
+        "negative_net": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Negative Net",
+          "type": "string"
+        },
+        "positive_net": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Positive Net",
+          "type": "string"
+        },
+        "voltage_v": {
+          "exclusiveMinimum": 0,
+          "maximum": 12,
+          "title": "Voltage V",
+          "type": "number"
+        }
+      },
+      "required": [
+        "voltage_v",
+        "current_limit_ma",
+        "positive_net",
+        "negative_net"
+      ],
+      "title": "Supply",
+      "type": "object"
+    },
+    "SupplyTerminal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,63}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "pins": {
+          "items": {
+            "pattern": "^[A-Za-z0-9_-]{1,32}$",
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "title": "Pins",
+          "type": "array"
+        },
+        "type": {
+          "const": "supply_terminal",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "pins"
+      ],
+      "title": "SupplyTerminal",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assumptions": {
+      "items": {
+        "maxLength": 500,
+        "type": "string"
+      },
+      "maxItems": 32,
+      "title": "Assumptions",
+      "type": "array"
+    },
+    "components": {
+      "items": {
+        "discriminator": {
+          "mapping": {
+            "jumper": "#/$defs/Jumper",
+            "led": "#/$defs/LED",
+            "push_button": "#/$defs/PushButton",
+            "resistor": "#/$defs/Resistor",
+            "supply_terminal": "#/$defs/SupplyTerminal"
+          },
+          "propertyName": "type"
+        },
+        "oneOf": [
+          {
+            "$ref": "#/$defs/Resistor"
+          },
+          {
+            "$ref": "#/$defs/LED"
+          },
+          {
+            "$ref": "#/$defs/PushButton"
+          },
+          {
+            "$ref": "#/$defs/Jumper"
+          },
+          {
+            "$ref": "#/$defs/SupplyTerminal"
+          }
+        ]
+      },
+      "maxItems": 64,
+      "minItems": 1,
+      "title": "Components",
+      "type": "array"
+    },
+    "name": {
+      "maxLength": 200,
+      "minLength": 1,
+      "pattern": "\\S",
+      "title": "Name",
+      "type": "string"
+    },
+    "nets": {
+      "items": {
+        "$ref": "#/$defs/Net"
+      },
+      "maxItems": 128,
+      "minItems": 1,
+      "title": "Nets",
+      "type": "array"
+    },
+    "schema_version": {
+      "const": "1.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "supply": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Supply"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "units": {
+      "const": "SI",
+      "default": "SI",
+      "title": "Units",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "name",
+    "components",
+    "nets"
+  ],
+  "title": "Circuit",
+  "type": "object"
+}

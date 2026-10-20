@@ -1,0 +1,6935 @@
+{
+  "coordinate_units": "mm",
+  "holes": [
+    {
+      "conductive_group_id": "STRIP_L_1",
+      "id": "A1",
+      "position": {
+        "x": 0.0,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_1",
+      "id": "B1",
+      "position": {
+        "x": 2.54,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_1",
+      "id": "C1",
+      "position": {
+        "x": 5.08,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_1",
+      "id": "D1",
+      "position": {
+        "x": 7.62,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_1",
+      "id": "E1",
+      "position": {
+        "x": 10.16,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_1",
+      "id": "F1",
+      "position": {
+        "x": 17.78,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_1",
+      "id": "G1",
+      "position": {
+        "x": 20.32,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_1",
+      "id": "H1",
+      "position": {
+        "x": 22.86,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_1",
+      "id": "I1",
+      "position": {
+        "x": 25.4,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_1",
+      "id": "J1",
+      "position": {
+        "x": 27.94,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_2",
+      "id": "A2",
+      "position": {
+        "x": 0.0,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_2",
+      "id": "B2",
+      "position": {
+        "x": 2.54,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_2",
+      "id": "C2",
+      "position": {
+        "x": 5.08,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_2",
+      "id": "D2",
+      "position": {
+        "x": 7.62,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_2",
+      "id": "E2",
+      "position": {
+        "x": 10.16,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_2",
+      "id": "F2",
+      "position": {
+        "x": 17.78,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_2",
+      "id": "G2",
+      "position": {
+        "x": 20.32,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_2",
+      "id": "H2",
+      "position": {
+        "x": 22.86,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_2",
+      "id": "I2",
+      "position": {
+        "x": 25.4,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_2",
+      "id": "J2",
+      "position": {
+        "x": 27.94,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_3",
+      "id": "A3",
+      "position": {
+        "x": 0.0,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_3",
+      "id": "B3",
+      "position": {
+        "x": 2.54,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_3",
+      "id": "C3",
+      "position": {
+        "x": 5.08,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_3",
+      "id": "D3",
+      "position": {
+        "x": 7.62,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_3",
+      "id": "E3",
+      "position": {
+        "x": 10.16,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_3",
+      "id": "F3",
+      "position": {
+        "x": 17.78,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_3",
+      "id": "G3",
+      "position": {
+        "x": 20.32,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_3",
+      "id": "H3",
+      "position": {
+        "x": 22.86,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_3",
+      "id": "I3",
+      "position": {
+        "x": 25.4,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_3",
+      "id": "J3",
+      "position": {
+        "x": 27.94,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_4",
+      "id": "A4",
+      "position": {
+        "x": 0.0,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_4",
+      "id": "B4",
+      "position": {
+        "x": 2.54,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_4",
+      "id": "C4",
+      "position": {
+        "x": 5.08,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_4",
+      "id": "D4",
+      "position": {
+        "x": 7.62,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_4",
+      "id": "E4",
+      "position": {
+        "x": 10.16,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_4",
+      "id": "F4",
+      "position": {
+        "x": 17.78,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_4",
+      "id": "G4",
+      "position": {
+        "x": 20.32,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_4",
+      "id": "H4",
+      "position": {
+        "x": 22.86,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_4",
+      "id": "I4",
+      "position": {
+        "x": 25.4,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_4",
+      "id": "J4",
+      "position": {
+        "x": 27.94,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_5",
+      "id": "A5",
+      "position": {
+        "x": 0.0,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_5",
+      "id": "B5",
+      "position": {
+        "x": 2.54,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_5",
+      "id": "C5",
+      "position": {
+        "x": 5.08,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_5",
+      "id": "D5",
+      "position": {
+        "x": 7.62,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_5",
+      "id": "E5",
+      "position": {
+        "x": 10.16,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_5",
+      "id": "F5",
+      "position": {
+        "x": 17.78,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_5",
+      "id": "G5",
+      "position": {
+        "x": 20.32,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_5",
+      "id": "H5",
+      "position": {
+        "x": 22.86,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_5",
+      "id": "I5",
+      "position": {
+        "x": 25.4,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_5",
+      "id": "J5",
+      "position": {
+        "x": 27.94,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_6",
+      "id": "A6",
+      "position": {
+        "x": 0.0,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_6",
+      "id": "B6",
+      "position": {
+        "x": 2.54,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_6",
+      "id": "C6",
+      "position": {
+        "x": 5.08,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_6",
+      "id": "D6",
+      "position": {
+        "x": 7.62,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_6",
+      "id": "E6",
+      "position": {
+        "x": 10.16,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_6",
+      "id": "F6",
+      "position": {
+        "x": 17.78,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_6",
+      "id": "G6",
+      "position": {
+        "x": 20.32,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_6",
+      "id": "H6",
+      "position": {
+        "x": 22.86,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_6",
+      "id": "I6",
+      "position": {
+        "x": 25.4,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_6",
+      "id": "J6",
+      "position": {
+        "x": 27.94,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_7",
+      "id": "A7",
+      "position": {
+        "x": 0.0,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_7",
+      "id": "B7",
+      "position": {
+        "x": 2.54,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_7",
+      "id": "C7",
+      "position": {
+        "x": 5.08,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_7",
+      "id": "D7",
+      "position": {
+        "x": 7.62,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_7",
+      "id": "E7",
+      "position": {
+        "x": 10.16,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_7",
+      "id": "F7",
+      "position": {
+        "x": 17.78,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_7",
+      "id": "G7",
+      "position": {
+        "x": 20.32,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_7",
+      "id": "H7",
+      "position": {
+        "x": 22.86,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_7",
+      "id": "I7",
+      "position": {
+        "x": 25.4,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_7",
+      "id": "J7",
+      "position": {
+        "x": 27.94,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_8",
+      "id": "A8",
+      "position": {
+        "x": 0.0,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_8",
+      "id": "B8",
+      "position": {
+        "x": 2.54,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_8",
+      "id": "C8",
+      "position": {
+        "x": 5.08,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_8",
+      "id": "D8",
+      "position": {
+        "x": 7.62,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_8",
+      "id": "E8",
+      "position": {
+        "x": 10.16,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_8",
+      "id": "F8",
+      "position": {
+        "x": 17.78,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_8",
+      "id": "G8",
+      "position": {
+        "x": 20.32,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_8",
+      "id": "H8",
+      "position": {
+        "x": 22.86,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_8",
+      "id": "I8",
+      "position": {
+        "x": 25.4,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_8",
+      "id": "J8",
+      "position": {
+        "x": 27.94,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_9",
+      "id": "A9",
+      "position": {
+        "x": 0.0,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_9",
+      "id": "B9",
+      "position": {
+        "x": 2.54,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_9",
+      "id": "C9",
+      "position": {
+        "x": 5.08,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_9",
+      "id": "D9",
+      "position": {
+        "x": 7.62,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_9",
+      "id": "E9",
+      "position": {
+        "x": 10.16,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_9",
+      "id": "F9",
+      "position": {
+        "x": 17.78,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_9",
+      "id": "G9",
+      "position": {
+        "x": 20.32,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_9",
+      "id": "H9",
+      "position": {
+        "x": 22.86,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_9",
+      "id": "I9",
+      "position": {
+        "x": 25.4,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_9",
+      "id": "J9",
+      "position": {
+        "x": 27.94,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_10",
+      "id": "A10",
+      "position": {
+        "x": 0.0,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_10",
+      "id": "B10",
+      "position": {
+        "x": 2.54,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_10",
+      "id": "C10",
+      "position": {
+        "x": 5.08,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_10",
+      "id": "D10",
+      "position": {
+        "x": 7.62,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_10",
+      "id": "E10",
+      "position": {
+        "x": 10.16,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_10",
+      "id": "F10",
+      "position": {
+        "x": 17.78,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_10",
+      "id": "G10",
+      "position": {
+        "x": 20.32,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_10",
+      "id": "H10",
+      "position": {
+        "x": 22.86,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_10",
+      "id": "I10",
+      "position": {
+        "x": 25.4,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_10",
+      "id": "J10",
+      "position": {
+        "x": 27.94,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_11",
+      "id": "A11",
+      "position": {
+        "x": 0.0,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_11",
+      "id": "B11",
+      "position": {
+        "x": 2.54,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_11",
+      "id": "C11",
+      "position": {
+        "x": 5.08,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_11",
+      "id": "D11",
+      "position": {
+        "x": 7.62,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_11",
+      "id": "E11",
+      "position": {
+        "x": 10.16,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_11",
+      "id": "F11",
+      "position": {
+        "x": 17.78,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_11",
+      "id": "G11",
+      "position": {
+        "x": 20.32,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_11",
+      "id": "H11",
+      "position": {
+        "x": 22.86,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_11",
+      "id": "I11",
+      "position": {
+        "x": 25.4,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_11",
+      "id": "J11",
+      "position": {
+        "x": 27.94,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_12",
+      "id": "A12",
+      "position": {
+        "x": 0.0,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_12",
+      "id": "B12",
+      "position": {
+        "x": 2.54,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_12",
+      "id": "C12",
+      "position": {
+        "x": 5.08,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_12",
+      "id": "D12",
+      "position": {
+        "x": 7.62,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_12",
+      "id": "E12",
+      "position": {
+        "x": 10.16,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_12",
+      "id": "F12",
+      "position": {
+        "x": 17.78,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_12",
+      "id": "G12",
+      "position": {
+        "x": 20.32,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_12",
+      "id": "H12",
+      "position": {
+        "x": 22.86,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_12",
+      "id": "I12",
+      "position": {
+        "x": 25.4,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_12",
+      "id": "J12",
+      "position": {
+        "x": 27.94,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_13",
+      "id": "A13",
+      "position": {
+        "x": 0.0,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_13",
+      "id": "B13",
+      "position": {
+        "x": 2.54,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_13",
+      "id": "C13",
+      "position": {
+        "x": 5.08,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_13",
+      "id": "D13",
+      "position": {
+        "x": 7.62,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_13",
+      "id": "E13",
+      "position": {
+        "x": 10.16,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_13",
+      "id": "F13",
+      "position": {
+        "x": 17.78,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_13",
+      "id": "G13",
+      "position": {
+        "x": 20.32,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_13",
+      "id": "H13",
+      "position": {
+        "x": 22.86,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_13",
+      "id": "I13",
+      "position": {
+        "x": 25.4,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_13",
+      "id": "J13",
+      "position": {
+        "x": 27.94,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_14",
+      "id": "A14",
+      "position": {
+        "x": 0.0,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_14",
+      "id": "B14",
+      "position": {
+        "x": 2.54,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_14",
+      "id": "C14",
+      "position": {
+        "x": 5.08,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_14",
+      "id": "D14",
+      "position": {
+        "x": 7.62,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_14",
+      "id": "E14",
+      "position": {
+        "x": 10.16,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_14",
+      "id": "F14",
+      "position": {
+        "x": 17.78,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_14",
+      "id": "G14",
+      "position": {
+        "x": 20.32,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_14",
+      "id": "H14",
+      "position": {
+        "x": 22.86,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_14",
+      "id": "I14",
+      "position": {
+        "x": 25.4,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_14",
+      "id": "J14",
+      "position": {
+        "x": 27.94,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_15",
+      "id": "A15",
+      "position": {
+        "x": 0.0,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_15",
+      "id": "B15",
+      "position": {
+        "x": 2.54,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_15",
+      "id": "C15",
+      "position": {
+        "x": 5.08,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_15",
+      "id": "D15",
+      "position": {
+        "x": 7.62,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_15",
+      "id": "E15",
+      "position": {
+        "x": 10.16,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_15",
+      "id": "F15",
+      "position": {
+        "x": 17.78,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_15",
+      "id": "G15",
+      "position": {
+        "x": 20.32,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_15",
+      "id": "H15",
+      "position": {
+        "x": 22.86,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_15",
+      "id": "I15",
+      "position": {
+        "x": 25.4,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_15",
+      "id": "J15",
+      "position": {
+        "x": 27.94,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_16",
+      "id": "A16",
+      "position": {
+        "x": 0.0,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_16",
+      "id": "B16",
+      "position": {
+        "x": 2.54,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_16",
+      "id": "C16",
+      "position": {
+        "x": 5.08,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_16",
+      "id": "D16",
+      "position": {
+        "x": 7.62,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_16",
+      "id": "E16",
+      "position": {
+        "x": 10.16,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_16",
+      "id": "F16",
+      "position": {
+        "x": 17.78,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_16",
+      "id": "G16",
+      "position": {
+        "x": 20.32,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_16",
+      "id": "H16",
+      "position": {
+        "x": 22.86,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_16",
+      "id": "I16",
+      "position": {
+        "x": 25.4,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_16",
+      "id": "J16",
+      "position": {
+        "x": 27.94,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_17",
+      "id": "A17",
+      "position": {
+        "x": 0.0,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_17",
+      "id": "B17",
+      "position": {
+        "x": 2.54,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_17",
+      "id": "C17",
+      "position": {
+        "x": 5.08,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_17",
+      "id": "D17",
+      "position": {
+        "x": 7.62,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_17",
+      "id": "E17",
+      "position": {
+        "x": 10.16,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_17",
+      "id": "F17",
+      "position": {
+        "x": 17.78,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_17",
+      "id": "G17",
+      "position": {
+        "x": 20.32,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_17",
+      "id": "H17",
+      "position": {
+        "x": 22.86,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_17",
+      "id": "I17",
+      "position": {
+        "x": 25.4,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_17",
+      "id": "J17",
+      "position": {
+        "x": 27.94,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_18",
+      "id": "A18",
+      "position": {
+        "x": 0.0,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_18",
+      "id": "B18",
+      "position": {
+        "x": 2.54,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_18",
+      "id": "C18",
+      "position": {
+        "x": 5.08,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_18",
+      "id": "D18",
+      "position": {
+        "x": 7.62,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_18",
+      "id": "E18",
+      "position": {
+        "x": 10.16,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_18",
+      "id": "F18",
+      "position": {
+        "x": 17.78,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_18",
+      "id": "G18",
+      "position": {
+        "x": 20.32,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_18",
+      "id": "H18",
+      "position": {
+        "x": 22.86,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_18",
+      "id": "I18",
+      "position": {
+        "x": 25.4,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_18",
+      "id": "J18",
+      "position": {
+        "x": 27.94,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_19",
+      "id": "A19",
+      "position": {
+        "x": 0.0,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_19",
+      "id": "B19",
+      "position": {
+        "x": 2.54,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_19",
+      "id": "C19",
+      "position": {
+        "x": 5.08,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_19",
+      "id": "D19",
+      "position": {
+        "x": 7.62,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_19",
+      "id": "E19",
+      "position": {
+        "x": 10.16,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_19",
+      "id": "F19",
+      "position": {
+        "x": 17.78,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_19",
+      "id": "G19",
+      "position": {
+        "x": 20.32,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_19",
+      "id": "H19",
+      "position": {
+        "x": 22.86,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_19",
+      "id": "I19",
+      "position": {
+        "x": 25.4,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_19",
+      "id": "J19",
+      "position": {
+        "x": 27.94,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_20",
+      "id": "A20",
+      "position": {
+        "x": 0.0,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_20",
+      "id": "B20",
+      "position": {
+        "x": 2.54,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_20",
+      "id": "C20",
+      "position": {
+        "x": 5.08,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_20",
+      "id": "D20",
+      "position": {
+        "x": 7.62,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_20",
+      "id": "E20",
+      "position": {
+        "x": 10.16,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_20",
+      "id": "F20",
+      "position": {
+        "x": 17.78,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_20",
+      "id": "G20",
+      "position": {
+        "x": 20.32,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_20",
+      "id": "H20",
+      "position": {
+        "x": 22.86,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_20",
+      "id": "I20",
+      "position": {
+        "x": 25.4,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_20",
+      "id": "J20",
+      "position": {
+        "x": 27.94,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_21",
+      "id": "A21",
+      "position": {
+        "x": 0.0,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_21",
+      "id": "B21",
+      "position": {
+        "x": 2.54,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_21",
+      "id": "C21",
+      "position": {
+        "x": 5.08,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_21",
+      "id": "D21",
+      "position": {
+        "x": 7.62,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_21",
+      "id": "E21",
+      "position": {
+        "x": 10.16,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_21",
+      "id": "F21",
+      "position": {
+        "x": 17.78,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_21",
+      "id": "G21",
+      "position": {
+        "x": 20.32,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_21",
+      "id": "H21",
+      "position": {
+        "x": 22.86,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_21",
+      "id": "I21",
+      "position": {
+        "x": 25.4,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_21",
+      "id": "J21",
+      "position": {
+        "x": 27.94,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_22",
+      "id": "A22",
+      "position": {
+        "x": 0.0,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_22",
+      "id": "B22",
+      "position": {
+        "x": 2.54,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_22",
+      "id": "C22",
+      "position": {
+        "x": 5.08,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_22",
+      "id": "D22",
+      "position": {
+        "x": 7.62,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_22",
+      "id": "E22",
+      "position": {
+        "x": 10.16,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_22",
+      "id": "F22",
+      "position": {
+        "x": 17.78,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_22",
+      "id": "G22",
+      "position": {
+        "x": 20.32,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_22",
+      "id": "H22",
+      "position": {
+        "x": 22.86,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_22",
+      "id": "I22",
+      "position": {
+        "x": 25.4,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_22",
+      "id": "J22",
+      "position": {
+        "x": 27.94,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_23",
+      "id": "A23",
+      "position": {
+        "x": 0.0,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_23",
+      "id": "B23",
+      "position": {
+        "x": 2.54,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_23",
+      "id": "C23",
+      "position": {
+        "x": 5.08,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_23",
+      "id": "D23",
+      "position": {
+        "x": 7.62,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_23",
+      "id": "E23",
+      "position": {
+        "x": 10.16,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_23",
+      "id": "F23",
+      "position": {
+        "x": 17.78,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_23",
+      "id": "G23",
+      "position": {
+        "x": 20.32,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_23",
+      "id": "H23",
+      "position": {
+        "x": 22.86,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_23",
+      "id": "I23",
+      "position": {
+        "x": 25.4,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_23",
+      "id": "J23",
+      "position": {
+        "x": 27.94,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_24",
+      "id": "A24",
+      "position": {
+        "x": 0.0,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_24",
+      "id": "B24",
+      "position": {
+        "x": 2.54,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_24",
+      "id": "C24",
+      "position": {
+        "x": 5.08,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_24",
+      "id": "D24",
+      "position": {
+        "x": 7.62,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_24",
+      "id": "E24",
+      "position": {
+        "x": 10.16,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_24",
+      "id": "F24",
+      "position": {
+        "x": 17.78,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_24",
+      "id": "G24",
+      "position": {
+        "x": 20.32,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_24",
+      "id": "H24",
+      "position": {
+        "x": 22.86,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_24",
+      "id": "I24",
+      "position": {
+        "x": 25.4,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_24",
+      "id": "J24",
+      "position": {
+        "x": 27.94,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_25",
+      "id": "A25",
+      "position": {
+        "x": 0.0,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_25",
+      "id": "B25",
+      "position": {
+        "x": 2.54,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_25",
+      "id": "C25",
+      "position": {
+        "x": 5.08,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_25",
+      "id": "D25",
+      "position": {
+        "x": 7.62,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_25",
+      "id": "E25",
+      "position": {
+        "x": 10.16,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_25",
+      "id": "F25",
+      "position": {
+        "x": 17.78,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_25",
+      "id": "G25",
+      "position": {
+        "x": 20.32,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_25",
+      "id": "H25",
+      "position": {
+        "x": 22.86,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_25",
+      "id": "I25",
+      "position": {
+        "x": 25.4,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_25",
+      "id": "J25",
+      "position": {
+        "x": 27.94,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_26",
+      "id": "A26",
+      "position": {
+        "x": 0.0,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_26",
+      "id": "B26",
+      "position": {
+        "x": 2.54,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_26",
+      "id": "C26",
+      "position": {
+        "x": 5.08,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_26",
+      "id": "D26",
+      "position": {
+        "x": 7.62,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_26",
+      "id": "E26",
+      "position": {
+        "x": 10.16,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_26",
+      "id": "F26",
+      "position": {
+        "x": 17.78,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_26",
+      "id": "G26",
+      "position": {
+        "x": 20.32,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_26",
+      "id": "H26",
+      "position": {
+        "x": 22.86,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_26",
+      "id": "I26",
+      "position": {
+        "x": 25.4,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_26",
+      "id": "J26",
+      "position": {
+        "x": 27.94,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_27",
+      "id": "A27",
+      "position": {
+        "x": 0.0,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_27",
+      "id": "B27",
+      "position": {
+        "x": 2.54,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_27",
+      "id": "C27",
+      "position": {
+        "x": 5.08,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_27",
+      "id": "D27",
+      "position": {
+        "x": 7.62,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_27",
+      "id": "E27",
+      "position": {
+        "x": 10.16,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_27",
+      "id": "F27",
+      "position": {
+        "x": 17.78,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_27",
+      "id": "G27",
+      "position": {
+        "x": 20.32,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_27",
+      "id": "H27",
+      "position": {
+        "x": 22.86,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_27",
+      "id": "I27",
+      "position": {
+        "x": 25.4,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_27",
+      "id": "J27",
+      "position": {
+        "x": 27.94,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_28",
+      "id": "A28",
+      "position": {
+        "x": 0.0,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_28",
+      "id": "B28",
+      "position": {
+        "x": 2.54,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_28",
+      "id": "C28",
+      "position": {
+        "x": 5.08,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_28",
+      "id": "D28",
+      "position": {
+        "x": 7.62,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_28",
+      "id": "E28",
+      "position": {
+        "x": 10.16,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_28",
+      "id": "F28",
+      "position": {
+        "x": 17.78,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_28",
+      "id": "G28",
+      "position": {
+        "x": 20.32,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_28",
+      "id": "H28",
+      "position": {
+        "x": 22.86,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_28",
+      "id": "I28",
+      "position": {
+        "x": 25.4,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_28",
+      "id": "J28",
+      "position": {
+        "x": 27.94,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_29",
+      "id": "A29",
+      "position": {
+        "x": 0.0,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_29",
+      "id": "B29",
+      "position": {
+        "x": 2.54,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_29",
+      "id": "C29",
+      "position": {
+        "x": 5.08,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_29",
+      "id": "D29",
+      "position": {
+        "x": 7.62,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_29",
+      "id": "E29",
+      "position": {
+        "x": 10.16,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_29",
+      "id": "F29",
+      "position": {
+        "x": 17.78,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_29",
+      "id": "G29",
+      "position": {
+        "x": 20.32,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_29",
+      "id": "H29",
+      "position": {
+        "x": 22.86,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_29",
+      "id": "I29",
+      "position": {
+        "x": 25.4,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_29",
+      "id": "J29",
+      "position": {
+        "x": 27.94,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_30",
+      "id": "A30",
+      "position": {
+        "x": 0.0,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_30",
+      "id": "B30",
+      "position": {
+        "x": 2.54,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_30",
+      "id": "C30",
+      "position": {
+        "x": 5.08,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_30",
+      "id": "D30",
+      "position": {
+        "x": 7.62,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_30",
+      "id": "E30",
+      "position": {
+        "x": 10.16,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_30",
+      "id": "F30",
+      "position": {
+        "x": 17.78,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_30",
+      "id": "G30",
+      "position": {
+        "x": 20.32,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_30",
+      "id": "H30",
+      "position": {
+        "x": 22.86,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_30",
+      "id": "I30",
+      "position": {
+        "x": 25.4,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_30",
+      "id": "J30",
+      "position": {
+        "x": 27.94,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_31",
+      "id": "A31",
+      "position": {
+        "x": 0.0,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_31",
+      "id": "B31",
+      "position": {
+        "x": 2.54,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_31",
+      "id": "C31",
+      "position": {
+        "x": 5.08,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_31",
+      "id": "D31",
+      "position": {
+        "x": 7.62,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_31",
+      "id": "E31",
+      "position": {
+        "x": 10.16,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_31",
+      "id": "F31",
+      "position": {
+        "x": 17.78,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_31",
+      "id": "G31",
+      "position": {
+        "x": 20.32,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_31",
+      "id": "H31",
+      "position": {
+        "x": 22.86,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_31",
+      "id": "I31",
+      "position": {
+        "x": 25.4,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_31",
+      "id": "J31",
+      "position": {
+        "x": 27.94,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_32",
+      "id": "A32",
+      "position": {
+        "x": 0.0,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_32",
+      "id": "B32",
+      "position": {
+        "x": 2.54,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_32",
+      "id": "C32",
+      "position": {
+        "x": 5.08,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_32",
+      "id": "D32",
+      "position": {
+        "x": 7.62,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_32",
+      "id": "E32",
+      "position": {
+        "x": 10.16,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_32",
+      "id": "F32",
+      "position": {
+        "x": 17.78,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_32",
+      "id": "G32",
+      "position": {
+        "x": 20.32,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_32",
+      "id": "H32",
+      "position": {
+        "x": 22.86,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_32",
+      "id": "I32",
+      "position": {
+        "x": 25.4,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_32",
+      "id": "J32",
+      "position": {
+        "x": 27.94,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_33",
+      "id": "A33",
+      "position": {
+        "x": 0.0,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_33",
+      "id": "B33",
+      "position": {
+        "x": 2.54,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_33",
+      "id": "C33",
+      "position": {
+        "x": 5.08,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_33",
+      "id": "D33",
+      "position": {
+        "x": 7.62,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_33",
+      "id": "E33",
+      "position": {
+        "x": 10.16,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_33",
+      "id": "F33",
+      "position": {
+        "x": 17.78,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_33",
+      "id": "G33",
+      "position": {
+        "x": 20.32,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_33",
+      "id": "H33",
+      "position": {
+        "x": 22.86,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_33",
+      "id": "I33",
+      "position": {
+        "x": 25.4,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_33",
+      "id": "J33",
+      "position": {
+        "x": 27.94,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_34",
+      "id": "A34",
+      "position": {
+        "x": 0.0,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_34",
+      "id": "B34",
+      "position": {
+        "x": 2.54,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_34",
+      "id": "C34",
+      "position": {
+        "x": 5.08,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_34",
+      "id": "D34",
+      "position": {
+        "x": 7.62,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_34",
+      "id": "E34",
+      "position": {
+        "x": 10.16,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_34",
+      "id": "F34",
+      "position": {
+        "x": 17.78,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_34",
+      "id": "G34",
+      "position": {
+        "x": 20.32,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_34",
+      "id": "H34",
+      "position": {
+        "x": 22.86,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_34",
+      "id": "I34",
+      "position": {
+        "x": 25.4,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_34",
+      "id": "J34",
+      "position": {
+        "x": 27.94,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_35",
+      "id": "A35",
+      "position": {
+        "x": 0.0,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_35",
+      "id": "B35",
+      "position": {
+        "x": 2.54,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_35",
+      "id": "C35",
+      "position": {
+        "x": 5.08,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_35",
+      "id": "D35",
+      "position": {
+        "x": 7.62,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_35",
+      "id": "E35",
+      "position": {
+        "x": 10.16,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_35",
+      "id": "F35",
+      "position": {
+        "x": 17.78,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_35",
+      "id": "G35",
+      "position": {
+        "x": 20.32,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_35",
+      "id": "H35",
+      "position": {
+        "x": 22.86,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_35",
+      "id": "I35",
+      "position": {
+        "x": 25.4,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_35",
+      "id": "J35",
+      "position": {
+        "x": 27.94,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_36",
+      "id": "A36",
+      "position": {
+        "x": 0.0,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_36",
+      "id": "B36",
+      "position": {
+        "x": 2.54,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_36",
+      "id": "C36",
+      "position": {
+        "x": 5.08,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_36",
+      "id": "D36",
+      "position": {
+        "x": 7.62,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_36",
+      "id": "E36",
+      "position": {
+        "x": 10.16,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_36",
+      "id": "F36",
+      "position": {
+        "x": 17.78,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_36",
+      "id": "G36",
+      "position": {
+        "x": 20.32,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_36",
+      "id": "H36",
+      "position": {
+        "x": 22.86,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_36",
+      "id": "I36",
+      "position": {
+        "x": 25.4,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_36",
+      "id": "J36",
+      "position": {
+        "x": 27.94,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_37",
+      "id": "A37",
+      "position": {
+        "x": 0.0,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_37",
+      "id": "B37",
+      "position": {
+        "x": 2.54,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_37",
+      "id": "C37",
+      "position": {
+        "x": 5.08,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_37",
+      "id": "D37",
+      "position": {
+        "x": 7.62,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_37",
+      "id": "E37",
+      "position": {
+        "x": 10.16,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_37",
+      "id": "F37",
+      "position": {
+        "x": 17.78,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_37",
+      "id": "G37",
+      "position": {
+        "x": 20.32,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_37",
+      "id": "H37",
+      "position": {
+        "x": 22.86,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_37",
+      "id": "I37",
+      "position": {
+        "x": 25.4,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_37",
+      "id": "J37",
+      "position": {
+        "x": 27.94,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_38",
+      "id": "A38",
+      "position": {
+        "x": 0.0,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_38",
+      "id": "B38",
+      "position": {
+        "x": 2.54,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_38",
+      "id": "C38",
+      "position": {
+        "x": 5.08,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_38",
+      "id": "D38",
+      "position": {
+        "x": 7.62,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_38",
+      "id": "E38",
+      "position": {
+        "x": 10.16,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_38",
+      "id": "F38",
+      "position": {
+        "x": 17.78,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_38",
+      "id": "G38",
+      "position": {
+        "x": 20.32,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_38",
+      "id": "H38",
+      "position": {
+        "x": 22.86,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_38",
+      "id": "I38",
+      "position": {
+        "x": 25.4,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_38",
+      "id": "J38",
+      "position": {
+        "x": 27.94,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_39",
+      "id": "A39",
+      "position": {
+        "x": 0.0,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_39",
+      "id": "B39",
+      "position": {
+        "x": 2.54,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_39",
+      "id": "C39",
+      "position": {
+        "x": 5.08,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_39",
+      "id": "D39",
+      "position": {
+        "x": 7.62,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_39",
+      "id": "E39",
+      "position": {
+        "x": 10.16,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_39",
+      "id": "F39",
+      "position": {
+        "x": 17.78,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_39",
+      "id": "G39",
+      "position": {
+        "x": 20.32,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_39",
+      "id": "H39",
+      "position": {
+        "x": 22.86,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_39",
+      "id": "I39",
+      "position": {
+        "x": 25.4,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_39",
+      "id": "J39",
+      "position": {
+        "x": 27.94,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_40",
+      "id": "A40",
+      "position": {
+        "x": 0.0,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_40",
+      "id": "B40",
+      "position": {
+        "x": 2.54,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_40",
+      "id": "C40",
+      "position": {
+        "x": 5.08,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_40",
+      "id": "D40",
+      "position": {
+        "x": 7.62,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_40",
+      "id": "E40",
+      "position": {
+        "x": 10.16,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_40",
+      "id": "F40",
+      "position": {
+        "x": 17.78,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_40",
+      "id": "G40",
+      "position": {
+        "x": 20.32,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_40",
+      "id": "H40",
+      "position": {
+        "x": 22.86,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_40",
+      "id": "I40",
+      "position": {
+        "x": 25.4,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_40",
+      "id": "J40",
+      "position": {
+        "x": 27.94,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_41",
+      "id": "A41",
+      "position": {
+        "x": 0.0,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_41",
+      "id": "B41",
+      "position": {
+        "x": 2.54,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_41",
+      "id": "C41",
+      "position": {
+        "x": 5.08,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_41",
+      "id": "D41",
+      "position": {
+        "x": 7.62,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_41",
+      "id": "E41",
+      "position": {
+        "x": 10.16,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_41",
+      "id": "F41",
+      "position": {
+        "x": 17.78,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_41",
+      "id": "G41",
+      "position": {
+        "x": 20.32,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_41",
+      "id": "H41",
+      "position": {
+        "x": 22.86,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_41",
+      "id": "I41",
+      "position": {
+        "x": 25.4,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_41",
+      "id": "J41",
+      "position": {
+        "x": 27.94,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_42",
+      "id": "A42",
+      "position": {
+        "x": 0.0,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_42",
+      "id": "B42",
+      "position": {
+        "x": 2.54,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_42",
+      "id": "C42",
+      "position": {
+        "x": 5.08,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_42",
+      "id": "D42",
+      "position": {
+        "x": 7.62,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_42",
+      "id": "E42",
+      "position": {
+        "x": 10.16,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_42",
+      "id": "F42",
+      "position": {
+        "x": 17.78,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_42",
+      "id": "G42",
+      "position": {
+        "x": 20.32,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_42",
+      "id": "H42",
+      "position": {
+        "x": 22.86,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_42",
+      "id": "I42",
+      "position": {
+        "x": 25.4,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_42",
+      "id": "J42",
+      "position": {
+        "x": 27.94,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_43",
+      "id": "A43",
+      "position": {
+        "x": 0.0,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_43",
+      "id": "B43",
+      "position": {
+        "x": 2.54,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_43",
+      "id": "C43",
+      "position": {
+        "x": 5.08,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_43",
+      "id": "D43",
+      "position": {
+        "x": 7.62,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_43",
+      "id": "E43",
+      "position": {
+        "x": 10.16,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_43",
+      "id": "F43",
+      "position": {
+        "x": 17.78,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_43",
+      "id": "G43",
+      "position": {
+        "x": 20.32,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_43",
+      "id": "H43",
+      "position": {
+        "x": 22.86,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_43",
+      "id": "I43",
+      "position": {
+        "x": 25.4,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_43",
+      "id": "J43",
+      "position": {
+        "x": 27.94,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_44",
+      "id": "A44",
+      "position": {
+        "x": 0.0,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_44",
+      "id": "B44",
+      "position": {
+        "x": 2.54,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_44",
+      "id": "C44",
+      "position": {
+        "x": 5.08,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_44",
+      "id": "D44",
+      "position": {
+        "x": 7.62,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_44",
+      "id": "E44",
+      "position": {
+        "x": 10.16,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_44",
+      "id": "F44",
+      "position": {
+        "x": 17.78,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_44",
+      "id": "G44",
+      "position": {
+        "x": 20.32,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_44",
+      "id": "H44",
+      "position": {
+        "x": 22.86,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_44",
+      "id": "I44",
+      "position": {
+        "x": 25.4,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_44",
+      "id": "J44",
+      "position": {
+        "x": 27.94,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_45",
+      "id": "A45",
+      "position": {
+        "x": 0.0,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_45",
+      "id": "B45",
+      "position": {
+        "x": 2.54,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_45",
+      "id": "C45",
+      "position": {
+        "x": 5.08,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_45",
+      "id": "D45",
+      "position": {
+        "x": 7.62,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_45",
+      "id": "E45",
+      "position": {
+        "x": 10.16,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_45",
+      "id": "F45",
+      "position": {
+        "x": 17.78,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_45",
+      "id": "G45",
+      "position": {
+        "x": 20.32,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_45",
+      "id": "H45",
+      "position": {
+        "x": 22.86,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_45",
+      "id": "I45",
+      "position": {
+        "x": 25.4,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_45",
+      "id": "J45",
+      "position": {
+        "x": 27.94,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_46",
+      "id": "A46",
+      "position": {
+        "x": 0.0,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_46",
+      "id": "B46",
+      "position": {
+        "x": 2.54,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_46",
+      "id": "C46",
+      "position": {
+        "x": 5.08,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_46",
+      "id": "D46",
+      "position": {
+        "x": 7.62,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_46",
+      "id": "E46",
+      "position": {
+        "x": 10.16,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_46",
+      "id": "F46",
+      "position": {
+        "x": 17.78,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_46",
+      "id": "G46",
+      "position": {
+        "x": 20.32,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_46",
+      "id": "H46",
+      "position": {
+        "x": 22.86,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_46",
+      "id": "I46",
+      "position": {
+        "x": 25.4,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_46",
+      "id": "J46",
+      "position": {
+        "x": 27.94,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_47",
+      "id": "A47",
+      "position": {
+        "x": 0.0,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_47",
+      "id": "B47",
+      "position": {
+        "x": 2.54,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_47",
+      "id": "C47",
+      "position": {
+        "x": 5.08,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_47",
+      "id": "D47",
+      "position": {
+        "x": 7.62,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_47",
+      "id": "E47",
+      "position": {
+        "x": 10.16,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_47",
+      "id": "F47",
+      "position": {
+        "x": 17.78,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_47",
+      "id": "G47",
+      "position": {
+        "x": 20.32,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_47",
+      "id": "H47",
+      "position": {
+        "x": 22.86,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_47",
+      "id": "I47",
+      "position": {
+        "x": 25.4,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_47",
+      "id": "J47",
+      "position": {
+        "x": 27.94,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_48",
+      "id": "A48",
+      "position": {
+        "x": 0.0,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_48",
+      "id": "B48",
+      "position": {
+        "x": 2.54,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_48",
+      "id": "C48",
+      "position": {
+        "x": 5.08,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_48",
+      "id": "D48",
+      "position": {
+        "x": 7.62,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_48",
+      "id": "E48",
+      "position": {
+        "x": 10.16,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_48",
+      "id": "F48",
+      "position": {
+        "x": 17.78,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_48",
+      "id": "G48",
+      "position": {
+        "x": 20.32,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_48",
+      "id": "H48",
+      "position": {
+        "x": 22.86,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_48",
+      "id": "I48",
+      "position": {
+        "x": 25.4,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_48",
+      "id": "J48",
+      "position": {
+        "x": 27.94,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_49",
+      "id": "A49",
+      "position": {
+        "x": 0.0,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_49",
+      "id": "B49",
+      "position": {
+        "x": 2.54,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_49",
+      "id": "C49",
+      "position": {
+        "x": 5.08,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_49",
+      "id": "D49",
+      "position": {
+        "x": 7.62,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_49",
+      "id": "E49",
+      "position": {
+        "x": 10.16,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_49",
+      "id": "F49",
+      "position": {
+        "x": 17.78,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_49",
+      "id": "G49",
+      "position": {
+        "x": 20.32,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_49",
+      "id": "H49",
+      "position": {
+        "x": 22.86,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_49",
+      "id": "I49",
+      "position": {
+        "x": 25.4,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_49",
+      "id": "J49",
+      "position": {
+        "x": 27.94,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_50",
+      "id": "A50",
+      "position": {
+        "x": 0.0,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_50",
+      "id": "B50",
+      "position": {
+        "x": 2.54,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_50",
+      "id": "C50",
+      "position": {
+        "x": 5.08,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_50",
+      "id": "D50",
+      "position": {
+        "x": 7.62,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_50",
+      "id": "E50",
+      "position": {
+        "x": 10.16,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_50",
+      "id": "F50",
+      "position": {
+        "x": 17.78,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_50",
+      "id": "G50",
+      "position": {
+        "x": 20.32,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_50",
+      "id": "H50",
+      "position": {
+        "x": 22.86,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_50",
+      "id": "I50",
+      "position": {
+        "x": 25.4,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_50",
+      "id": "J50",
+      "position": {
+        "x": 27.94,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_51",
+      "id": "A51",
+      "position": {
+        "x": 0.0,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_51",
+      "id": "B51",
+      "position": {
+        "x": 2.54,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_51",
+      "id": "C51",
+      "position": {
+        "x": 5.08,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_51",
+      "id": "D51",
+      "position": {
+        "x": 7.62,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_51",
+      "id": "E51",
+      "position": {
+        "x": 10.16,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_51",
+      "id": "F51",
+      "position": {
+        "x": 17.78,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_51",
+      "id": "G51",
+      "position": {
+        "x": 20.32,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_51",
+      "id": "H51",
+      "position": {
+        "x": 22.86,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_51",
+      "id": "I51",
+      "position": {
+        "x": 25.4,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_51",
+      "id": "J51",
+      "position": {
+        "x": 27.94,
+        "y": 127.0
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_52",
+      "id": "A52",
+      "position": {
+        "x": 0.0,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_52",
+      "id": "B52",
+      "position": {
+        "x": 2.54,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_52",
+      "id": "C52",
+      "position": {
+        "x": 5.08,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_52",
+      "id": "D52",
+      "position": {
+        "x": 7.62,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_52",
+      "id": "E52",
+      "position": {
+        "x": 10.16,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_52",
+      "id": "F52",
+      "position": {
+        "x": 17.78,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_52",
+      "id": "G52",
+      "position": {
+        "x": 20.32,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_52",
+      "id": "H52",
+      "position": {
+        "x": 22.86,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_52",
+      "id": "I52",
+      "position": {
+        "x": 25.4,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_52",
+      "id": "J52",
+      "position": {
+        "x": 27.94,
+        "y": 129.54
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_53",
+      "id": "A53",
+      "position": {
+        "x": 0.0,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_53",
+      "id": "B53",
+      "position": {
+        "x": 2.54,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_53",
+      "id": "C53",
+      "position": {
+        "x": 5.08,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_53",
+      "id": "D53",
+      "position": {
+        "x": 7.62,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_53",
+      "id": "E53",
+      "position": {
+        "x": 10.16,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_53",
+      "id": "F53",
+      "position": {
+        "x": 17.78,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_53",
+      "id": "G53",
+      "position": {
+        "x": 20.32,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_53",
+      "id": "H53",
+      "position": {
+        "x": 22.86,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_53",
+      "id": "I53",
+      "position": {
+        "x": 25.4,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_53",
+      "id": "J53",
+      "position": {
+        "x": 27.94,
+        "y": 132.08
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_54",
+      "id": "A54",
+      "position": {
+        "x": 0.0,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_54",
+      "id": "B54",
+      "position": {
+        "x": 2.54,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_54",
+      "id": "C54",
+      "position": {
+        "x": 5.08,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_54",
+      "id": "D54",
+      "position": {
+        "x": 7.62,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_54",
+      "id": "E54",
+      "position": {
+        "x": 10.16,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_54",
+      "id": "F54",
+      "position": {
+        "x": 17.78,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_54",
+      "id": "G54",
+      "position": {
+        "x": 20.32,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_54",
+      "id": "H54",
+      "position": {
+        "x": 22.86,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_54",
+      "id": "I54",
+      "position": {
+        "x": 25.4,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_54",
+      "id": "J54",
+      "position": {
+        "x": 27.94,
+        "y": 134.62
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_55",
+      "id": "A55",
+      "position": {
+        "x": 0.0,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_55",
+      "id": "B55",
+      "position": {
+        "x": 2.54,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_55",
+      "id": "C55",
+      "position": {
+        "x": 5.08,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_55",
+      "id": "D55",
+      "position": {
+        "x": 7.62,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_55",
+      "id": "E55",
+      "position": {
+        "x": 10.16,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_55",
+      "id": "F55",
+      "position": {
+        "x": 17.78,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_55",
+      "id": "G55",
+      "position": {
+        "x": 20.32,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_55",
+      "id": "H55",
+      "position": {
+        "x": 22.86,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_55",
+      "id": "I55",
+      "position": {
+        "x": 25.4,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_55",
+      "id": "J55",
+      "position": {
+        "x": 27.94,
+        "y": 137.16
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_56",
+      "id": "A56",
+      "position": {
+        "x": 0.0,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_56",
+      "id": "B56",
+      "position": {
+        "x": 2.54,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_56",
+      "id": "C56",
+      "position": {
+        "x": 5.08,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_56",
+      "id": "D56",
+      "position": {
+        "x": 7.62,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_56",
+      "id": "E56",
+      "position": {
+        "x": 10.16,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_56",
+      "id": "F56",
+      "position": {
+        "x": 17.78,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_56",
+      "id": "G56",
+      "position": {
+        "x": 20.32,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_56",
+      "id": "H56",
+      "position": {
+        "x": 22.86,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_56",
+      "id": "I56",
+      "position": {
+        "x": 25.4,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_56",
+      "id": "J56",
+      "position": {
+        "x": 27.94,
+        "y": 139.7
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_57",
+      "id": "A57",
+      "position": {
+        "x": 0.0,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_57",
+      "id": "B57",
+      "position": {
+        "x": 2.54,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_57",
+      "id": "C57",
+      "position": {
+        "x": 5.08,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_57",
+      "id": "D57",
+      "position": {
+        "x": 7.62,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_57",
+      "id": "E57",
+      "position": {
+        "x": 10.16,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_57",
+      "id": "F57",
+      "position": {
+        "x": 17.78,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_57",
+      "id": "G57",
+      "position": {
+        "x": 20.32,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_57",
+      "id": "H57",
+      "position": {
+        "x": 22.86,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_57",
+      "id": "I57",
+      "position": {
+        "x": 25.4,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_57",
+      "id": "J57",
+      "position": {
+        "x": 27.94,
+        "y": 142.24
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_58",
+      "id": "A58",
+      "position": {
+        "x": 0.0,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_58",
+      "id": "B58",
+      "position": {
+        "x": 2.54,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_58",
+      "id": "C58",
+      "position": {
+        "x": 5.08,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_58",
+      "id": "D58",
+      "position": {
+        "x": 7.62,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_58",
+      "id": "E58",
+      "position": {
+        "x": 10.16,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_58",
+      "id": "F58",
+      "position": {
+        "x": 17.78,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_58",
+      "id": "G58",
+      "position": {
+        "x": 20.32,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_58",
+      "id": "H58",
+      "position": {
+        "x": 22.86,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_58",
+      "id": "I58",
+      "position": {
+        "x": 25.4,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_58",
+      "id": "J58",
+      "position": {
+        "x": 27.94,
+        "y": 144.78
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_59",
+      "id": "A59",
+      "position": {
+        "x": 0.0,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_59",
+      "id": "B59",
+      "position": {
+        "x": 2.54,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_59",
+      "id": "C59",
+      "position": {
+        "x": 5.08,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_59",
+      "id": "D59",
+      "position": {
+        "x": 7.62,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_59",
+      "id": "E59",
+      "position": {
+        "x": 10.16,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_59",
+      "id": "F59",
+      "position": {
+        "x": 17.78,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_59",
+      "id": "G59",
+      "position": {
+        "x": 20.32,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_59",
+      "id": "H59",
+      "position": {
+        "x": 22.86,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_59",
+      "id": "I59",
+      "position": {
+        "x": 25.4,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_59",
+      "id": "J59",
+      "position": {
+        "x": 27.94,
+        "y": 147.32
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_60",
+      "id": "A60",
+      "position": {
+        "x": 0.0,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_60",
+      "id": "B60",
+      "position": {
+        "x": 2.54,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_60",
+      "id": "C60",
+      "position": {
+        "x": 5.08,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_60",
+      "id": "D60",
+      "position": {
+        "x": 7.62,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_60",
+      "id": "E60",
+      "position": {
+        "x": 10.16,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_60",
+      "id": "F60",
+      "position": {
+        "x": 17.78,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_60",
+      "id": "G60",
+      "position": {
+        "x": 20.32,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_60",
+      "id": "H60",
+      "position": {
+        "x": 22.86,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_60",
+      "id": "I60",
+      "position": {
+        "x": 25.4,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_60",
+      "id": "J60",
+      "position": {
+        "x": 27.94,
+        "y": 149.86
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_61",
+      "id": "A61",
+      "position": {
+        "x": 0.0,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_61",
+      "id": "B61",
+      "position": {
+        "x": 2.54,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_61",
+      "id": "C61",
+      "position": {
+        "x": 5.08,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_61",
+      "id": "D61",
+      "position": {
+        "x": 7.62,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_61",
+      "id": "E61",
+      "position": {
+        "x": 10.16,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_61",
+      "id": "F61",
+      "position": {
+        "x": 17.78,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_61",
+      "id": "G61",
+      "position": {
+        "x": 20.32,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_61",
+      "id": "H61",
+      "position": {
+        "x": 22.86,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_61",
+      "id": "I61",
+      "position": {
+        "x": 25.4,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_61",
+      "id": "J61",
+      "position": {
+        "x": 27.94,
+        "y": 152.4
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_62",
+      "id": "A62",
+      "position": {
+        "x": 0.0,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_62",
+      "id": "B62",
+      "position": {
+        "x": 2.54,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_62",
+      "id": "C62",
+      "position": {
+        "x": 5.08,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_62",
+      "id": "D62",
+      "position": {
+        "x": 7.62,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_62",
+      "id": "E62",
+      "position": {
+        "x": 10.16,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_62",
+      "id": "F62",
+      "position": {
+        "x": 17.78,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_62",
+      "id": "G62",
+      "position": {
+        "x": 20.32,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_62",
+      "id": "H62",
+      "position": {
+        "x": 22.86,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_62",
+      "id": "I62",
+      "position": {
+        "x": 25.4,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_62",
+      "id": "J62",
+      "position": {
+        "x": 27.94,
+        "y": 154.94
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_63",
+      "id": "A63",
+      "position": {
+        "x": 0.0,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_63",
+      "id": "B63",
+      "position": {
+        "x": 2.54,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_63",
+      "id": "C63",
+      "position": {
+        "x": 5.08,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_63",
+      "id": "D63",
+      "position": {
+        "x": 7.62,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_L_63",
+      "id": "E63",
+      "position": {
+        "x": 10.16,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_63",
+      "id": "F63",
+      "position": {
+        "x": 17.78,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_63",
+      "id": "G63",
+      "position": {
+        "x": 20.32,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_63",
+      "id": "H63",
+      "position": {
+        "x": 22.86,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_63",
+      "id": "I63",
+      "position": {
+        "x": 25.4,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "STRIP_R_63",
+      "id": "J63",
+      "position": {
+        "x": 27.94,
+        "y": 157.48
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_1",
+      "position": {
+        "x": -10.16,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_2",
+      "position": {
+        "x": -10.16,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_3",
+      "position": {
+        "x": -10.16,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_4",
+      "position": {
+        "x": -10.16,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_5",
+      "position": {
+        "x": -10.16,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_6",
+      "position": {
+        "x": -10.16,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_7",
+      "position": {
+        "x": -10.16,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_8",
+      "position": {
+        "x": -10.16,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_9",
+      "position": {
+        "x": -10.16,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_10",
+      "position": {
+        "x": -10.16,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_11",
+      "position": {
+        "x": -10.16,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_12",
+      "position": {
+        "x": -10.16,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_13",
+      "position": {
+        "x": -10.16,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_14",
+      "position": {
+        "x": -10.16,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_15",
+      "position": {
+        "x": -10.16,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_16",
+      "position": {
+        "x": -10.16,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_17",
+      "position": {
+        "x": -10.16,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_18",
+      "position": {
+        "x": -10.16,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_19",
+      "position": {
+        "x": -10.16,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_20",
+      "position": {
+        "x": -10.16,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_21",
+      "position": {
+        "x": -10.16,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_22",
+      "position": {
+        "x": -10.16,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_23",
+      "position": {
+        "x": -10.16,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_24",
+      "position": {
+        "x": -10.16,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "id": "L_POS_25",
+      "position": {
+        "x": -10.16,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_26",
+      "position": {
+        "x": -10.16,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_27",
+      "position": {
+        "x": -10.16,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_28",
+      "position": {
+        "x": -10.16,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_29",
+      "position": {
+        "x": -10.16,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_30",
+      "position": {
+        "x": -10.16,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_31",
+      "position": {
+        "x": -10.16,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_32",
+      "position": {
+        "x": -10.16,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_33",
+      "position": {
+        "x": -10.16,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_34",
+      "position": {
+        "x": -10.16,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_35",
+      "position": {
+        "x": -10.16,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_36",
+      "position": {
+        "x": -10.16,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_37",
+      "position": {
+        "x": -10.16,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_38",
+      "position": {
+        "x": -10.16,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_39",
+      "position": {
+        "x": -10.16,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_40",
+      "position": {
+        "x": -10.16,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_41",
+      "position": {
+        "x": -10.16,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_42",
+      "position": {
+        "x": -10.16,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_43",
+      "position": {
+        "x": -10.16,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_44",
+      "position": {
+        "x": -10.16,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_45",
+      "position": {
+        "x": -10.16,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_46",
+      "position": {
+        "x": -10.16,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_47",
+      "position": {
+        "x": -10.16,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_48",
+      "position": {
+        "x": -10.16,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_49",
+      "position": {
+        "x": -10.16,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "id": "L_POS_50",
+      "position": {
+        "x": -10.16,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_1",
+      "position": {
+        "x": -5.08,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_2",
+      "position": {
+        "x": -5.08,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_3",
+      "position": {
+        "x": -5.08,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_4",
+      "position": {
+        "x": -5.08,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_5",
+      "position": {
+        "x": -5.08,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_6",
+      "position": {
+        "x": -5.08,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_7",
+      "position": {
+        "x": -5.08,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_8",
+      "position": {
+        "x": -5.08,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_9",
+      "position": {
+        "x": -5.08,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_10",
+      "position": {
+        "x": -5.08,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_11",
+      "position": {
+        "x": -5.08,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_12",
+      "position": {
+        "x": -5.08,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_13",
+      "position": {
+        "x": -5.08,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_14",
+      "position": {
+        "x": -5.08,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_15",
+      "position": {
+        "x": -5.08,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_16",
+      "position": {
+        "x": -5.08,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_17",
+      "position": {
+        "x": -5.08,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_18",
+      "position": {
+        "x": -5.08,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_19",
+      "position": {
+        "x": -5.08,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_20",
+      "position": {
+        "x": -5.08,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_21",
+      "position": {
+        "x": -5.08,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_22",
+      "position": {
+        "x": -5.08,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_23",
+      "position": {
+        "x": -5.08,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_24",
+      "position": {
+        "x": -5.08,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "id": "L_NEG_25",
+      "position": {
+        "x": -5.08,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_26",
+      "position": {
+        "x": -5.08,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_27",
+      "position": {
+        "x": -5.08,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_28",
+      "position": {
+        "x": -5.08,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_29",
+      "position": {
+        "x": -5.08,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_30",
+      "position": {
+        "x": -5.08,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_31",
+      "position": {
+        "x": -5.08,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_32",
+      "position": {
+        "x": -5.08,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_33",
+      "position": {
+        "x": -5.08,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_34",
+      "position": {
+        "x": -5.08,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_35",
+      "position": {
+        "x": -5.08,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_36",
+      "position": {
+        "x": -5.08,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_37",
+      "position": {
+        "x": -5.08,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_38",
+      "position": {
+        "x": -5.08,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_39",
+      "position": {
+        "x": -5.08,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_40",
+      "position": {
+        "x": -5.08,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_41",
+      "position": {
+        "x": -5.08,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_42",
+      "position": {
+        "x": -5.08,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_43",
+      "position": {
+        "x": -5.08,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_44",
+      "position": {
+        "x": -5.08,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_45",
+      "position": {
+        "x": -5.08,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_46",
+      "position": {
+        "x": -5.08,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_47",
+      "position": {
+        "x": -5.08,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_48",
+      "position": {
+        "x": -5.08,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_49",
+      "position": {
+        "x": -5.08,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "id": "L_NEG_50",
+      "position": {
+        "x": -5.08,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_1",
+      "position": {
+        "x": 33.02,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_2",
+      "position": {
+        "x": 33.02,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_3",
+      "position": {
+        "x": 33.02,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_4",
+      "position": {
+        "x": 33.02,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_5",
+      "position": {
+        "x": 33.02,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_6",
+      "position": {
+        "x": 33.02,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_7",
+      "position": {
+        "x": 33.02,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_8",
+      "position": {
+        "x": 33.02,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_9",
+      "position": {
+        "x": 33.02,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_10",
+      "position": {
+        "x": 33.02,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_11",
+      "position": {
+        "x": 33.02,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_12",
+      "position": {
+        "x": 33.02,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_13",
+      "position": {
+        "x": 33.02,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_14",
+      "position": {
+        "x": 33.02,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_15",
+      "position": {
+        "x": 33.02,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_16",
+      "position": {
+        "x": 33.02,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_17",
+      "position": {
+        "x": 33.02,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_18",
+      "position": {
+        "x": 33.02,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_19",
+      "position": {
+        "x": 33.02,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_20",
+      "position": {
+        "x": 33.02,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_21",
+      "position": {
+        "x": 33.02,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_22",
+      "position": {
+        "x": 33.02,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_23",
+      "position": {
+        "x": 33.02,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_24",
+      "position": {
+        "x": 33.02,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "id": "R_POS_25",
+      "position": {
+        "x": 33.02,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_26",
+      "position": {
+        "x": 33.02,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_27",
+      "position": {
+        "x": 33.02,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_28",
+      "position": {
+        "x": 33.02,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_29",
+      "position": {
+        "x": 33.02,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_30",
+      "position": {
+        "x": 33.02,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_31",
+      "position": {
+        "x": 33.02,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_32",
+      "position": {
+        "x": 33.02,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_33",
+      "position": {
+        "x": 33.02,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_34",
+      "position": {
+        "x": 33.02,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_35",
+      "position": {
+        "x": 33.02,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_36",
+      "position": {
+        "x": 33.02,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_37",
+      "position": {
+        "x": 33.02,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_38",
+      "position": {
+        "x": 33.02,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_39",
+      "position": {
+        "x": 33.02,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_40",
+      "position": {
+        "x": 33.02,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_41",
+      "position": {
+        "x": 33.02,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_42",
+      "position": {
+        "x": 33.02,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_43",
+      "position": {
+        "x": 33.02,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_44",
+      "position": {
+        "x": 33.02,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_45",
+      "position": {
+        "x": 33.02,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_46",
+      "position": {
+        "x": 33.02,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_47",
+      "position": {
+        "x": 33.02,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_48",
+      "position": {
+        "x": 33.02,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_49",
+      "position": {
+        "x": 33.02,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "id": "R_POS_50",
+      "position": {
+        "x": 33.02,
+        "y": 124.46000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_1",
+      "position": {
+        "x": 38.1,
+        "y": 0.0
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_2",
+      "position": {
+        "x": 38.1,
+        "y": 2.54
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_3",
+      "position": {
+        "x": 38.1,
+        "y": 5.08
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_4",
+      "position": {
+        "x": 38.1,
+        "y": 7.62
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_5",
+      "position": {
+        "x": 38.1,
+        "y": 10.16
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_6",
+      "position": {
+        "x": 38.1,
+        "y": 12.7
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_7",
+      "position": {
+        "x": 38.1,
+        "y": 15.24
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_8",
+      "position": {
+        "x": 38.1,
+        "y": 17.78
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_9",
+      "position": {
+        "x": 38.1,
+        "y": 20.32
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_10",
+      "position": {
+        "x": 38.1,
+        "y": 22.86
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_11",
+      "position": {
+        "x": 38.1,
+        "y": 25.4
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_12",
+      "position": {
+        "x": 38.1,
+        "y": 27.94
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_13",
+      "position": {
+        "x": 38.1,
+        "y": 30.48
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_14",
+      "position": {
+        "x": 38.1,
+        "y": 33.02
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_15",
+      "position": {
+        "x": 38.1,
+        "y": 35.56
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_16",
+      "position": {
+        "x": 38.1,
+        "y": 38.1
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_17",
+      "position": {
+        "x": 38.1,
+        "y": 40.64
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_18",
+      "position": {
+        "x": 38.1,
+        "y": 43.18
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_19",
+      "position": {
+        "x": 38.1,
+        "y": 45.72
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_20",
+      "position": {
+        "x": 38.1,
+        "y": 48.26
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_21",
+      "position": {
+        "x": 38.1,
+        "y": 50.8
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_22",
+      "position": {
+        "x": 38.1,
+        "y": 53.34
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_23",
+      "position": {
+        "x": 38.1,
+        "y": 55.88
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_24",
+      "position": {
+        "x": 38.1,
+        "y": 58.42
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "id": "R_NEG_25",
+      "position": {
+        "x": 38.1,
+        "y": 60.96
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_26",
+      "position": {
+        "x": 38.1,
+        "y": 63.5
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_27",
+      "position": {
+        "x": 38.1,
+        "y": 66.04
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_28",
+      "position": {
+        "x": 38.1,
+        "y": 68.58
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_29",
+      "position": {
+        "x": 38.1,
+        "y": 71.12
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_30",
+      "position": {
+        "x": 38.1,
+        "y": 73.66
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_31",
+      "position": {
+        "x": 38.1,
+        "y": 76.2
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_32",
+      "position": {
+        "x": 38.1,
+        "y": 78.74
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_33",
+      "position": {
+        "x": 38.1,
+        "y": 81.28
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_34",
+      "position": {
+        "x": 38.1,
+        "y": 83.82000000000001
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_35",
+      "position": {
+        "x": 38.1,
+        "y": 86.36
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_36",
+      "position": {
+        "x": 38.1,
+        "y": 88.9
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_37",
+      "position": {
+        "x": 38.1,
+        "y": 91.44
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_38",
+      "position": {
+        "x": 38.1,
+        "y": 93.98
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_39",
+      "position": {
+        "x": 38.1,
+        "y": 96.52
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_40",
+      "position": {
+        "x": 38.1,
+        "y": 99.06
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_41",
+      "position": {
+        "x": 38.1,
+        "y": 101.6
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_42",
+      "position": {
+        "x": 38.1,
+        "y": 104.14
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_43",
+      "position": {
+        "x": 38.1,
+        "y": 106.68
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_44",
+      "position": {
+        "x": 38.1,
+        "y": 109.22
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_45",
+      "position": {
+        "x": 38.1,
+        "y": 111.76
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_46",
+      "position": {
+        "x": 38.1,
+        "y": 114.3
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_47",
+      "position": {
+        "x": 38.1,
+        "y": 116.84
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_48",
+      "position": {
+        "x": 38.1,
+        "y": 119.38
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_49",
+      "position": {
+        "x": 38.1,
+        "y": 121.92
+      }
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "id": "R_NEG_50",
+      "position": {
+        "x": 38.1,
+        "y": 124.46000000000001
+      }
+    }
+  ],
+  "keep_out_regions": [
+    {
+      "id": "CENTER_TRENCH",
+      "maximum": {
+        "x": 16.51,
+        "y": 160.02
+      },
+      "minimum": {
+        "x": 11.43,
+        "y": -2.54
+      }
+    }
+  ],
+  "model_id": "bb830-reference",
+  "pitch_mm": 2.54,
+  "rail_segments": [
+    {
+      "conductive_group_id": "RAIL_L_POS_TOP",
+      "hole_ids": [
+        "L_POS_1",
+        "L_POS_2",
+        "L_POS_3",
+        "L_POS_4",
+        "L_POS_5",
+        "L_POS_6",
+        "L_POS_7",
+        "L_POS_8",
+        "L_POS_9",
+        "L_POS_10",
+        "L_POS_11",
+        "L_POS_12",
+        "L_POS_13",
+        "L_POS_14",
+        "L_POS_15",
+        "L_POS_16",
+        "L_POS_17",
+        "L_POS_18",
+        "L_POS_19",
+        "L_POS_20",
+        "L_POS_21",
+        "L_POS_22",
+        "L_POS_23",
+        "L_POS_24",
+        "L_POS_25"
+      ],
+      "id": "RAIL_L_POS_TOP",
+      "label": "+"
+    },
+    {
+      "conductive_group_id": "RAIL_L_POS_BOTTOM",
+      "hole_ids": [
+        "L_POS_26",
+        "L_POS_27",
+        "L_POS_28",
+        "L_POS_29",
+        "L_POS_30",
+        "L_POS_31",
+        "L_POS_32",
+        "L_POS_33",
+        "L_POS_34",
+        "L_POS_35",
+        "L_POS_36",
+        "L_POS_37",
+        "L_POS_38",
+        "L_POS_39",
+        "L_POS_40",
+        "L_POS_41",
+        "L_POS_42",
+        "L_POS_43",
+        "L_POS_44",
+        "L_POS_45",
+        "L_POS_46",
+        "L_POS_47",
+        "L_POS_48",
+        "L_POS_49",
+        "L_POS_50"
+      ],
+      "id": "RAIL_L_POS_BOTTOM",
+      "label": "+"
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_TOP",
+      "hole_ids": [
+        "L_NEG_1",
+        "L_NEG_2",
+        "L_NEG_3",
+        "L_NEG_4",
+        "L_NEG_5",
+        "L_NEG_6",
+        "L_NEG_7",
+        "L_NEG_8",
+        "L_NEG_9",
+        "L_NEG_10",
+        "L_NEG_11",
+        "L_NEG_12",
+        "L_NEG_13",
+        "L_NEG_14",
+        "L_NEG_15",
+        "L_NEG_16",
+        "L_NEG_17",
+        "L_NEG_18",
+        "L_NEG_19",
+        "L_NEG_20",
+        "L_NEG_21",
+        "L_NEG_22",
+        "L_NEG_23",
+        "L_NEG_24",
+        "L_NEG_25"
+      ],
+      "id": "RAIL_L_NEG_TOP",
+      "label": "-"
+    },
+    {
+      "conductive_group_id": "RAIL_L_NEG_BOTTOM",
+      "hole_ids": [
+        "L_NEG_26",
+        "L_NEG_27",
+        "L_NEG_28",
+        "L_NEG_29",
+        "L_NEG_30",
+        "L_NEG_31",
+        "L_NEG_32",
+        "L_NEG_33",
+        "L_NEG_34",
+        "L_NEG_35",
+        "L_NEG_36",
+        "L_NEG_37",
+        "L_NEG_38",
+        "L_NEG_39",
+        "L_NEG_40",
+        "L_NEG_41",
+        "L_NEG_42",
+        "L_NEG_43",
+        "L_NEG_44",
+        "L_NEG_45",
+        "L_NEG_46",
+        "L_NEG_47",
+        "L_NEG_48",
+        "L_NEG_49",
+        "L_NEG_50"
+      ],
+      "id": "RAIL_L_NEG_BOTTOM",
+      "label": "-"
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_TOP",
+      "hole_ids": [
+        "R_POS_1",
+        "R_POS_2",
+        "R_POS_3",
+        "R_POS_4",
+        "R_POS_5",
+        "R_POS_6",
+        "R_POS_7",
+        "R_POS_8",
+        "R_POS_9",
+        "R_POS_10",
+        "R_POS_11",
+        "R_POS_12",
+        "R_POS_13",
+        "R_POS_14",
+        "R_POS_15",
+        "R_POS_16",
+        "R_POS_17",
+        "R_POS_18",
+        "R_POS_19",
+        "R_POS_20",
+        "R_POS_21",
+        "R_POS_22",
+        "R_POS_23",
+        "R_POS_24",
+        "R_POS_25"
+      ],
+      "id": "RAIL_R_POS_TOP",
+      "label": "+"
+    },
+    {
+      "conductive_group_id": "RAIL_R_POS_BOTTOM",
+      "hole_ids": [
+        "R_POS_26",
+        "R_POS_27",
+        "R_POS_28",
+        "R_POS_29",
+        "R_POS_30",
+        "R_POS_31",
+        "R_POS_32",
+        "R_POS_33",
+        "R_POS_34",
+        "R_POS_35",
+        "R_POS_36",
+        "R_POS_37",
+        "R_POS_38",
+        "R_POS_39",
+        "R_POS_40",
+        "R_POS_41",
+        "R_POS_42",
+        "R_POS_43",
+        "R_POS_44",
+        "R_POS_45",
+        "R_POS_46",
+        "R_POS_47",
+        "R_POS_48",
+        "R_POS_49",
+        "R_POS_50"
+      ],
+      "id": "RAIL_R_POS_BOTTOM",
+      "label": "+"
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_TOP",
+      "hole_ids": [
+        "R_NEG_1",
+        "R_NEG_2",
+        "R_NEG_3",
+        "R_NEG_4",
+        "R_NEG_5",
+        "R_NEG_6",
+        "R_NEG_7",
+        "R_NEG_8",
+        "R_NEG_9",
+        "R_NEG_10",
+        "R_NEG_11",
+        "R_NEG_12",
+        "R_NEG_13",
+        "R_NEG_14",
+        "R_NEG_15",
+        "R_NEG_16",
+        "R_NEG_17",
+        "R_NEG_18",
+        "R_NEG_19",
+        "R_NEG_20",
+        "R_NEG_21",
+        "R_NEG_22",
+        "R_NEG_23",
+        "R_NEG_24",
+        "R_NEG_25"
+      ],
+      "id": "RAIL_R_NEG_TOP",
+      "label": "-"
+    },
+    {
+      "conductive_group_id": "RAIL_R_NEG_BOTTOM",
+      "hole_ids": [
+        "R_NEG_26",
+        "R_NEG_27",
+        "R_NEG_28",
+        "R_NEG_29",
+        "R_NEG_30",
+        "R_NEG_31",
+        "R_NEG_32",
+        "R_NEG_33",
+        "R_NEG_34",
+        "R_NEG_35",
+        "R_NEG_36",
+        "R_NEG_37",
+        "R_NEG_38",
+        "R_NEG_39",
+        "R_NEG_40",
+        "R_NEG_41",
+        "R_NEG_42",
+        "R_NEG_43",
+        "R_NEG_44",
+        "R_NEG_45",
+        "R_NEG_46",
+        "R_NEG_47",
+        "R_NEG_48",
+        "R_NEG_49",
+        "R_NEG_50"
+      ],
+      "id": "RAIL_R_NEG_BOTTOM",
+      "label": "-"
+    }
+  ],
+  "revision": "r1",
+  "supported_footprints": [],
+  "terminal_columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J"
+  ],
+  "terminal_rows": 63,
+  "verification_evidence": null,
+  "verification_status": "reference_unverified"
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": "1.0",
+  "name": "Series LED",
+  "components": [
+    {
+      "id": "R1",
+      "type": "resistor",
+      "value_ohms": 220,
+      "pins": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "led",
+      "pins": [
+        "anode",
+        "cathode"
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "id": "VCC",
+      "members": [
+        "R1.1"
+      ],
+      "role": "power"
+    },
+    {
+      "id": "N1",
+      "members": [
+        "R1.2",
+        "D1.anode"
+      ],
+      "role": "signal"
+    },
+    {
+      "id": "GND",
+      "members": [
+        "D1.cathode"
+      ],
+      "role": "ground"
+    }
+  ],
+  "supply": {
+    "voltage_v": 5.0,
+    "current_limit_ma": 100,
+    "positive_net": "VCC",
+    "negative_net": "GND"
+  }
+}
