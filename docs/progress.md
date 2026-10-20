@@ -2,91 +2,71 @@
 
 Updated: 2026-10-20. Source of truth: `docs/product-handoff.txt`.
 
-## Scope and state
+## Current authorization
 
-M1 software foundation is implemented. Physical board verification is outstanding;
-no physical board is released as supported. M2 implementation has not begun.
+The founder authorized moving source and project documents into the public
+`Yizhuo04/CircuitPilot` repository and continuing all remaining project steps.
+Preserve original public history. The private `CircuitPilot-dev` repo is historical.
+GitHub workflow authorization was explicitly approved and is active. Keep routine
+progress quiet; ask when external input, evidence or decisions are required.
 
-Implemented: repository/environment, strict typed circuit/board/result contracts,
-three circuit fixtures, explicit 63-row terminal and split-rail reference topology,
-deterministic netlist integrity, two FastAPI endpoints, shared JSON Schema,
-regression tests, CI configuration, and local documentation. Frontend intentionally
-deferred to M3 under section 17.8 of the handoff. No persistence, planner, camera,
-or trained ML capabilities are claimed.
+## Implemented and remaining
 
-## Decisions to carry forward
+| Milestone | Software state | Acceptance still requiring external evidence |
+| --- | --- | --- |
+| M1 foundation | Schemas, topology, validator, FastAPI, fixtures, tests | Physically measured board revision |
+| M2 physical graph | Union-find, footprint/occupancy/clearance checks, net partition equivalence, short/missing-wire regressions | Measured parts and manufacturer-specific board |
+| M3 planner + SVG | Seeded bounded planner, three circuits, model-derived SVG, ordered steps, responsive workspace | Physical assembly usability testing |
+| M4 backend + calibration | Accounts/ownership, immutable versions/plans, PostgreSQL migration, private local storage, manual OpenCV alignment, durable jobs, consent/deletion/export | Selected production host/domain; storage/operations review |
+| M5 ML experiment | Annotation UI, consented export/download, grouped split exporter, training/inference/evaluation adapters, provenance tests | Consented labeled real-photo dataset, trusted weights, actual training and held-out results |
+| M6 pilot + reliability | Control/guided timing, observed error/help counts, export, protocol/security/deployment documentation | Recruitment, interviews, user measurements, institutions, willingness-to-pay and go/no-go evidence |
 
-- Do not union functional device terminals; physical ideal-conductor graph is M2.
-- Do not turn `valid: true` into build readiness. M1 always returns
-  `ready_to_build: false`, with scope `netlist_structure`.
-- Board IDs/revisions and geometry must remain explicit and versioned. Reference
-  rail splits are test assumptions, never proof about a user's physical board.
-- Keep the provisional 12 V / 500 mA maximum supply policy and all-pins-assigned
-  policy visible. Revisit them with pilot requirements and electrical-rule design.
-- The four-pin normally-open button needs a documented footprint/contact-pair
-  mapping before M2 can claim physical connectivity checks involving it.
-- Shared artifacts derive from Python schemas/generator and are checked in CI.
-- The existing `Yizhuo04/CircuitPilot` repository is public and initially contains
-  only a README. The user selected a new private `Yizhuo04/CircuitPilot-dev`
-  repository for this implementation. Preserve the original public repository.
+No physical board/footprint is released as supported. All plans remain reference-only,
+`ready_to_build: false`. No camera output asserts electrical verification. No real
+model performance, recruited users, interview outcomes or time savings are claimed.
 
-## Verification evidence
+## Execution evidence
 
-Local Python 3.12.1: 75 tests pass, 99.65% statement coverage. Ruff lint and
-format checks, strict mypy over 13 application modules, and generated artifact
-consistency checks pass. The test client uses httpx2 as recommended by the
-installed Starlette version; no dependency deprecation warning remains.
+Local Python 3.12.1: 148 tests passed, one PostgreSQL test skipped because no local
+PostgreSQL service is installed; 95.41% statement coverage. Lint, formatting, strict
+mypy and shared artifact checks passed. Next.js production build and TypeScript checks
+passed. Real Chromium exercised registration, actual plan generation, hole inspection,
+step completion, private upload, synthetic-image homography and persistence. A mobile
+regression found/fixed initial example loading overwriting typed JSON. Latest hosted
+CI and final browser/clean-clone evidence are recorded in `verification.md`.
 
-Real Uvicorn HTTP smoke check on localhost: health returns 200 and version
-`0.1.0`; series LED returns 200 with `valid: true`, no errors, and
-`ready_to_build: false`; the invalid fixture returns 422 with `unknown_pin` and
-`pin_in_multiple_nets`. CI is configured for Python 3.12 and 3.13; its actual
-remote execution is recorded separately after pushing.
+Docker is unavailable on the local host; container and real PostgreSQL checks are
+configured in GitHub Actions, not falsely claimed as local results. Real photos have
+not yet been attached in this chat. The founder offered to send examples; use them
+for calibration testing only unless explicit training consent is subsequently given.
 
-Clean local clone: locked offline installation from the populated dependency cache
-succeeds; all 75 tests and quality/schema checks pass again. A source distribution
-and wheel build successfully. This verifies the declared environment rather than
-relying on undeclared globally installed packages.
+## Decisions to preserve
 
-GitHub repository: `https://github.com/Yizhuo04/CircuitPilot-dev`, private.
-GitHub rejected the initial push because the active OAuth credential lacks
-`workflow` scope. Application source is pushed separately; the workflow is retained
-as a separate local commit, ready to push after the user runs:
+- Keep intended logical nets, ideal conductive groups and functional device behavior distinct.
+- Never report structure/graph equivalence as safe electrical operation.
+- Reference button pairs are 1/2 and 3/4; this is an explicit convention requiring measurement.
+- Generated JSON derives from typed Python contracts and must not drift.
+- Board geometry/revision and circuit digest are immutable plan provenance.
+- Supply policy is provisionally <=12 V and <=500 mA; it does not certify safety.
+- Default photo retention is 30 days; worker performs physical deletion.
+- The local filesystem adapter requires shared persistent storage. S3 is not implemented.
+- The optional detector runtime is deliberately absent without reviewed data/weights.
+- Browser-local step completion is per plan; no credentials/photos go into localStorage.
 
-```sh
-gh auth refresh --hostname github.com --scopes workflow
-git push origin main
-```
+## Next required inputs
 
-Run these in the original local checkout, not a new clone, which will not yet
-contain the pending workflow commit. No hosted CI run is claimed. Python 3.13 is
-configured in the pending matrix but has not been executed in this session.
+1. Attach example top-down board/circuit photos and identify manufacturer/model if known.
+2. Measure actual rail continuity, geometry and part footprints before physical release.
+3. Establish explicitly consented training/evaluation data grouped by setup/session.
+4. Choose a Python/container host and domain before public deployment.
+5. Supply/authorize actual pilot participants and institution contacts before outreach.
 
-## Hardware evidence required
+Continue useful software work independently of pending inputs. Do not fabricate the
+physical, data or business outcomes needed to satisfy later acceptance gates.
 
-Select the actual manufacturer's board model/revision, measure continuity and
-isolation including rail splits, and record geometry and evidence. Follow
-`docs/board_specifications.md`. This cannot be completed from the supplied handoff.
+## Resume
 
-## M2 plan, pending user go-ahead
-
-1. Define versioned placement, terminal mapping, jumper, footprint, and occupancy
-   contracts. Start with narrowly specified tested parts; do not guess button pins.
-2. Build ideal-conductor union-find from board strips, explicit jumpers, and known
-   internal ideal contacts. Device leads map into groups independently.
-3. Check logical/physical terminal partition equivalence in both directions,
-   including supply terminals: disconnected intended nets fail, merged distinct
-   nets fail. Report implicated nets, pins, holes, and ideal links.
-4. Add known-correct hand-authored layouts plus missing jumper, short, occupancy,
-   center trench, unsupported footprint, and polarity regressions. Keep functional
-   component terminals distinct. Add meaningful graph invariance/property checks.
-5. Stop before automatic placement/routing, which belongs to M3. Never expose an
-   unvalidated layout as a buildable plan.
-
-## Resume instructions
-
-Read this file, the architecture review, and the original handoff. Inspect Git
-status and existing code before editing. Run the locked verification commands in
-README. Do not reinstall the full stack or implement later milestones at once.
-Preserve error codes, documented scope, generated artifacts, and test invariants;
-version incompatible changes. Update this file with evidence at each milestone.
+Inspect Git status and this file, then README, architecture and verification.
+Run appropriate locked checks rather than reinstalling/rebuilding everything without
+cause. Keep incremental commits and update evidence. The original handoff's M1-only
+stopping instruction was superseded by the founder's explicit all-milestones request.

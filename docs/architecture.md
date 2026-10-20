@@ -1,67 +1,81 @@
-# Architecture review — 2026-10-20
+# Current architecture
 
-The modular monolith, structured inputs, deterministic graph gate, and separation
-between uncertain visual observations and electrical facts are appropriate. No
-fundamental rewrite is needed. The following gaps determine what can be released.
+CircuitPilot is a modular monolith: a Next.js/React workspace calls a FastAPI Python
+backend through a same-origin proxy. SQLAlchemy 2 stores owned resources in SQLite
+for local development or PostgreSQL with JSONB in deployment. Alembic provides an
+explicit initial migration. The backend and worker share private local object storage.
 
-## Critical correctness gaps
+## Correctness boundaries
 
-1. **A physically verified board is missing.** The handoff describes 830-point
-   boards but provides neither manufacturer/revision nor measurements. Software
-   tests cannot establish physical rail continuity. M1 includes an explicit,
-   unverified reference model; releasing a buildable plan requires recorded
-   continuity measurements and measured geometry for a named board revision.
-2. **Net equivalence is necessary but insufficient for electrical correctness.**
-   Connected LED pins can still have wrong polarity or excessive current; a
-   resistor elsewhere in a netlist does not prove current limiting. M1's response
-   separates structural validity from build readiness. Later electrical-rule checks
-   need part ratings, forward-voltage assumptions, supply limits, and supported
-   topology restrictions. No LLM may substitute for those checks.
-3. **Functional devices and ideal conductors need separate semantics.** Resistors
-   and LEDs must not union their terminals. Ideal jumpers do. Four-pin push-button
-   internal contact pairs depend on the selected footprint; that mapping must be
-   explicit before layouts are supported. M1 knows pin names but does not assert
-   button contact behavior. M2 must test component leads against the conductive
-   graph without collapsing functional terminals.
-4. **Pin naming alone is not a physical footprint.** Lead spacing, insertion
-   restrictions, orientation, shared-hole policy, and clearance need a footprint
-   catalog. Pixel geometry must derive from the same board revision. M1 rejects
-   footprint/orientation input fields rather than silently ignoring constraints.
+1. `schemas/circuit.py` defines intended connectivity. Structural validation checks
+   references, supported components/values, net uniqueness and supply roles.
+2. `services/breadboard.py` provides explicit versioned geometry/conductive groups.
+3. `services/footprints.py` enumerates narrow reference placements and body envelopes.
+4. `services/placement_engine.py` performs bounded seeded greedy placement/routing.
+5. `services/connectivity.py` independently checks occupied holes, geometry,
+   terminal completeness, expected-net connectivity and distinct-net isolation.
+   Union-find merges only ideal conductors, including explicit button contact pairs.
+   Functional resistor/LED terminals remain separate.
+6. `services/electrical.py` adds narrow structural electrical rules for supported
+   resistor/LED branches, including pressed-button worst-case ideal shorts. It is
+   not a simulator and does not establish numeric current/power-rating safety.
+7. Only a passing independent graph report yields a saved reference plan. No current
+   board or footprint has physical evidence, so build readiness stays false.
 
-## Boundaries to preserve
+The planner makes up to twelve attempts, then reports bounded search exhaustion.
+This is not a proof of infeasibility. Planning is limited to eight components and
+ten added jumpers. The same input and seed produce identical plan content; database
+resource IDs/timestamps intentionally differ when a new immutable snapshot is saved.
 
-- Schema validation handles shapes, supported variants, finite values, and bounds.
-  Domain validation handles references, uniqueness, supply roles, and assignments.
-  Both produce a consistent 422 error envelope, with codes and paths.
-- Keep intended logical nets, actual ideal conductive groups, and device behavior
-  distinct. M2 compares partitions of terminal references, detecting both split
-  intended nets and merged distinct nets. Board topology alone is not that checker.
-- Layout acceptance must fail closed. A bounded planner may legitimately report no
-  layout. Infeasibility and search-budget exhaustion need distinct outcomes.
-- Before M4 persistence, define immutable version IDs, board revision references,
-  planner versions/seeds, and exact provenance. Supply mapping and board revision
-  must be captured with a plan. Add owner checks before storing user resources.
-- Before external uploads, add upload size/type limits, isolated object keys,
-  ownership, retention/deletion, explicit training consent, and asynchronous jobs.
-  These are future release requirements, not implemented security guarantees.
-- ML remains downstream of deterministic geometry. Plan labels alone are not
-  ground truth for photographs. Separate setups/sessions across evaluation splits;
-  report occlusion and uncertainty rather than invent continuity evidence.
+## Persistence and ownership
 
-## M1 decisions
+Users own projects; circuit versions reference projects, plans reference immutable
+circuit versions, and steps are stored in sequence. Photos/annotations are project
+resources. Verification runs reference a plan and a photo from the same project.
+All read/write/export/delete paths check project ownership; inaccessible IDs return
+404. Historical circuit and plan snapshots have no update endpoint.
 
-Use FastAPI/Pydantic v2 with a locked uv environment and no database dependency.
-Keep domain modules independent of HTTP. Generate shared JSON Schema and board
-fixtures from typed Python contracts; CI checks that artifacts do not drift.
-Defer NetworkX until graph queries justify it; M1 grouping uses explicit group IDs.
-Defer the complete physical conductive graph and union-find to M2, the frontend
-to M3, persistence to M4, and ML experiments to M5.
+Sessions are revocable opaque tokens stored as hashes; passwords use salted scrypt.
+Browser cookies are HttpOnly/SameSite=Strict, and cookie-authenticated writes require
+an allowed Origin. Production rejects insecure cookie/origin/database settings.
+Production still needs account recovery/email verification, upstream request limits,
+backups, monitoring and a reviewed deployment configuration before unrestricted use.
 
-Provisional supported supply limits (12 V and 500 mA maxima) and requiring every
-declared pin to have a net are implementation policies, not requirements supplied
-by a board manufacturer. Confirm them during pilot scoping. Disconnected pins
-currently need explicit separate nets; optional unconnected-pin semantics would
-require a versioned contract change.
+## Photos and jobs
 
-Dependency workflow follows [uv's locked sync guidance](https://docs.astral.sh/uv/concepts/projects/sync/).
-The schema-error adapter follows [FastAPI's request-validation extension point](https://fastapi.tiangolo.com/tutorial/handling-errors/).
+One-use expiring upload tickets are scoped to owned projects. The local storage
+adapter enforces actual PNG/JPEG decoding, dimensions/byte bounds and generated
+object keys. Normalization strips EXIF/location metadata. Consent defaults false;
+reviewed annotations alone never grant training permission.
+
+Manual calibration projects model coordinates into the photo using OpenCV. It
+rejects invalid/mirrored/degenerate/extreme selections and returns expected overlays
+plus uncertainty. It does not infer continuity. A database-backed verification queue
+uses atomic claims and recoverable leases. FastAPI schedules immediate work after
+responding; a separate worker recovers pending/interrupted work and deletes expired
+photos. Keep worker storage consistent with backend storage.
+
+## ML and evaluation
+
+The default application has no trained detector. Optional operator-selected trusted
+local weights require matching hashes, evaluation metadata and class names. The
+adapter can produce uncertain possible-component/endpoint observations; detections
+cannot alter a plan or suppress electrical/physical validation. Actual real-model
+execution awaits a consented dataset and evaluated weights.
+
+Dataset exports require reviewed labels plus explicit consent. Setup, capture
+session and identical content hashes form connected groups that never cross splits.
+Exact hashes do not detect every near-duplicate; manually audit burst/session data.
+Evaluation distinguishes per-class AP/precision/recall, duplicate detections and
+uncalibrated scores. Training wrappers preserve provenance and evaluate test after
+selection; no real-data metrics are claimed yet.
+
+## Remaining critical evidence
+
+- Measured manufacturer/revision-specific board continuity and geometry.
+- Measured footprints, button pin pairs, part ratings, polarity/current rules.
+- Real held-out photos, localization errors, detector metrics and calibration.
+- Real participants, observed assembly outcomes and commercial validation.
+
+These gaps cannot be resolved by more generated code. They remain release gates.
+The original M1 review is preserved in `m1-architecture-review.md`.

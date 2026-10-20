@@ -103,7 +103,7 @@ def validate_circuit(circuit: Circuit) -> ValidationResult:
         ValidationIssue(
             code="structure_only",
             message="Structural checks do not verify physical wiring, device polarity, "
-            "LED current limiting, or electrical safety. No assembly plan exists yet.",
+            "LED current limiting, or electrical safety. This endpoint does not validate a physical assembly plan.",
         ),
         ValidationIssue(
             code="disconnect_power",
