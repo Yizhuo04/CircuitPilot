@@ -1,4 +1,4 @@
-name: Backend checks
+name: CircuitPilot checks
 on: [push, pull_request]
 permissions:
   contents: read
@@ -8,6 +8,17 @@ jobs:
     strategy:
       matrix:
         python: ['3.12', '3.13']
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: circuitpilot_test
+          POSTGRES_USER: circuitpilot
+          POSTGRES_PASSWORD: ci-only-test-password
+        ports: ['5432:5432']
+        options: --health-cmd "pg_isready -U circuitpilot -d circuitpilot_test" --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      CIRCUITPILOT_TEST_POSTGRES_URL: postgresql+psycopg://circuitpilot:ci-only-test-password@127.0.0.1:5432/circuitpilot_test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -20,3 +31,48 @@ jobs:
       - run: uv run --locked mypy
       - run: uv run --locked python -m app.export_schemas --check
       - run: uv run --locked pytest
+  web:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: python -m pip install uv==0.12.5
+      - run: npm install --global pnpm@11.25.0
+      - run: uv sync --locked
+      - run: pnpm --dir frontend install --frozen-lockfile
+      - run: pnpm --dir frontend typecheck
+      - run: pnpm --dir frontend build
+      - run: pnpm --dir frontend exec playwright install --with-deps chromium
+      - name: Browser workflow against real backend
+        run: |
+          uv run --locked uvicorn app.main:app --host 127.0.0.1 --port 8000 --no-access-log > backend.log 2>&1 &
+          BACKEND_PID=$!
+          pnpm --dir frontend start > frontend.log 2>&1 &
+          FRONTEND_PID=$!
+          trap 'kill "$BACKEND_PID" "$FRONTEND_PID" 2>/dev/null || true' EXIT
+          python - <<'PY'
+          import time, urllib.request
+          for url in ['http://127.0.0.1:8000/api/v1/health', 'http://127.0.0.1:3000']:
+              for attempt in range(60):
+                  try:
+                      urllib.request.urlopen(url, timeout=2)
+                      break
+                  except Exception:
+                      time.sleep(1)
+              else:
+                  raise SystemExit('Server did not start: ' + url)
+          PY
+          pnpm --dir frontend test:e2e
+  containers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: POSTGRES_PASSWORD=ci-only-test-password docker compose config --quiet
+      - run: POSTGRES_PASSWORD=ci-only-test-password docker compose build backend frontend

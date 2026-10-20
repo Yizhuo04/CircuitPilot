@@ -21,7 +21,7 @@ ml/datasets/*
 *.onnx
 *.safetensors
 .DS_Store
-data/
+/data/
 *.db
 *.db-*
 frontend/test-results/

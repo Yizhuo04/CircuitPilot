@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "name": "Two parallel LEDs",
+  "components": [
+    {
+      "id": "R1",
+      "type": "resistor",
+      "value_ohms": 220,
+      "pins": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "D1",
+      "type": "led",
+      "pins": [
+        "anode",
+        "cathode"
+      ]
+    },
+    {
+      "id": "R2",
+      "type": "resistor",
+      "value_ohms": 330,
+      "pins": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "id": "D2",
+      "type": "led",
+      "pins": [
+        "anode",
+        "cathode"
+      ]
+    }
+  ],
+  "nets": [
+    {
+      "id": "VCC",
+      "members": [
+        "R1.1",
+        "R2.1"
+      ],
+      "role": "power"
+    },
+    {
+      "id": "N1",
+      "members": [
+        "R1.2",
+        "D1.anode"
+      ],
+      "role": "signal"
+    },
+    {
+      "id": "GND",
+      "members": [
+        "D1.cathode",
+        "D2.cathode"
+      ],
+      "role": "ground"
+    },
+    {
+      "id": "N2",
+      "members": [
+        "R2.2",
+        "D2.anode"
+      ],
+      "role": "signal"
+    }
+  ],
+  "supply": {
+    "voltage_v": 5.0,
+    "current_limit_ma": 100,
+    "positive_net": "VCC",
+    "negative_net": "GND"
+  }
+}
