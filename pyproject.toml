@@ -3,7 +3,12 @@ name = "circuitpilot"
 version = "0.1.0"
 description = "Deterministic foundations for a circuit assembly copilot"
 requires-python = ">=3.12,<3.14"
-dependencies = ["fastapi>=0.115,<1", "pydantic>=2.10,<3", "uvicorn>=0.34,<1"]
+dependencies = [
+  "fastapi>=0.115,<1", "pydantic>=2.10,<3", "uvicorn>=0.34,<1",
+  "sqlalchemy>=2.0,<3", "alembic>=1.14,<2", "psycopg[binary]>=3.2,<4",
+  "pillow>=11,<13", "numpy>=2,<3", "opencv-python-headless>=4.10,<5",
+  "pydantic-settings>=2.7,<3", "email-validator>=2.2,<3",
+]
 
 [dependency-groups]
 dev = ["httpx2>=2,<3", "pytest>=8,<10", "pytest-cov>=6,<8", "ruff>=0.11,<1", "mypy>=1.15,<2"]

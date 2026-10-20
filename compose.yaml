@@ -1,0 +1,63 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: circuitpilot
+      POSTGRES_USER: circuitpilot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in your untracked .env}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U circuitpilot -d circuitpilot]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment: &backend_env
+      CIRCUITPILOT_DATABASE_URL: postgresql+psycopg://circuitpilot:${POSTGRES_PASSWORD}@postgres:5432/circuitpilot
+      CIRCUITPILOT_STORAGE_DIR: /app/data/uploads
+      CIRCUITPILOT_AUTO_CREATE_SCHEMA: "false"
+      CIRCUITPILOT_ENVIRONMENT: ${CIRCUITPILOT_ENVIRONMENT:-development}
+      CIRCUITPILOT_COOKIE_SECURE: ${CIRCUITPILOT_COOKIE_SECURE:-false}
+      CIRCUITPILOT_ALLOWED_ORIGINS: ${CIRCUITPILOT_ALLOWED_ORIGINS:-["http://127.0.0.1:3000","http://localhost:3000"]}
+    volumes:
+      - upload_data:/app/data/uploads
+    ports:
+      - 127.0.0.1:8000:8000
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+  worker:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment: *backend_env
+    command: [python, -m, app.worker]
+    healthcheck:
+      disable: true
+    volumes:
+      - upload_data:/app/data/uploads
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        CIRCUITPILOT_API_URL: http://backend:8000
+    ports:
+      - 127.0.0.1:3000:3000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+volumes:
+  postgres_data:
+  upload_data:

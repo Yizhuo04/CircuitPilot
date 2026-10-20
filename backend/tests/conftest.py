@@ -3,6 +3,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from app.config import Settings
 from app.main import create_app
 from fastapi.testclient import TestClient
 
@@ -15,5 +16,9 @@ def series_led() -> dict[str, Any]:
 
 
 @pytest.fixture
-def client() -> TestClient:
-    return TestClient(create_app())
+def client(tmp_path):
+    settings = Settings(
+        environment="test", database_url="sqlite://", storage_dir=tmp_path / "uploads"
+    )
+    with TestClient(create_app(settings)) as connection:
+        yield connection
